@@ -1,0 +1,27 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model 587-1024-147F
+#/19521708/1318237/2.50/4/3/LED
+DEF 587-1024-147F LED 0 30 Y Y 1 F N
+F0 "LED" 950 300 50 H V L CNN
+F1 "587-1024-147F" 950 200 50 H V L CNN
+F2 "5871024147F" 950 100 50 H I L CNN
+F3 "https://s3-us-west-2.amazonaws.com/catsy.557/Dialight_datasheet_587-1024-147F_Addressable_RGB.pdf" 950 0 50 H I L CNN
+F4 "Addressable Lighting 587 1 LED Discrete Red, Green, Blue (RGB) 2.00mm L x 2.00mm W" 950 -100 50 H I L CNN "Description"
+F5 "0.9" 950 -200 50 H I L CNN "Height"
+F6 "Dialight" 950 -300 50 H I L CNN "Manufacturer_Name"
+F7 "587-1024-147F" 950 -400 50 H I L CNN "Manufacturer_Part_Number"
+F8 "" 950 -500 50 H I L CNN "Mouser Part Number"
+F9 "" 950 -600 50 H I L CNN "Mouser Price/Stock"
+F10 "" 950 -700 50 H I L CNN "Arrow Part Number"
+F11 "" 950 -800 50 H I L CNN "Arrow Price/Stock"
+DRAW
+X DOUT 1 1100 -100 200 L 50 50 0 0 P
+X VDD 2 0 -100 200 R 50 50 0 0 P
+X DIN 3 0 0 200 R 50 50 0 0 P
+X GND 4 1100 0 200 L 50 50 0 0 P
+P 5 0 1 6 200 100 900 100 900 -200 200 -200 200 100 N
+ENDDRAW
+ENDDEF
+#
+#End Library
