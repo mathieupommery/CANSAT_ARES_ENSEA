@@ -239,7 +239,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "cansatmainpcb.kicad_pro",
+    "filename": "cansatperso.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -381,6 +381,15 @@
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "a7691323-d1b6-4adc-9d41-420408972038",
+      "Racine"
+    ],
+    [
+      "881e657e-679a-47b2-bc39-ff2764da8d47",
+      "connection et alim"
+    ]
+  ],
   "text_variables": {}
 }
