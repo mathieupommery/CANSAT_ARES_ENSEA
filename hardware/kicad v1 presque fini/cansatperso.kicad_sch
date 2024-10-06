@@ -4437,8 +4437,20 @@
 		(uuid "fcef87c0-a129-4038-9589-76d580d27fc8")
 	)
 	(no_connect
+		(at 86.36 106.68)
+		(uuid "04d0d144-e0c6-4afe-8549-4ac67c0f472e")
+	)
+	(no_connect
+		(at 119.38 101.6)
+		(uuid "0546dcd5-8292-4d7d-ae76-4c356f262fd4")
+	)
+	(no_connect
 		(at 289.56 52.07)
 		(uuid "0d7fd99c-db2b-407f-a664-74e3860a7bd6")
+	)
+	(no_connect
+		(at 86.36 127)
+		(uuid "15b4e389-0a28-4776-959a-36981004acd0")
 	)
 	(no_connect
 		(at 330.2 182.88)
@@ -4447,6 +4459,10 @@
 	(no_connect
 		(at 86.36 111.76)
 		(uuid "309a200d-ffe3-4b98-8f3b-a67670bfc1a4")
+	)
+	(no_connect
+		(at 86.36 116.84)
+		(uuid "581bdcd7-7275-4e85-808b-c514618ef222")
 	)
 	(no_connect
 		(at 330.2 185.42)
@@ -4465,12 +4481,24 @@
 		(uuid "8a91a228-5355-4bce-bf2b-289413c8bc95")
 	)
 	(no_connect
+		(at 86.36 101.6)
+		(uuid "8b64b753-2be8-4ad3-89ea-29b902f2a013")
+	)
+	(no_connect
 		(at 86.36 149.86)
 		(uuid "9d5416c5-5239-494b-84ce-b4aed6d2dde9")
 	)
 	(no_connect
+		(at 86.36 109.22)
+		(uuid "a8784d12-26be-47bc-8c4a-6d7d196a079d")
+	)
+	(no_connect
 		(at 80.01 231.14)
 		(uuid "a8d93ebd-19ca-47f4-9228-a0f858da2b84")
+	)
+	(no_connect
+		(at 86.36 139.7)
+		(uuid "a92d8b7e-eb2e-4e4b-a152-0d2782746e4d")
 	)
 	(no_connect
 		(at 86.36 154.94)
@@ -4479,6 +4507,14 @@
 	(no_connect
 		(at 80.01 234.95)
 		(uuid "cdf6e983-557d-49a1-a6a0-1788bbb26ab2")
+	)
+	(no_connect
+		(at 119.38 104.14)
+		(uuid "d371871f-a54f-4c83-825d-8281aa4a96ea")
+	)
+	(no_connect
+		(at 86.36 129.54)
+		(uuid "f00fbe1e-d448-4d51-9f37-8283020c1e5c")
 	)
 	(no_connect
 		(at 312.42 54.61)
@@ -6224,31 +6260,9 @@
 			)
 		)
 	)
-	(global_label "TIM8_CH4N_PWM1"
+	(global_label "ADC1_IN3_VBAT"
 		(shape input)
-		(at 86.36 106.68 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "5ba97f0b-4628-4319-acec-14e7108caf79")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 66.6835 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TIM1_CH2_PWM5"
-		(shape input)
-		(at 119.38 101.6 0)
+		(at 119.38 83.82 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6256,9 +6270,9 @@
 			)
 			(justify left)
 		)
-		(uuid "61030769-c164-491b-8617-5be36c710326")
+		(uuid "570b78fa-de85-41e3-828e-d04ec708b25c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 137.726 101.6 0)
+			(at 136.6981 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6290,28 +6304,6 @@
 			)
 		)
 	)
-	(global_label "SPI3_SCK"
-		(shape input)
-		(at 86.36 101.6 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "65643d9f-680d-4f81-982d-f92f60a6c573")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 74.3639 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SWCLK{slash}I2C1_SDA"
 		(shape input)
 		(at 119.38 114.3 0)
@@ -6325,50 +6317,6 @@
 		(uuid "686b67e0-6e9b-43d8-b05b-bf8837c9c5b8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 138.7542 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TIM2_CH3_PWM2"
-		(shape input)
-		(at 119.38 83.82 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6a355896-c851-4826-8421-113747332943")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 137.726 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TIM1_CH3_PWM6"
-		(shape input)
-		(at 119.38 104.14 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "72f41779-1ce5-4e9a-aa5a-e2b7c85955eb")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 137.726 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6413,28 +6361,6 @@
 		(uuid "7c88bb47-f2f8-4a87-8581-5a369a20e1b0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 68.1349 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SPI3_CS"
-		(shape input)
-		(at 86.36 109.22 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "7cb690d7-4b9f-470d-adc7-8781a92aac2a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 75.6339 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6532,28 +6458,6 @@
 			)
 		)
 	)
-	(global_label "SPI3_MOSI"
-		(shape input)
-		(at 86.36 129.54 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "8f2a9bc4-9303-4b67-851f-f8ff255dd78b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.5172 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SDDETECT"
 		(shape input)
 		(at 86.36 121.92 180)
@@ -6611,28 +6515,6 @@
 		(uuid "9a8c0f8a-5886-476e-8b67-2e08c30f3d50")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 68.6187 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TIM4_CH4_PWM7_LED"
-		(shape input)
-		(at 86.36 139.7 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a64006b9-c992-46ea-9dc6-e72ae997297b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 63.5993 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6862,6 +6744,28 @@
 			)
 		)
 	)
+	(global_label "ADC1_IN2_CURR"
+		(shape input)
+		(at 119.38 81.28 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e77989a7-b04b-449f-9f4b-ad76e07a8e0b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 137.4238 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "LPUART1_TX_RADIO"
 		(shape input)
 		(at 86.36 144.78 180)
@@ -6875,28 +6779,6 @@
 		(uuid "ed52c303-df1d-4ce7-875d-63adb1f2015e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 65.5343 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SPI3_MISO"
-		(shape input)
-		(at 86.36 127 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f33f5dea-e097-4970-867e-4143cb6f25d7")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.5172 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6941,28 +6823,6 @@
 		(uuid "f8ca5bdd-dfec-4b77-b15f-8af6a87bcad9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 275.3868 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TIM3_CH3_PWM3"
-		(shape input)
-		(at 86.36 116.84 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ffb12574-e732-426a-8e02-3b94d619486e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 68.014 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7282,7 +7142,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 309.88 151.13 0)
 			(effects
 				(font
@@ -7632,7 +7492,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 62.23 87.63 0)
 			(effects
 				(font
@@ -7769,7 +7629,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 45.72 96.52 0)
 			(effects
 				(font
@@ -8555,7 +8415,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "SW_KXT3:SW_KXT3"
+		(property "Footprint" "KXT3:SW_KXT3"
 			(at 33.02 121.92 0)
 			(effects
 				(font
@@ -8825,7 +8685,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 313.69 151.13 0)
 			(effects
 				(font
@@ -8893,7 +8753,7 @@
 				)
 			)
 		)
-		(property "Footprint" "USB4110_USBC_SMT:USB4110_USBC_SMT"
+		(property "Footprint" "vraieusbwurth:USBC-WURTH"
 			(at 71.12 220.98 0)
 			(effects
 				(font
@@ -9121,7 +8981,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SW_KXT3:SW_KXT3"
+		(property "Footprint" "KXT3:SW_KXT3"
 			(at 33.02 73.66 0)
 			(effects
 				(font
@@ -10006,7 +9866,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 260.35 67.31 0)
 			(effects
 				(font
@@ -10146,7 +10006,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 316.23 49.53 0)
 			(effects
 				(font
@@ -10415,7 +10275,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 318.77 205.74 0)
 			(effects
 				(font
@@ -10550,7 +10410,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
 			(at 62.23 152.4 0)
 			(effects
 				(font
@@ -11156,7 +11016,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 270.51 67.31 0)
 			(effects
 				(font
@@ -11226,7 +11086,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 256.54 53.34 0)
 			(effects
 				(font
@@ -11296,7 +11156,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 72.39 66.04 0)
 			(effects
 				(font
@@ -11366,7 +11226,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 327.66 205.74 0)
 			(effects
 				(font

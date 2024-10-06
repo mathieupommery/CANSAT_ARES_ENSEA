@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TSC102IDT
+D High side current sense amplifier plus signal conditioning amplifier
+K
+F https://www.st.com/resource/en/datasheet/tsc102.pdf
+$ENDCMP
+#
+#End Doc Library
