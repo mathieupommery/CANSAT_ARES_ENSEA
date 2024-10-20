@@ -247,108 +247,6 @@
 				)
 			)
 		)
-		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.762) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
 			(pin_names
@@ -632,6 +530,175 @@
 				(pin passive line
 					(at 2.54 0 180)
 					(length 1.778)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:LED"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
 					(name "A"
 						(effects
 							(font
@@ -2213,6 +2280,12 @@
 		(uuid "021fb97e-c4dc-4ed5-86ca-5f856d51c390")
 	)
 	(junction
+		(at 77.47 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "044e5c96-a64e-47aa-94b3-a20b4b711bbf")
+	)
+	(junction
 		(at 166.37 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2295,6 +2368,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "581c2e4d-fdfd-488b-8d19-4f921ce882ff")
+	)
+	(junction
+		(at 248.92 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a7430dc-a0e6-4b90-b1a4-50798ee0ed85")
 	)
 	(junction
 		(at 166.37 44.45)
@@ -2554,6 +2633,16 @@
 	)
 	(wire
 		(pts
+			(xy 236.22 25.4) (xy 241.3 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f997e5a-9e52-44c5-b495-2118a32d6753")
+	)
+	(wire
+		(pts
 			(xy 132.08 54.61) (xy 133.35 54.61)
 		)
 		(stroke
@@ -2704,6 +2793,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 34.29) (xy 240.03 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2dab23df-3610-4ec3-bc4e-128bad2fc93f")
+	)
+	(wire
+		(pts
 			(xy 182.88 41.91) (xy 177.8 41.91)
 		)
 		(stroke
@@ -2804,6 +2903,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 38.1) (xy 139.7 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49d8cc84-f901-4402-8ae4-dbc939a6d2df")
+	)
+	(wire
+		(pts
 			(xy 92.71 39.37) (xy 88.9 39.37)
 		)
 		(stroke
@@ -2821,6 +2930,16 @@
 			(type default)
 		)
 		(uuid "4ed2c6e2-c7ed-4d17-bfe3-ab959a5bbfcb")
+	)
+	(wire
+		(pts
+			(xy 54.61 34.29) (xy 60.96 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5216c6a3-01a5-4609-9126-f498a72b9700")
 	)
 	(wire
 		(pts
@@ -2851,6 +2970,16 @@
 			(type default)
 		)
 		(uuid "589469dd-c4bc-49fa-be20-575efd3fbc78")
+	)
+	(wire
+		(pts
+			(xy 139.7 50.8) (xy 133.35 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a37fd6e-2d77-4ad4-942a-c22080d91847")
 	)
 	(wire
 		(pts
@@ -3031,6 +3160,16 @@
 			(type default)
 		)
 		(uuid "77677898-5ef9-4b94-998a-81f97b39bde6")
+	)
+	(wire
+		(pts
+			(xy 133.35 50.8) (xy 133.35 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79fcc1fa-ace0-4f8b-afe7-9b5023e4b8dd")
 	)
 	(wire
 		(pts
@@ -3291,6 +3430,36 @@
 			(type default)
 		)
 		(uuid "9efdb964-e50a-4d00-89dc-45bc58e5b33d")
+	)
+	(wire
+		(pts
+			(xy 115.57 38.1) (xy 121.92 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0128ba3-d7d9-47d8-9782-bc21b9865208")
+	)
+	(wire
+		(pts
+			(xy 127 38.1) (xy 132.08 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a032da7f-ac1e-4fee-aef0-964f3ee2d842")
+	)
+	(wire
+		(pts
+			(xy 78.74 34.29) (xy 78.74 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a05b5ce6-c4de-475d-97df-4cd5630e2f86")
 	)
 	(wire
 		(pts
@@ -3624,6 +3793,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 53.34) (xy 77.47 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de739351-b0bb-4bce-b5e1-4881d26d230c")
+	)
+	(wire
+		(pts
 			(xy 205.74 127) (xy 205.74 125.73)
 		)
 		(stroke
@@ -3654,6 +3833,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 25.4) (xy 248.92 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2b1cd0a-60c5-430d-8c4e-c5057385fb0d")
+	)
+	(wire
+		(pts
 			(xy 38.1 48.26) (xy 34.29 48.26)
 		)
 		(stroke
@@ -3664,7 +3853,7 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 34.29) (xy 240.03 34.29)
+			(xy 256.54 34.29) (xy 248.92 34.29)
 		)
 		(stroke
 			(width 0)
@@ -3681,6 +3870,16 @@
 			(type default)
 		)
 		(uuid "e7814ed5-41ee-4ee7-87d6-9eb03c59ea57")
+	)
+	(wire
+		(pts
+			(xy 66.04 34.29) (xy 71.12 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9042b27-4887-40b3-b269-19e8a65f75ab")
 	)
 	(wire
 		(pts
@@ -3711,6 +3910,16 @@
 			(type default)
 		)
 		(uuid "f0870f86-cddf-4778-a493-4a27d6cc2b1d")
+	)
+	(wire
+		(pts
+			(xy 224.79 25.4) (xy 231.14 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f432c638-04bb-41cc-a74f-3c13bfdcf21b")
 	)
 	(wire
 		(pts
@@ -4114,6 +4323,28 @@
 			)
 		)
 	)
+	(global_label "BAT+"
+		(shape input)
+		(at 190.5 106.68 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f6ce3d18-2179-4aac-9efa-610f872a3e52")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.3838 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:D_Small")
 		(at 227.33 39.37 270)
@@ -4197,6 +4428,73 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 224.79 25.4 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "041ac3ca-7e05-4e6a-a316-b5d56b8b2eb0")
+		(property "Reference" "#PWR04"
+			(at 218.44 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 220.98 25.3999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 224.79 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 224.79 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 224.79 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5afff26e-9b16-4889-90e1-739f3b2747f3")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -4542,6 +4840,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED")
+		(at 135.89 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1ea9be65-bbbd-4286-8190-cbdfbd984079")
+		(property "Reference" "D4"
+			(at 134.3025 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 134.3025 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
+			(at 135.89 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 135.89 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 135.89 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c85bac65-d830-48ba-9730-5cc49f8096da")
+		)
+		(pin "1"
+			(uuid "c7d4a95f-10a4-40f4-827a-e33e50cc1ae3")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 53.34 63.5 0)
 		(unit 1)
@@ -4602,6 +4968,74 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 245.11 25.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "26c835ec-ed7e-4d31-b8aa-add964066eb1")
+		(property "Reference" "D1"
+			(at 243.5225 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 243.5225 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
+			(at 245.11 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 245.11 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9a8cbb74-cf7a-498c-8a54-26353b9db10a")
+		)
+		(pin "1"
+			(uuid "2223c942-029e-486f-84ba-e8d4f9b16b25")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -4738,6 +5172,74 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "R18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 124.46 38.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3560d812-063c-453e-94a2-631ba1a9a290")
+		(property "Reference" "R4"
+			(at 124.46 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "80R"
+			(at 124.46 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1e7cd95a-a621-42c5-86a8-b62930bbdf72")
+		)
+		(pin "2"
+			(uuid "687d0d8b-2fa3-45e1-ab0e-44ff91bbc96c")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -4905,7 +5407,7 @@
 				)
 			)
 		)
-		(property "Footprint" "L7981TR:SON50P300X300X100-9N-D"
+		(property "Footprint" "L7981:SON50P300X300X100-9N-D"
 			(at 209.55 126.67 0)
 			(effects
 				(font
@@ -5686,7 +6188,7 @@
 				)
 			)
 		)
-		(property "Footprint" "inductance wurth:INDPM7373X340N"
+		(property "Footprint" "inductancewurth:INDPM7373X340N"
 			(at 233.68 34.29 0)
 			(effects
 				(font
@@ -6490,73 +6992,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 190.5 106.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "92c319b3-9e16-4403-98de-ce260ae68d68")
-		(property "Reference" "TP1"
-			(at 193.04 102.1079 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "BAT+"
-			(at 193.04 104.6479 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded"
-			(at 195.58 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 195.58 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 190.5 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0d83042f-e6d6-408e-b894-10f8dbb8f1b4")
-		)
-		(instances
-			(project ""
-				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
-					(reference "TP1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 199.39 119.38 0)
 		(unit 1)
@@ -6688,6 +7123,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 115.57 38.1 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ad8840a1-8609-486f-bb5c-e5063aeb31a7")
+		(property "Reference" "#PWR05"
+			(at 109.22 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 111.76 38.0999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 115.57 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6b1676c0-b39f-4bbe-a545-3e671af1749c")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small")
 		(at 237.49 111.76 180)
 		(unit 1)
@@ -6783,7 +7285,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TSC102IDT:SOIC127P600X175-8N"
+		(property "Footprint" "TSC102:SOIC127P600X175-8N"
 			(at 182.88 214.3 0)
 			(effects
 				(font
@@ -6910,6 +7412,74 @@
 			(project ""
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "IC4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 233.68 25.4 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b99646c6-d888-4688-817b-ec72833f520a")
+		(property "Reference" "R3"
+			(at 233.68 20.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200R"
+			(at 233.68 22.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+			(at 233.68 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 233.68 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 233.68 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "673f595f-a68c-4361-b202-97e9d8a0c62b")
+		)
+		(pin "2"
+			(uuid "dac38c1a-a265-43eb-9a5b-96ea5c0ac225")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -7459,6 +8029,74 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "#PWR052")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 63.5 34.29 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d5b9ae3e-ee15-46db-ab58-c3d74b88ebd5")
+		(property "Reference" "R11"
+			(at 63.5 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "80R"
+			(at 63.5 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+			(at 63.5 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 63.5 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 63.5 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36b5ff7b-da90-4016-ba5e-148f15a93654")
+		)
+		(pin "2"
+			(uuid "857cf5d7-e016-4f57-8a0f-34280eb25180")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -8031,6 +8669,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 54.61 34.29 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "df277ed1-9502-4616-bb3b-888aa62ec154")
+		(property "Reference" "#PWR032"
+			(at 48.26 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 50.8 34.2899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 54.61 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 54.61 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 54.61 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6b4f3e3f-42d2-4327-8e25-4f0cf509b37b")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "#PWR032")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 24.13 50.8 90)
 		(unit 1)
@@ -8092,6 +8797,74 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "#PWR024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 74.93 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f38cd133-05bb-4644-8349-c0d8fa171ad9")
+		(property "Reference" "D5"
+			(at 73.3425 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 73.3425 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
+			(at 74.93 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 74.93 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b4830d86-dfbf-419a-bd8c-7bd88785a075")
+		)
+		(pin "1"
+			(uuid "20ea0286-d8ec-4768-b384-66c159248d13")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "D5")
 					(unit 1)
 				)
 			)

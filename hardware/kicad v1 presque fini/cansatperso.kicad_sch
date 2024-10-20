@@ -6014,7 +6014,7 @@
 			)
 		)
 	)
-	(global_label "DAC1_OUT1"
+	(global_label "ADC2_IN17"
 		(shape input)
 		(at 119.38 88.9 0)
 		(fields_autoplaced yes)
@@ -6026,7 +6026,7 @@
 		)
 		(uuid "dcf6cd22-f32f-455f-8a47-97cdbd9b86a1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.009 88.9 0)
+			(at 132.5252 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6568,7 +6568,7 @@
 				)
 			)
 		)
-		(property "Footprint" "microsd:47309-2651"
+		(property "Footprint" "molexmicrosd:47309-2651"
 			(at 308.61 146.99 0)
 			(effects
 				(font
@@ -7640,7 +7640,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "kxt3:SW_KXT3"
+		(property "Footprint" "KXT3:SW_KXT3"
 			(at 33.02 121.92 0)
 			(effects
 				(font
@@ -8111,7 +8111,7 @@
 				)
 			)
 		)
-		(property "Footprint" "kxt3:SW_KXT3"
+		(property "Footprint" "KXT3:SW_KXT3"
 			(at 33.02 73.66 0)
 			(effects
 				(font
@@ -9733,7 +9733,7 @@
 				)
 			)
 		)
-		(property "Value" "510R"
+		(property "Value" "80R"
 			(at 50.8 149.86 90)
 			(effects
 				(font
