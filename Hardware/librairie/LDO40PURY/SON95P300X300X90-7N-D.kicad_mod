@@ -1,36 +1,233 @@
-(module "SON95P300X300X90-7N-D" (layer F.Cu)
-  (descr "LDO40LPU33RY_")
-  (tags "Integrated Circuit")
-  (attr smd)
-  (fp_text reference IC** (at 0 0) (layer F.SilkS)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_text user %R (at 0 0) (layer F.Fab)
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_text value "SON95P300X300X90-7N-D" (at 0 0) (layer F.SilkS) hide
-    (effects (font (size 1.27 1.27) (thickness 0.254)))
-  )
-  (fp_line (start -2.125 -1.775) (end 2.125 -1.775) (layer F.CrtYd) (width 0.05))
-  (fp_line (start 2.125 -1.775) (end 2.125 1.775) (layer F.CrtYd) (width 0.05))
-  (fp_line (start 2.125 1.775) (end -2.125 1.775) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -2.125 1.775) (end -2.125 -1.775) (layer F.CrtYd) (width 0.05))
-  (fp_line (start -1.5 -1.5) (end 1.5 -1.5) (layer F.Fab) (width 0.1))
-  (fp_line (start 1.5 -1.5) (end 1.5 1.5) (layer F.Fab) (width 0.1))
-  (fp_line (start 1.5 1.5) (end -1.5 1.5) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.5 1.5) (end -1.5 -1.5) (layer F.Fab) (width 0.1))
-  (fp_line (start -1.5 -0.75) (end -0.75 -1.5) (layer F.Fab) (width 0.1))
-  (fp_circle (center -1.875 -1.6) (end -1.875 -1.475) (layer F.SilkS) (width 0.25))
-  (pad 1 smd rect (at -1.45 -0.95 90) (size 0.3 0.85) (layers F.Cu F.Paste F.Mask))
-  (pad 2 smd rect (at -1.45 0 90) (size 0.3 0.85) (layers F.Cu F.Paste F.Mask))
-  (pad 3 smd rect (at -1.45 0.95 90) (size 0.3 0.85) (layers F.Cu F.Paste F.Mask))
-  (pad 4 smd rect (at 1.45 0.95 90) (size 0.3 0.85) (layers F.Cu F.Paste F.Mask))
-  (pad 5 smd rect (at 1.45 0 90) (size 0.3 0.85) (layers F.Cu F.Paste F.Mask))
-  (pad 6 smd rect (at 1.45 -0.95 90) (size 0.3 0.85) (layers F.Cu F.Paste F.Mask))
-  (pad 7 smd rect (at 0 0 0) (size 1.7 2.5) (layers F.Cu F.Paste F.Mask))
-  (model LDO40LPU33RY.stp
-    (at (xyz 0 0 0))
-    (scale (xyz 1 1 1))
-    (rotate (xyz 0 0 0))
-  )
+(footprint "SON95P300X300X90-7N-D"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "LDO40LPU33RY_")
+	(tags "Integrated Circuit")
+	(property "Reference" "IC**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "9dcf9270-9770-4fc2-9fb2-ae3ee01d235c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "SON95P300X300X90-7N-D"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "7c901551-6ff6-4d0c-a88f-6f2d40b45859")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e2edca16-b910-4036-9507-98024dc63052")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "18e66cd2-6fbe-4033-8369-d5bb6dfbc8e5")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "328a2c8c-1eb8-46da-bb25-4dae752d1d25")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_circle
+		(center -1.875 -1.6)
+		(end -1.875 -1.475)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "aeb2ade9-ed83-4c2b-af37-1472167cd791")
+	)
+	(fp_line
+		(start -2.125 -1.775)
+		(end 2.125 -1.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9e5c44ba-31a0-4667-9120-4560469f8e38")
+	)
+	(fp_line
+		(start -2.125 1.775)
+		(end -2.125 -1.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "e2570164-d965-40c0-a7fd-db70b3b81a5f")
+	)
+	(fp_line
+		(start 2.125 -1.775)
+		(end 2.125 1.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "491a3b07-4163-4de1-aba2-a55f176cc223")
+	)
+	(fp_line
+		(start 2.125 1.775)
+		(end -2.125 1.775)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b7d039e0-5859-48f2-8628-4c669dee88d8")
+	)
+	(fp_line
+		(start -1.5 -1.5)
+		(end 1.5 -1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "73d249dc-9fa1-4e28-9aaa-0d383806e3c3")
+	)
+	(fp_line
+		(start -1.5 -0.75)
+		(end -0.75 -1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "13870611-2450-4b43-8216-e05f6e5e159b")
+	)
+	(fp_line
+		(start -1.5 1.5)
+		(end -1.5 -1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "78cc48d2-dc0f-4187-82b4-bf8cac482e39")
+	)
+	(fp_line
+		(start 1.5 -1.5)
+		(end 1.5 1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e9820b7c-a431-4d7e-b7b6-90ae725ba9c4")
+	)
+	(fp_line
+		(start 1.5 1.5)
+		(end -1.5 1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "aaab908e-2de2-4c96-8ad9-4a37f35482d4")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "ce3498ad-6388-4d2f-a065-0bad4ab8150c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.45 -0.95 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "5491b18c-9ad6-4ced-a0a9-ab5f847cdb50")
+	)
+	(pad "2" smd rect
+		(at -1.45 0 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e05be59c-9fb9-4cb0-afd9-26ef81762148")
+	)
+	(pad "3" smd rect
+		(at -1.45 0.95 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "a335c968-4738-4786-ac1c-0898a69b3436")
+	)
+	(pad "4" smd rect
+		(at 1.45 0.95 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "a6301295-c904-40af-979e-41f3c28bdb7c")
+	)
+	(pad "5" smd rect
+		(at 1.45 0 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "b4f358b9-ecc2-4bbc-8848-327661e9683e")
+	)
+	(pad "6" smd rect
+		(at 1.45 -0.95 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "31d8161f-47ba-410f-bdf6-39fa812caf8a")
+	)
+	(pad "7" smd rect
+		(at 0 0)
+		(size 1.7 2.5)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "1993784e-edb9-4097-9ebd-904b2a5927b8")
+	)
+	(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/LDO40LPU33RY.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )
