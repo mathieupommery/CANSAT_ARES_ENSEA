@@ -5492,149 +5492,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Tarvos III:Tarvos")
-		(at 141.986 17.78 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a5872b2e-f81b-43ee-aaa4-e11129f2b9d8")
-		(property "Reference" "Tarvos1"
-			(at 142.24 15.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 142.24 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Tarvos III:Tarvos III"
-			(at 141.986 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 141.986 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 141.986 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "57e3d2bd-1dfe-49b9-9e71-67d19dc5e68b")
-		)
-		(pin "1"
-			(uuid "1ad76976-7234-4711-a9c4-f5c8128f2195")
-		)
-		(pin "19"
-			(uuid "3ce21c87-ad3e-4e64-ad34-723dfb98f967")
-		)
-		(pin "15"
-			(uuid "8f57bdac-261b-4bb8-a8c4-64297ee0e694")
-		)
-		(pin "16"
-			(uuid "3542622c-5440-4839-a565-474d83360214")
-		)
-		(pin "17"
-			(uuid "4c993574-e402-4d6f-958f-d509c6a91088")
-		)
-		(pin "i1"
-			(uuid "b17f5a7c-03d3-4cd1-820c-5f5f0c5e2b01")
-		)
-		(pin "11"
-			(uuid "7c9b661a-a8c9-45e6-be55-de66dd4de9a8")
-		)
-		(pin "10"
-			(uuid "6a48a3c9-663c-42ae-82f3-40a5fabe5c34")
-		)
-		(pin "8"
-			(uuid "9e635dfa-ae85-445f-a4a8-e2e93d029bc2")
-		)
-		(pin "i2"
-			(uuid "3cb8e1b8-0ca4-43c8-a2ad-44b1565f9f22")
-		)
-		(pin "i3"
-			(uuid "2954e864-8bfe-4d40-b0d4-c5aa6bcc6cfa")
-		)
-		(pin "20"
-			(uuid "03a2550c-eeba-4f40-b7d6-cc18e58b3a98")
-		)
-		(pin "5"
-			(uuid "1fde5dfe-1612-4a51-b855-01aa217a7943")
-		)
-		(pin "12"
-			(uuid "7dcccaf0-857c-4bb9-aaa6-da6d2f97002b")
-		)
-		(pin "18"
-			(uuid "594c0010-85cc-49f0-8ad5-a680f53143df")
-		)
-		(pin "2"
-			(uuid "a13cb45d-9fb9-494c-9c7d-ff3136c90e79")
-		)
-		(pin "4"
-			(uuid "421a8e00-07ae-4576-924f-e65c407343bd")
-		)
-		(pin "7"
-			(uuid "cb625b10-4bb7-4408-b251-e619163af673")
-		)
-		(pin "i4"
-			(uuid "092cb702-b781-443c-89b5-450e50dd311d")
-		)
-		(pin "21"
-			(uuid "9420684a-31bd-4c4b-9a25-eaf2e9c479cf")
-		)
-		(pin "9"
-			(uuid "071ade0c-5f90-46c6-97b8-bf6e4c43a95e")
-		)
-		(pin "23"
-			(uuid "7a35df29-be0e-4453-bc4c-bf1f4ca4f7f1")
-		)
-		(pin "14"
-			(uuid "3662b0ff-71fa-4555-8bf0-59f4fbbd3f94")
-		)
-		(pin "3"
-			(uuid "c0a9462b-a8af-4679-a001-57a0d85797aa")
-		)
-		(pin "22"
-			(uuid "bde9f950-9693-414b-8dbc-63d8d4ba3671")
-		)
-		(pin "13"
-			(uuid "05fbccd7-20de-41b0-a731-b9a548f78428")
-		)
-		(instances
-			(project ""
-				(path "/bbf03fb3-1189-4874-b08b-8de2caec58f5"
-					(reference "Tarvos1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 115.57 31.496 0)
 		(unit 1)
@@ -6407,6 +6264,149 @@
 			(project ""
 				(path "/bbf03fb3-1189-4874-b08b-8de2caec58f5"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Tarvos III:Tarvos")
+		(at 141.986 17.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e098e6b9-1a0a-497b-b010-dde9d436024c")
+		(property "Reference" "Tarvos1"
+			(at 142.24 15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 142.24 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Tarvos III:Tarvos III"
+			(at 141.986 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 141.986 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 141.986 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c9b7efe0-7bdd-4b2a-ae6e-f6080ae6d145")
+		)
+		(pin "19"
+			(uuid "20b02c1c-9e0d-4acd-84c2-41da2ab69ba8")
+		)
+		(pin "16"
+			(uuid "77559a9a-fdcc-4fa6-9363-47cce045ee0b")
+		)
+		(pin "15"
+			(uuid "bfe3b2a3-c207-4346-8260-a3c706e95b06")
+		)
+		(pin "7"
+			(uuid "9e46708a-fbda-488e-91cf-faf80ac065eb")
+		)
+		(pin "8"
+			(uuid "99518549-c678-4d65-9a09-4731df6ac5d1")
+		)
+		(pin "9"
+			(uuid "660d1ca5-b4fb-499b-a0c6-d9e5a9f59424")
+		)
+		(pin "i1"
+			(uuid "b5b645b3-96e7-4820-8dbd-23778ff62863")
+		)
+		(pin "11"
+			(uuid "0486cb64-0904-41c7-80ba-4ae2289d3198")
+		)
+		(pin "13"
+			(uuid "a58536ba-79c6-4fef-b2d9-68e333ad0492")
+		)
+		(pin "14"
+			(uuid "e024f7f4-e3ae-46e7-9fce-6ea7f117c8ba")
+		)
+		(pin "22"
+			(uuid "6f4c0198-d9eb-4597-92e9-d435d00b1608")
+		)
+		(pin "23"
+			(uuid "3160c7b7-b816-40b2-af3d-cdcdccca7755")
+		)
+		(pin "10"
+			(uuid "27137ed5-a39b-475f-89d5-13857f50a17c")
+		)
+		(pin "5"
+			(uuid "bf03f15c-0efe-41bb-b519-a4b2e999c51c")
+		)
+		(pin "6"
+			(uuid "0e144ad7-12e3-47fd-860d-8e36d3532547")
+		)
+		(pin "i4"
+			(uuid "7c41cb3c-b5f9-4c57-8725-d18362ac5c24")
+		)
+		(pin "i2"
+			(uuid "23fcb947-4983-4b25-8d89-6162b0f873d3")
+		)
+		(pin "i3"
+			(uuid "e8b6bd87-adf6-4080-bfdf-fbf6290415f6")
+		)
+		(pin "20"
+			(uuid "2fbe8d78-230c-4120-9319-b785bd8fa4aa")
+		)
+		(pin "21"
+			(uuid "f67a2a83-5532-489a-b3f8-1cbe0a9d82a8")
+		)
+		(pin "12"
+			(uuid "0fdadae4-be79-4706-9358-ae5c80292887")
+		)
+		(pin "3"
+			(uuid "4cf4b248-c914-4542-a0e8-276c20477347")
+		)
+		(pin "4"
+			(uuid "20710a46-79bb-476d-9159-6ff33b59c410")
+		)
+		(pin "17"
+			(uuid "99869ee1-089b-45ce-b283-c3514f8e879b")
+		)
+		(pin "18"
+			(uuid "f5fe2085-5bb0-48c2-82bb-40b97ef5b616")
+		)
+		(pin "2"
+			(uuid "f73c7dcd-5ca5-4c09-9c40-06d7a1e61dc2")
+		)
+		(instances
+			(project ""
+				(path "/bbf03fb3-1189-4874-b08b-8de2caec58f5"
+					(reference "Tarvos1")
 					(unit 1)
 				)
 			)
