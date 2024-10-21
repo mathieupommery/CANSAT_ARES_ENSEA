@@ -8695,7 +8695,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Tarvos III:Tarvos III"
+		(property "Footprint" "tarvosiii:Tarvos III"
 			(at 141.986 17.78 0)
 			(effects
 				(font
