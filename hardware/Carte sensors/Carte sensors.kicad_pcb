@@ -191,7 +191,7 @@
 		)
 		(path "/eaacd500-f223-42b5-aa8f-e81f19cf8902")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start 1 0)
@@ -394,7 +394,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/1f7e3db1-0a84-49e5-b2c4-bcc91c0c6f57")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 0.38)
@@ -608,7 +608,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/ead8d556-cd72-46ed-8eaa-8e62de0c5ca5")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 0.38)
@@ -822,7 +822,7 @@
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/6b3b2de0-06f6-4d7c-a860-551441f2834c")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 6.11 2.31)
@@ -1242,7 +1242,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/a59b7818-a3c4-4498-b60e-eaf2ee0ec687")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 0.36)
@@ -1456,7 +1456,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/f05a3632-625f-4b75-a344-49570c63e4d1")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -1667,7 +1667,7 @@
 		)
 		(path "/d73c1e5c-7f2c-4b4e-b4f3-33ec296413c2")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start -1.17 -1.76)
@@ -1893,7 +1893,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/8d7e00ef-7819-479b-a030-ba836f07198a")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 0.36)
@@ -2107,7 +2107,7 @@
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/41e4ef1a-3ed0-42be-aba7-cb47a605c245")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start 6.11 2.31)
@@ -2527,7 +2527,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/b59a99c5-0aa4-4ac7-928d-6f5b9be62384")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 0.36)
@@ -2740,7 +2740,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/3ce3b206-3427-443c-99d7-b2ba9fbbf628")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -2954,7 +2954,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/c07926c2-3c28-4fb2-b0f0-4e127d85f722")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 0.38)
@@ -3168,7 +3168,7 @@
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/c5cc48e3-d47d-4eca-8a4f-d9f1eaed9a0a")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 3.11 1.11)
@@ -3637,7 +3637,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/d14032c4-16a1-4f0c-94cf-9ca789038f28")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -3849,7 +3849,7 @@
 		)
 		(path "/a5872b2e-f81b-43ee-aaa4-e11129f2b9d8")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_rect
 			(start -17.31 8.39)
@@ -4255,7 +4255,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/286a1c53-6203-4af6-80e5-8292a47d5e02")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 0.36)
@@ -4468,7 +4468,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/37bf9016-76fa-4bf8-af16-2b052fe58475")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -4682,7 +4682,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/8d948c89-fd70-4895-8093-b7f779076bec")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.107836 -0.36)
@@ -4895,7 +4895,7 @@
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/f41b6725-ef04-42ac-b4ea-3646f7cf25f6")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.8 -0.735)
@@ -5129,7 +5129,7 @@
 		)
 		(path "/62535997-a651-4ff2-b34d-031b94e65f53")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr through_hole)
 		(fp_line
 			(start -0.25 1.5)
@@ -5489,7 +5489,7 @@
 		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/dd354f85-9f7c-4abe-9592-f993eda2aae3")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start 0.8 -0.735)
@@ -5725,7 +5725,7 @@
 		(property ki_fp_filters "Connector*:*_1x??_*")
 		(path "/99e566c9-daab-448f-a54e-f2b5e6e84a8a")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -1.94 -2.01)
@@ -6195,7 +6195,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/6e615182-2f97-4d45-a967-546a8e9f78fa")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
@@ -6408,7 +6408,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/60eccf65-3d98-4edd-8763-67dc04e71dce")
 		(sheetname "Root")
-		(sheetfile "Carte sensor.kicad_sch")
+		(sheetfile "Carte sensors.kicad_sch")
 		(attr smd)
 		(fp_line
 			(start -0.153641 0.38)
