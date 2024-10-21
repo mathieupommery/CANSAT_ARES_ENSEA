@@ -7459,7 +7459,7 @@
 				)
 			)
 		)
-		(property "Footprint" "KXT3:SW_KXT3"
+		(property "Footprint" "kxt3:SW_KXT3"
 			(at 180.34 26.416 0)
 			(effects
 				(font
@@ -11058,6 +11058,44 @@
 				(path "/bbf03fb3-1189-4874-b08b-8de2caec58f5"
 					(reference "R11")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 238.76 148.336)
+		(size 21.844 8.89)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "111c0229-5531-49b6-a5f8-2f08ef887319")
+		(property "Sheetname" "carte mathieu"
+			(at 238.76 147.6244 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "untitled.kicad_sch"
+			(at 238.76 157.8106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Carte sensors"
+				(path "/bbf03fb3-1189-4874-b08b-8de2caec58f5"
+					(page "2")
 				)
 			)
 		)

@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.15
         }
       },
       "diff_pair_dimensions": [
@@ -635,6 +635,10 @@
     [
       "bbf03fb3-1189-4874-b08b-8de2caec58f5",
       "Racine"
+    ],
+    [
+      "111c0229-5531-49b6-a5f8-2f08ef887319",
+      "carte mathieu"
     ]
   ],
   "text_variables": {}
