@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP 47309-2651
-D 1 Micro SD Detect switch 2.65mm height
-K
-F http://www.molex.com/webdocs/datasheets/pdf/en-us//0473092651_MEMORY_CARD_SOCKET.pdf
-$ENDCMP
-#
-#End Doc Library

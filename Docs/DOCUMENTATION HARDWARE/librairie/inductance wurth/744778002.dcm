@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP 744778002
-D Wurth WE-PD Series Shielded Wire-wound SMD Inductor with a Ferrite Core, 2.2 uH +/-20% 4.8A Idc
-K
-F https://docs.rs-online.com/22d5/0900766b80febd38.pdf
-$ENDCMP
-#
-#End Doc Library

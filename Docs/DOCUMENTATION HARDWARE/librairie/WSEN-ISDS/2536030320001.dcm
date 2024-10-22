@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP 2536030320001
-D IMUs - Inertial Measurement Units WSEN-ISDS IMU 6-axis (Inertial measurement unit) +/-16g, +/-2000 dps,-40 +/- 85C
-K
-F https://www.we-online.com/components/products/datasheet/2536030320001.pdf
-$ENDCMP
-#
-#End Doc Library
