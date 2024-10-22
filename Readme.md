@@ -4,25 +4,23 @@ CANSAT
 
 # Journal de bord
 
-## Séance 1, 29/02/24
+## Séance 1, 17/09/24
+- Organisation du projet et son déroulement.
+- Plannification des livrables et définition des tâches.
+- Capteurs
+   - 6 axes --> branchements OK, code OK, fonctionnement OK.
+
+## Séance 2, 24/09/24
+
+## Séance 3, 01/10/24
+
+## Séance 4, 08/10/24
+- Passage oral --> point sur la progression du projet.
+## Séance 5, 15/10/24
 
 
-## Séance 2, 07/03/24
+## Séance 6, 22/10/24
 
-## Séance 3, 14/03/24
-
-## Séance 4, 4/04/24
-
-## Séance 5, 25/04/24
-
-
-## Séance 6, 02/05/24
-
-## Séance 7, 16/05/24
-
-## Séance 8, 23/05/24
-
-## Séance finales(9,10), 28/05/24 et 29/05/2024
 
 # Livrables
 ## PCB
