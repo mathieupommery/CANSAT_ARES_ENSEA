@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MCSJK-7U-12.00-10-10-80-B-10
+D CRYSTAL, 12MHZ, 10PF, 3.2MM X 2.5MM
+K
+F http://www.farnell.com/datasheets/3820205.pdf
+$ENDCMP
+#
+#End Doc Library

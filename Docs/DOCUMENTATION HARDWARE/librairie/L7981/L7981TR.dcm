@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP L7981TR
+D Conv DC-DC 4.5V to 28V Synchronous Step Down Single-Out 0.6V to 28V 3A 8-Pin VFQFPN T/R
+K
+F https://www.st.com/resource/en/datasheet/l7981.pdf
+$ENDCMP
+#
+#End Doc Library

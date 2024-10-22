@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 587-1024-147F
+D Addressable Lighting 587 1 LED Discrete Red, Green, Blue (RGB) 2.00mm L x 2.00mm W
+K
+F https://s3-us-west-2.amazonaws.com/catsy.557/Dialight_datasheet_587-1024-147F_Addressable_RGB.pdf
+$ENDCMP
+#
+#End Doc Library
