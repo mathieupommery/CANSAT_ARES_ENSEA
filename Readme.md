@@ -21,11 +21,6 @@ CANSAT
 
 ## Séance 6, 22/10/24
 
-## Séance 7, 16/05/24
-
-## Séance 8, 23/05/24
-
-## Séance finales(9,10), 28/05/24 et 29/05/2024
 
 # Livrables
 ## PCB
