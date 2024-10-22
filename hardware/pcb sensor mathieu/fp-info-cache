@@ -1,11 +1,18 @@
-23803499713813170
-2N7002KQB
+23805232677811417
+2n7002kqb
 2N7002KQB
 
 
 0
 4
 3
+AT7456
+SOP65P640X120-29N
+HTSSOP28NT
+Integrated Circuit
+0
+29
+29
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -20,6 +27,13 @@ audio belton reverb
 0
 7
 7
+BSC0909NS
+PG-TDSON-8-5
+PG-TDSON-8-5
+MOSFET (N-Channel)
+0
+9
+9
 Battery
 BatteryClip_Keystone_54_D16-19mm
 Battery clip for batteries with a diameter between 16-19 mm: https://www.keyelco.com/product.cfm/product_id/826
@@ -63188,27 +63202,13 @@ solder jumper open
 0
 5
 3
-KXT3
-SW_KXT3
-
-
-0
-2
-2
-L7981
+L7981TR
 SON50P300X300X100-9N-D
 VFQFPN8
 Integrated Circuit
 0
 9
 9
-LDLN025PU33R
-LDLN025PU33R
-
-
-0
-5
-4
 LDO40PURY
 SON95P300X300X90-7N-D
 LDO40LPU33RY_
@@ -64410,13 +64410,6 @@ LED_THT
 LED_VCCLite_5381H7_6.35x6.35mm
 Yellow 5381 Series LED VCCLite https://vcclite.com/wp-content/uploads/wpallimport/files/files/5381Series.pdf http://static.vcclite.com/pdf/Mounting%20Hole%20Pattern%202.pdf
 Yellow 5381 Series LED
-0
-2
-2
-MS414
-MS421R-IV03E
-
-
 0
 2
 2
@@ -68249,27 +68242,6 @@ DIL DIP PDIP 2.54mm 7.62mm 300mil
 0
 4
 4
-PA1010D
-PA1010D
-
-
-0
-10
-10
-PCM
-SW_PCM
-
-
-0
-7
-4
-PTS840
-SW_PTS840
-
-
-0
-5
-2
 Package_BGA
 Alliance_TFBGA-54_8x8mm_Layout9x9_P0.8mm
 Alliance TFBGA 54 pins, 8x8mm, 54 Ball, 9x9 Layout, 0.8mm Pitch, https://www.alliancememory.com/wp-content/uploads/pdf/dram/Alliance_Memory_64M-AS4C4M16SA-CI_v5.0_October_2018.pdf#page=54
@@ -90390,7 +90362,7 @@ Logo WEEE
 0
 0
 0
-TSC102
+TSC102IDT
 SOIC127P600X175-8N
 SO 8_2022
 Integrated Circuit
@@ -95710,13 +95682,6 @@ igbt diode module
 0
 25
 25
-USBCWURTH
-USBC-WURTH
-USB 2.0 Type C Receptacle, GCT, 16P, top mounted, horizontal, 5A, https://gct.co/files/drawings/usb4110.pdf
-USB 2.0 C Type-C Receptacle SMD 16P 16C USB4110-GF-A
-0
-20
-17
 Valve
 Valve_ECC-83-1
 Valve ECC-83-1 round pins
@@ -96508,21 +96473,14 @@ Integrated Circuit
 0
 14
 14
-WSEN-PADS
-WSEN-PADS
-
-
-0
-10
-10
-connecteurcustom
+connecteur custom
 batpad
 
 
 0
 1
 1
-connecteurcustom
+connecteur custom
 edge pad
 
 
@@ -96536,19 +96494,33 @@ Crystal or Oscillator
 0
 4
 4
-inductancewurth
+driver mosfet
+SOT95P270X145-6N
+(CH) [SOT-23]
+Integrated Circuit
+0
+6
+6
+inductance wurth
 INDPM7373X340N
 744778002
 Inductor
 0
 2
 2
-led2020
-5871024147F
-587-1024-147F-2
-LED
+kxt3
+SW_KXT3
+
+
 0
-4
+2
+2
+ldln025PU33R
+LDLN025PU33R
+
+
+0
+5
 4
 logo
 ensea
@@ -96578,14 +96550,49 @@ trooperv2
 0
 0
 0
-molexmicrosd
+microsd
 47309-2651
 47309-2651
 Connector
 0
 12
 12
-vraieusbwurth
+ms414
+MS421R-IV03E
+
+
+0
+2
+2
+pa1010d
+PA1010D
+
+
+0
+10
+10
+pcm
+SW_PCM
+
+
+0
+7
+4
+pts840
+SW_PTS840
+
+
+0
+5
+2
+tarvosiii
+Tarvos III
+
+
+0
+27
+27
+usbcwurth
 USBC-WURTH
 USB 2.0 Type C Receptacle, GCT, 16P, top mounted, horizontal, 5A, https://gct.co/files/drawings/usb4110.pdf
 USB 2.0 C Type-C Receptacle SMD 16P 16C USB4110-GF-A
