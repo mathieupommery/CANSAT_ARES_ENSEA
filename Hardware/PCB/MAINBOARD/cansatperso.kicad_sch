@@ -4630,6 +4630,16 @@
 		)
 		(uuid "6a65ac8d-25af-4666-9da3-ac2f6cc24e94")
 	)
+	(polyline
+		(pts
+			(xy 293.37 207.01) (xy 293.37 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a68349c-a411-4cf2-866e-780b413b16c6")
+	)
 	(wire
 		(pts
 			(xy 256.54 57.15) (xy 256.54 55.88)
@@ -5517,6 +5527,16 @@
 			)
 		)
 		(uuid "d95c4da4-bbdd-45eb-946e-8026a0170a4e")
+	)
+	(text "Pk tu mets pas un 100nF de découplage ici ?"
+		(exclude_from_sim no)
+		(at 287.782 214.122 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "dcdf0a63-bd5c-47e9-8f41-e39d4709c10e")
 	)
 	(text "100n par pin VDD 10n par pin VDDA"
 		(exclude_from_sim no)
