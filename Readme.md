@@ -2,6 +2,14 @@
 CANSAT
 # Equipe
 
+<div align="center">
+**🙋‍♂️ Hugo CARVALHO FONTES**
+**🙋‍♂️ Louis VOZZOLA**
+**🙋‍♂️ Nelven THÉBAULT**
+**🙋‍♂️ Mathieu POMMERY**
+**🙋‍♂️ Younés BEN AMEUR**
+</div>
+
 # Journal de bord
 
 ## Séance 1, 17/09/24
