@@ -5,11 +5,15 @@ CANSAT
 <div align="center">
 
    **🙋‍♂️ Hugo CARVALHO FONTES**
+
    **🙋‍♂️ Louis VOZZOLA**
+
    **🙋‍♂️ Nelven THÉBAULT**
+
    **🙋‍♂️ Mathieu POMMERY**
+
    **🙋‍♂️ Younés BEN AMEUR**
-   
+
 </div>
 
 # Journal de bord
