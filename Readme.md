@@ -5,27 +5,32 @@ CANSAT
 # Journal de bord
 
 ## Séance 1, 17/09/24
-- Organisation du projet et son déroulement.
-- Plannification des livrables et définition des tâches.
+- Organisation du projet et son déroulement
+- Plannification des livrables et définition des tâches
 - Capteurs
-   - 6 axes --> branchements OK, code OK, fonctionnement OK.
-
+   - 6 axes --> branchements OK, code OK, fonctionnement OK
 ## Séance 2, 24/09/24
-
+- Modélisation CanSat 3D V0
+- Prise en main du GPS
 ## Séance 3, 01/10/24
-
+- Modifications modèle 3D
+- Prise en main du module radio
+- Avancement PCB
 ## Séance 4, 08/10/24
-- Passage oral --> point sur la progression du projet.
+- Passage oral --> point sur la progression du projet
+- Avancement PCB
 ## Séance 5, 15/10/24
-- Visio (10/10/24) avec l'organisation du CanSat --> nouvelles règles.
-- Redéfinition du projet et des tâches.
+- Visio (10/10/24) avec l'organisation du CanSat --> nouvelles règles
+- Redéfinition du projet et des tâches
 
 ## Séance 6, 22/10/24
-
+- Vérification et commande du PCB V0
+- Avancement sur le module radio
+- Test sur servo via contrôle PWM
 
 # Livrables
 ## PCB
-
+   ![PCB V0 6 couche](./IMG/PCB_V0_3D.png)
    ## boitier et design exterieur:
 
  
