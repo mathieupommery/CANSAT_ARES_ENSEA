@@ -629,9 +629,9 @@
 			(thermal_bridge_angle 45)
 			(uuid "22af5ccd-7763-47eb-8741-b4ede17c510b")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/KXT321LHS.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/KXT321LHS.stp"
 			(offset
-				(xyz 1.89 0.8 0)
+				(xyz 1.9 0.75 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -1382,18 +1382,7 @@
 			(pintype "passive")
 			(uuid "245e3176-f6a8-46e1-8e8e-bd950daf9587")
 		)
-		(model "MCSJK-7U-12.00-10-10-80-B-10.stp"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/MCSJK-7U-12.00-10-10-80-B-10.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/MCSJK-7U-12.00-10-10-80-B-10.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4206,7 +4195,7 @@
 			(pintype "passive")
 			(uuid "e8c24dc3-8ee3-420e-88d5-d477f587fb23")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/TSC102IDT.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/TSC102IDT.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6797,15 +6786,15 @@
 			(pintype "passive")
 			(uuid "6ff5588f-e58a-480b-899d-429c1ac9d8eb")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/47309-2651.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/47309-2651.stp"
 			(offset
-				(xyz 0 -3.25 1)
+				(xyz 0 -3.2 1)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 90 180 0)
+				(xyz -90 0 180)
 			)
 		)
 	)
@@ -7283,6 +7272,7 @@
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
+			(hide yes)
 			(uuid "63d5f387-722e-4bbd-bba3-a5d71acfdfa4")
 			(effects
 				(font
@@ -7345,18 +7335,6 @@
 			(layer "F.SilkS")
 			(uuid "961620ab-b208-489b-b4f2-f4bfde74f2ab")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 0 2.5 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(uuid "41b76fdc-c712-424f-81fc-c3454feebce8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(pad "1" smd rect
 			(at 0.275 -0.75)
 			(size 0.55 1.5)
@@ -7377,9 +7355,9 @@
 			(thermal_bridge_angle 45)
 			(uuid "cf2c3677-8ac5-420a-88ad-e09cfc91d2f7")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/KXT321LHS.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/KXT321LHS.stp"
 			(offset
-				(xyz 1.89 0.8 0)
+				(xyz 1.9 0.75 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9188,18 +9166,7 @@
 			(zone_connect 2)
 			(uuid "fe458449-b3b7-47de-a896-a9cde0e53fc1")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm.wrl"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/STM32G431CBU6.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/STM32G431CBU6.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -11379,18 +11346,7 @@
 			(pintype "passive")
 			(uuid "89bdf496-8aa6-474b-90f7-eb680c03ff0f")
 		)
-		(model "2536030320001.stp"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/WSEN-ISDS.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/WSEN-ISDS.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -13043,18 +12999,7 @@
 			(net 1 "GND")
 			(uuid "5f11fde5-ae26-4cc4-a303-24c4a80d0d02")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical.wrl"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/BM04B-SRSS-TB_LF__SN_.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/BM04B-SRSS-TB_LF__SN_.stp"
 			(offset
 				(xyz 51.3 12.1 -20.5)
 			)
@@ -13490,7 +13435,7 @@
 			(pintype "passive")
 			(uuid "eb7cc05d-bbea-4e7e-bac8-3bc0e2345309")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/inductance.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/inductance.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -14782,19 +14727,7 @@
 			(net 1 "GND")
 			(uuid "6a45b823-50e6-4591-a0d7-10ba4d916dc0")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical.wrl"
-			(hide yes)
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/BM04B-SRSS-TB_LF__SN_.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/BM04B-SRSS-TB_LF__SN_.stp"
 			(offset
 				(xyz 51.3 12.1 -20.5)
 			)
@@ -15601,18 +15534,7 @@
 			(pintype "passive")
 			(uuid "366d4064-a957-495c-a614-76db351c005a")
 		)
-		(model "LDO40LPU33RY.stp"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/LDO40LPU33RY.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/LDO40LPU33RY.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -18309,18 +18231,7 @@
 			(pintype "passive")
 			(uuid "b0b2212f-5ed1-448d-a85f-5ddb274fa0b5")
 		)
-		(model "LDO40LPU33RY.stp"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/LDO40LPU33RY.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/LDO40LPU33RY.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20940,7 +20851,7 @@
 			(pintype "passive")
 			(uuid "fec674b8-711c-4e9b-a167-7fda9649bf70")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/L7981TR.stp"
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/L7981TR.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -21347,7 +21258,7 @@
 			(xy 195.15 72.88) (xy 173.66 72.86)
 		)
 		(height 7.06)
-		(gr_text "21.4900 mm"
+		(gr_text "21,4900 mm"
 			(at 184.41264 64.660003 -0.05332318564)
 			(layer "User.1")
 			(uuid "376a9d33-921b-488a-8989-f705d63f685e")
