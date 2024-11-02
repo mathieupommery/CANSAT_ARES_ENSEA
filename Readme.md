@@ -44,7 +44,20 @@ CANSAT
 
 # Livrables
 ## PCB
-   ![PCB V0 6 couche](./IMG/PCB_V0_3D.png)
+  ![pcb v1 top](https://github.com/user-attachments/assets/82694888-ca0d-41f4-9feb-5aca01130e30)
+  ![pcb v1 bottom](https://github.com/user-attachments/assets/b6ff79c5-819b-4a99-bcde-5966f44e7075)
+
+  Mainboard, pcb 6 couches avec:
+  * accelerometre
+  * stm32g431
+  * regulateur buck 6-28v vers 5v
+  * 2 ldo 5v vers 3.3v dont 1 activable sur commande du MCU.
+  * port de carte micro sd
+  * 2 port uart dédiée
+  * port servo dédié
+  * pads de soudures pour accéssoire et debug(swd)
+
+
    ## boitier et design exterieur:
 
  
