@@ -42,6 +42,14 @@ CANSAT
 - Avancement sur le module radio
 - Test sur servo via contrôle PWM
 
+## Séance 7, 05/11/24
+- Modélisation 3D Cannette et PCB
+- Prise en main de la rPi 5
+   - But final récupérer l'ensemble de données du CanSat et pouvoir les afficher/extraire.
+- Avancement du module radio
+   - Problème détecté sur l'EV-kit du Tharvos III (plus de réponse)
+- Commencé la mise en commun des codes dans le Git
+
 # Livrables
 ## PCB
   ![pcb v1 top](https://github.com/user-attachments/assets/82694888-ca0d-41f4-9feb-5aca01130e30)
