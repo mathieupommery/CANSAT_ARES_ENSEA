@@ -52,12 +52,12 @@ CANSAT
 
 # Livrables
 ## PCB
-   <img src="./IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 40%; margin-right: 10px;">
-   <img src="./IMG/pcb v1 bottom.png" alt="BOT" style="float: right; width: 40%">
+   <img src="./IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 45%">
+   <img src="./IMG/pcb v1 bottom.png" alt="BOT" style="float: right; width: 45%">
 
   Mainboard, pcb 6 couches avec:
   * accelerometre
-  * stm32g431
+  * stm32g431cbu6
   * regulateur buck 6-28v vers 5v
   * 2 ldo 5v vers 3.3v dont 1 activable sur commande du MCU.
   * port de carte micro sd
@@ -68,6 +68,11 @@ CANSAT
 
    ## boitier et design exterieur:
 
+<script
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  type="text/javascript">
+  This is an inline equation: $$V_{sphere} = \frac{4}{3}\pi r^3$$
+</script>
  
 ## Code
 
