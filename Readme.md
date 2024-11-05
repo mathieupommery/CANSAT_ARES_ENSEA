@@ -52,8 +52,8 @@ CANSAT
 
 # Livrables
 ## PCB
-   <img src="https://github.com/user-attachments/assets/82694888-ca0d-41f4-9feb-5aca01130e30" alt="TOP" width="45%">
-   <img src="https://github.com/user-attachments/assets/b6ff79c5-819b-4a99-bcde-5966f44e7075" alt="BOT" width="45%">
+   <img src="./IMG/pcb v1 top.png" alt="TOP" width="45%">
+   <img src="./IMG/pcb v1 bottom.png" alt="BOT" width="45%">
 
   Mainboard, pcb 6 couches avec:
   * accelerometre
