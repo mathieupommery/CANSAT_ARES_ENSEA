@@ -516,7 +516,7 @@
       "plot": "../fichier gerber pcb/gerber mainboard/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "cansatperso.step",
+      "step": "../../../../../../Desktop/cansatperso.step",
       "svg": "",
       "vrml": ""
     },
