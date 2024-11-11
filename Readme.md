@@ -38,6 +38,9 @@ CANSAT
 - Redéfinition du projet et des tâches
 
 ## Séance 6, 22/10/24
+- Test du module Tarvos-III:
+
+Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son antenne USB. Cependant nous n'avons pas réussi, en identifiant les 2 parties, on se rend vite compte d'un problème sur l'EV-Board car lorsqu'on lui envoi des informations (par exemple sa réinitialisation) la carte ne répond pas. Il y a surement un composant HS sur l'EV-Board
 - Vérification et commande du PCB V0
 - Avancement sur le module radio
 - Test sur servo via contrôle PWM
