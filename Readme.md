@@ -44,6 +44,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Vérification et commande du PCB V0
 - Avancement sur le module radio
 - Test sur servo via contrôle PWM
+- Schéma fonctionnel de la V0 :
+<img src="./IMG/Schema Fct PCB v0" alt="TOP" style="float: left; width: 45%">
 
 ## Séance 7, 05/11/24
 - Modélisation 3D Cannette et PCB
