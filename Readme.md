@@ -51,7 +51,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - But final récupérer l'ensemble de données du CanSat et pouvoir les afficher/extraire.
 - Avancement du module radio
    - Problème détecté sur l'EV-kit du Tharvos III (plus de réponse)
-- Commencé la mise en commun des codes dans le Git
+- Commencer la mise en commun des codes dans le Git
+- Réception des PCBs
+   - Main board
+   - GPS et Radio
 
 # Livrables
 ## PCB
