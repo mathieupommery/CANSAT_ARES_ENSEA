@@ -31,7 +31,8 @@ CANSAT
 - Prise en main du module radio
 - Avancement PCB
 ## Séance 4, 08/10/24
-- Passage oral --> point sur la progression du projet
+- 1er Passage oral
+   - point sur la progression du projet
 - Avancement PCB
 ## Séance 5, 15/10/24
 - Visio (10/10/24) avec l'organisation du CanSat --> nouvelles règles
@@ -57,6 +58,12 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Réception des PCBs
    - Main board
    - GPS et Radio
+
+## Séance 8, 12/11/24
+- 2e passage oral
+   - MAJ du CdC
+   - Commande du PCV V0 (MAJ)
+   - Mise en forme de la stratégie de code
 
 # Livrables
 ## PCB
