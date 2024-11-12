@@ -183,9 +183,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 
 	if(hadc->Instance==ADC1){
 		vrefint=(float) ((4095.0*1.212)/rawdata[0]);
-//		vtemp=(float) ((vrefint*rawdata[1])/4095.0);
-		vcurr=(float) 0;
-		vbat=(float) 2*(rawdata[2]/4095.0)*vrefint;
+		vcurr=(float) CURRCOEF*(rawdata[1]/4090.0)*vrefint;
+		vbat=(float) VCOEF*(rawdata[2]/4095.0)*vrefint;
 
 	}
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
