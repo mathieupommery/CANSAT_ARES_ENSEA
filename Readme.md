@@ -68,6 +68,7 @@
 - Avancement PCB
 
 <div style="display: flex; justify-content: space-between;">
+
   <div style="width: 48%; border: 1px solid #ccc; padding: 10px;">
     
    ## Séance 2, 24/09/24
@@ -75,14 +76,16 @@
    - Prise en main du GPS
     
   </div>
+
   <div style="width: 48%; border: 1px solid #ccc; padding: 10px;">
     
-    ## Séance 3, 01/10/24
+   ## Séance 3, 01/10/24
    - Modifications modèle 3D
    - Prise en main du module radio
    - Avancement PCB
     
   </div>
+  
 </div>
 
 ## Séance 4, 08/10/24
