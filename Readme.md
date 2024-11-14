@@ -108,7 +108,6 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 11, 03/12/24
 - 3e passage oral
-   - 
 
 ## Livrables
 ### PCB
