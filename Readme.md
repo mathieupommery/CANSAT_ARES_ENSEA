@@ -129,7 +129,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 | Séances (Date)     |  Tâches réalisées                                                   |
 |--------------------|---------------------------------------------------------------------|
-| Séance 1, 17/09/24 | - Organisation du projet et son déroulement<br>- Plannification des livrables et définition des tâches<br>- Capteurs<br>  -6 axes --> branchements OK, code OK, fonctionnement OK|
+| Séance 1, 17/09/24 | - Organisation du projet et son déroulement<br>- Plannification des livrables et définition des tâches<br>- Capteurs<br>  • 6 axes → branchements OK, code OK, fonctionnement OK|
 
 
 
