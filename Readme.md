@@ -1,5 +1,7 @@
 # Projet 2A CanSat 2024-2025 🚀
 
+------
+
 ![Version](https://img.shields.io/badge/version-1.0-blue)
 ![Status](https://img.shields.io/badge/status-en%20développement-yellow)
 
@@ -9,16 +11,21 @@
 - [Équipe](#équipe)
 - [Journal de bord](#journal-de-bord)
 - [Livrable](#livrables)
+   - [PCB](#pcb)
 
 ---
 
 # Introduction
-- C'est un projet de 2e année d'école d'ingénieur en électronique à l'ENSEA à Cergy.
+- C'est un projet de 2e année d'école d'ingénieur en électronique à l'![ENSEA](https://www.ensea.fr/fr) à Cergy.
 - Le but étant de réaliser - pour la compétiton CanSat organisée par Planète science et le CNES - un satellite en forme de canette.
 - Celui-ci devra réaliser plusieurs missions lorsqu'il sera lâché d'un drone à envrion 120m de hauteur devant un jury.
 - Le projet consiste à faire la conception et la fabrication de ce satellite.
-   - Partie électronique (PCB, capteurs, alimentation, station au sol,...)
-   - Partie mécanique (Châssis, taille, matériau,...)
+   - Partie électronique
+   (PCB, capteurs, alimentation, station au sol,... )
+   - Partie mécanique
+   (Châssis, taille, matériau,... )
+   - Partie résultats
+   (Exploitation des mesures, les mettre en formes en développent ou non une interface, les présenter devant le jury,... )
 
 # Équipe
 
@@ -118,6 +125,14 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
  
 ## Code
 
+## Récapitulatif des Séances de Travail
+
+| Date       | Durée (heures) | Objectifs de la séance                        | Tâches réalisées                    | Prochaines étapes                 |
+|------------|----------------|-----------------------------------------------|-------------------------------------|-----------------------------------|
+| 2024-11-01 | 2              | Introduction au projet et définition des objectifs | Création du dépôt GitHub, initialisation du README | Rechercher des bibliothèques pertinentes |
+| 2024-11-03 | 3              | Mise en place de l’environnement de développement | Installation des dépendances, configuration de l’IDE | Commencer la structure du code |
+| 2024-11-07 | 4              | Développement du module principal             | Implémentation des fonctions de base | Tester les fonctions développées |
+| 2024-11-10 | 2              | Tests unitaires et débogage                   | Écriture de tests unitaires, correction de bugs | Finaliser les tests et documenter |
 
 
 
