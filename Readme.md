@@ -17,7 +17,7 @@
 ---
 
 # Introduction
-- C'est un projet de 2e année d'école d'ingénieur en électronique à l'![ENSEA](https://www.ensea.fr/fr) à Cergy.
+- C'est un projet de 2e année d'école d'ingénieur en électronique à l'[ENSEA](https://www.ensea.fr/fr) à Cergy.
 - Le but étant de réaliser - pour la compétiton CanSat organisée par Planète science et le CNES - un satellite en forme de canette.
 - Celui-ci devra réaliser plusieurs missions lorsqu'il sera lâché d'un drone à envrion 120m de hauteur devant un jury.
 - Le projet consiste à faire la conception et la fabrication de ce satellite.
@@ -50,10 +50,9 @@
 
 ## Suivi des Objectifs
 
-| Date       | Objectif                                                           | Check      |
-|------------|--------------------------------------------------------------------|------------|
-| 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches | ✅ Terminé |
-| 23-10-2024 | Schématique et routage fini → Commander le PCB V0                  | ✅ Terminé |
+| Date       | Objectif                                                                 | Check      |
+|------------|--------------------------------------------------------------------------|------------|
+| 23-10-2024 | Schématique et routage fini → Commander le PCB V0                        | ✅ Terminé |
 
 
 ## Séance 1, 17/09/24
