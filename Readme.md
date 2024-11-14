@@ -34,11 +34,11 @@
 
    **🙋‍♂️ Hugo CARVALHO FONTES**
 
-   **🙋‍♂️ ![Louis VOZZOLA](https://github.com/louisvoz57700)**
+   **🙋‍♂️ [Louis VOZZOLA](https://github.com/louisvoz57700)**
 
-   **🙋‍♂️ ![Nelven THÉBAULT](https://github.com/NelvTheb)**
+   **🙋‍♂️ [Nelven THÉBAULT](https://github.com/NelvTheb)**
 
-   **🙋‍♂️ ![Mathieu POMMERY](https://github.com/mathieupommery)**
+   **🙋‍♂️ [Mathieu POMMERY](https://github.com/mathieupommery)**
 
    **🙋‍♂️ Younés BEN AMEUR**
 
@@ -47,8 +47,6 @@
 # Journal de bord
 
 ## Objectifs
-
-## Suivi des Objectifs
 
 | Date       | Objectif                                                                 | Check      |
 |------------|--------------------------------------------------------------------------|------------|
@@ -68,6 +66,25 @@
 - Modifications modèle 3D
 - Prise en main du module radio
 - Avancement PCB
+
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 48%; border: 1px solid #ccc; padding: 10px;">
+    
+   ## Séance 2, 24/09/24
+   - Modélisation CanSat 3D V0
+   - Prise en main du GPS
+    
+  </div>
+  <div style="width: 48%; border: 1px solid #ccc; padding: 10px;">
+    
+    ## Séance 3, 01/10/24
+   - Modifications modèle 3D
+   - Prise en main du module radio
+   - Avancement PCB
+    
+  </div>
+</div>
+
 ## Séance 4, 08/10/24
 - 1er Passage oral
    - point sur la progression du projet
