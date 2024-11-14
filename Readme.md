@@ -10,6 +10,7 @@
 - [Introduction](#introduction)
 - [Équipe](#équipe)
 - [Journal de bord](#journal-de-bord)
+   - [Objectifs](#objectifs)
 - [Livrable](#livrables)
    - [PCB](#pcb)
 
@@ -44,6 +45,16 @@
 </div>
 
 # Journal de bord
+
+## Objectifs
+
+## Suivi des Objectifs
+
+| Date       | Objectif                                                           | Check      |
+|------------|--------------------------------------------------------------------|------------|
+| 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches | ✅ Terminé |
+| 23-10-2024 | Schématique et routage fini → Commander le PCB V0                  | ✅ Terminé |
+
 
 ## Séance 1, 17/09/24
 - Organisation du projet et son déroulement
@@ -124,12 +135,6 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
  
 ## Code
-
-## Récapitulatif des Séances de Travail
-
-| Séances (Date)     |  Tâches réalisées                                                   |
-|--------------------|---------------------------------------------------------------------|
-| Séance 1, 17/09/24 | - Organisation du projet et son déroulement<br>- Plannification des livrables et définition des tâches<br>- Capteurs<br>  • 6 axes → branchements OK, code OK, fonctionnement OK|
 
 
 
