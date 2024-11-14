@@ -127,12 +127,9 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ## Récapitulatif des Séances de Travail
 
-| Date       | Durée (heures) | Objectifs de la séance                        | Tâches réalisées                    | Prochaines étapes                 |
-|------------|----------------|-----------------------------------------------|-------------------------------------|-----------------------------------|
-| 2024-11-01 | 2              | Introduction au projet et définition des objectifs | Création du dépôt GitHub, initialisation du README | Rechercher des bibliothèques pertinentes |
-| 2024-11-03 | 3              | Mise en place de l’environnement de développement | Installation des dépendances, configuration de l’IDE | Commencer la structure du code |
-| 2024-11-07 | 4              | Développement du module principal             | Implémentation des fonctions de base | Tester les fonctions développées |
-| 2024-11-10 | 2              | Tests unitaires et débogage                   | Écriture de tests unitaires, correction de bugs | Finaliser les tests et documenter |
+| Séances (Date) |  Tâches réalisées                                                   |
+|----------------|---------------------------------------------------------------------|
+| 17/09/24 | - Organisation du projet et son déroulement - Plannification des livrables et définition des tâches - Capteurs -6 axes --> branchements OK, code OK, fonctionnement OK|
 
 
 
