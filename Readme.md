@@ -52,6 +52,7 @@
 
 | Date       | Objectif                                                                 | Check      |
 |------------|--------------------------------------------------------------------------|------------|
+| 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches       | ✅ Terminé |
 | 23-10-2024 | Schématique et routage fini → Commander le PCB V0                        | ✅ Terminé |
 
 
