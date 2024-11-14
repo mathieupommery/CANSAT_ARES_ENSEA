@@ -1,16 +1,36 @@
-# <Notre Projet>
-CANSAT
-# Equipe
+# Projet 2A CanSat 2024-2025 🚀
+
+![Version](https://img.shields.io/badge/version-1.0-blue)
+![Status](https://img.shields.io/badge/status-en%20développement-yellow)
+
+## Table des Matières
+
+- [Introduction](#introduction)
+- [Équipe](#équipe)
+- [Journal de bord](#journal-de-bord)
+- [Livrable](#livrables)
+
+---
+
+# Introduction
+- C'est un projet de 2e année d'école d'ingénieur en électronique à l'ENSEA à Cergy.
+- Le but étant de réaliser - pour la compétiton CanSat organisée par Planète science et le CNES - un satellite en forme de canette.
+- Celui-ci devra réaliser plusieurs missions lorsqu'il sera lâché d'un drone à envrion 120m de hauteur devant un jury.
+- Le projet consiste à faire la conception et la fabrication de ce satellite.
+   - Partie électronique (PCB, capteurs, alimentation, station au sol,...)
+   - Partie mécanique (Châssis, taille, matériau,...)
+
+# Équipe
 
 <div align="center">
 
    **🙋‍♂️ Hugo CARVALHO FONTES**
 
-   **🙋‍♂️ Louis VOZZOLA**
+   **🙋‍♂️ ![Louis VOZZOLA](https://github.com/louisvoz57700)**
 
-   **🙋‍♂️ Nelven THÉBAULT**
+   **🙋‍♂️ ![Nelven THÉBAULT](https://github.com/NelvTheb)**
 
-   **🙋‍♂️ Mathieu POMMERY**
+   **🙋‍♂️ ![Mathieu POMMERY](https://github.com/mathieupommery)**
 
    **🙋‍♂️ Younés BEN AMEUR**
 
