@@ -69,7 +69,7 @@
    - point sur la progression du projet
 - Avancement PCB
 ### Séance 5, 15/10/24
-- Visio (10/10/24) avec l'organisation du CanSat --> nouvelles règles
+- Visio (10/10/24) avec l'organisation du CanSat → nouvelles règles
 - Redéfinition du projet et des tâches
 
 ### Séance 6, 22/10/24
