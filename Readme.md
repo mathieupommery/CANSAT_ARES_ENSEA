@@ -30,7 +30,7 @@
 
 <div align="center">
 
-   **🙋‍♂️ [Hugo CARVALHO FONTES]()**
+   **🙋‍♂️ [Hugo CARVALHO FONTES](https://github.com/HugouShare)**
 
    **🙋‍♂️ [Louis VOZZOLA](https://github.com/louisvoz57700)**
 
@@ -57,13 +57,16 @@
 - Plannification des livrables et définition des tâches
 - Capteurs
    - 6 axes --> branchements OK, code OK, fonctionnement OK
+   - baromètre --> prise en main : fonctionnement & branchements
 ### Séance 2, 24/09/24
 - Modélisation CanSat 3D V0
 - Prise en main du GPS
+- Baromètre : écriture du code permettant de récupérer les données et les afficher
 ### Séance 3, 01/10/24
 - Modifications modèle 3D
 - Prise en main du module radio
 - Avancement PCB
+- Baromètre : finalisation du code permettant de récupérer les données et les afficher
 ### Séance 4, 08/10/24
 - 1er Passage oral
    - point sur la progression du projet
@@ -71,6 +74,8 @@
 ### Séance 5, 15/10/24
 - Visio (10/10/24) avec l'organisation du CanSat → nouvelles règles
 - Redéfinition du projet et des tâches
+- Intégration de la RPi 5 dans le projet 
+   - Objectif : récupérer l'ensemble de données du CanSat et pouvoir les afficher et les extraire.
 
 ### Séance 6, 22/10/24
 - Test du module Tarvos-III:
@@ -79,13 +84,13 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Vérification et commande du PCB V0
 - Avancement sur le module radio
 - Test sur servo via contrôle PWM
+- RPi5 : Génération d'une trame UART générée par STM32L476RG
 - Schéma fonctionnel de la V0 :
 <img src="./IMG/Schema Fct PCB v0.png" alt="TOP" style="float: left; width: 70%">
 
 ### Séance 7, 05/11/24
 - Modélisation 3D Cannette et PCB
-- Prise en main de la rPi 5
-   - But final récupérer l'ensemble de données du CanSat et pouvoir les afficher/extraire.
+- RPi5 : Récupération d'une trame UART (générée par STM32L476RG) et affichage dans le terminal
 - Avancement du module radio
    - Problème détecté sur l'EV-kit du Tharvos III (plus de réponse)
 - Commencer la mise en commun des codes dans le Git
@@ -103,9 +108,11 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Présentation de l'avancement sur la rPi 5
    - Présentation du travail sur le servomoteur
 - En attente des composants pour commencer soudure et pour continuer sur le Tharvos III
+- RPi5 : Récupération d'une trame UART (générée par STM32L476RG) et affichage dans le terminal
 - Avancement sur le code de la mainboard et de certains capteurs
 
 ### Séance 9, 19/11/24
+- Soudure des composants sur les sensors PCBs
 
 
 ### Séance 10, 26/11/24
