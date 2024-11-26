@@ -112,7 +112,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Avancement sur le code de la mainboard et de certains capteurs
 
 ### Séance 9, 19/11/24
-- RPi5 : Écriture du code permettant d'afficher les données reçues sur la RPi5
+- RPi5 : Écriture du code permettant la mise en forme des données UART reçues
 
 ### Séance 10, 26/11/24
 - Soudure des composants sur les sensors PCBs
