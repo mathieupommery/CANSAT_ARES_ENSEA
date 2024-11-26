@@ -30,7 +30,7 @@
 
 <div align="center">
 
-   **🙋‍♂️ [Hugo CARVALHO FONTES]()**
+   **🙋‍♂️ [Hugo CARVALHO FONTES](https://github.com/HugouShare)**
 
    **🙋‍♂️ [Louis VOZZOLA](https://github.com/louisvoz57700)**
 
