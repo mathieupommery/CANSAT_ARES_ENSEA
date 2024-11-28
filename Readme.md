@@ -113,9 +113,12 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 9, 19/11/24
 - RPi5 : Écriture du code permettant la mise en forme des données UART reçues
+- Amélioration de la mise en forme code pour le 6 axes
 
 ### Séance 10, 26/11/24
 - Soudure des composants sur les sensors PCBs
+   - Tarvos III
+   - GPS
 
 ### Séance 11, 03/12/24
 - 3e passage oral
