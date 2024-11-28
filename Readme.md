@@ -115,7 +115,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - RPi5 : Écriture du code permettant la mise en forme des données UART reçues
 - Amélioration de la mise en forme code pour le 6 axes
 - Mécanique : Réalisation de la fermeture permettant aux 2 parties du CANSAT de se séparer.
-   <img src="./IMG/Mécanisme d'ouverture.png" alt="TOP" style="float: left; width: 45%">
+   <img src="./IMG/meca.png" alt="MECA" style="float: left; width: 45%">
 
 ### Séance 10, 26/11/24
 - Soudure des composants sur les sensors PCBs
