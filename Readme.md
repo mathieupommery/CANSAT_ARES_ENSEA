@@ -58,15 +58,18 @@
 - Capteurs
    - 6 axes --> branchements OK, code OK, fonctionnement OK
    - baromètre --> prise en main : fonctionnement & branchements
+   - thermomète--> compréhension de la datsaheet
 ### Séance 2, 24/09/24
 - Modélisation CanSat 3D V0
 - Prise en main du GPS
 - Baromètre : écriture du code permettant de récupérer les données et les afficher
+- Prise en main du thermomètre et tentative d'afficher la température
 ### Séance 3, 01/10/24
 - Modifications modèle 3D
 - Prise en main du module radio
 - Avancement PCB
 - Baromètre : finalisation du code permettant de récupérer les données et les afficher
+- Affichage de la température
 ### Séance 4, 08/10/24
 - 1er Passage oral
    - point sur la progression du projet
@@ -98,7 +101,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Main board
    - GPS et Radio
 - Commande d'un nouveau Tharvos III et des composants du PCB
-
+- Finalisation de la partie code du servomoteur
 ### Séance 8, 12/11/24
 - 2e passage oral
    - MAJ du CdC
@@ -114,6 +117,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 9, 19/11/24
 - RPi5 : Écriture du code permettant la mise en forme des données UART reçues
 - Amélioration de la mise en forme code pour le 6 axes
+- Simulation matlab/python de la chute de la canette
 - Mécanique : Réalisation de la fermeture permettant aux 2 parties du CANSAT de se séparer.
    <img src="./IMG/meca.png" alt="MECA" style="float: left; width: 45%">
 
