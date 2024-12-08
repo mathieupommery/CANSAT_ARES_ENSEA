@@ -53,7 +53,7 @@ void MX_LPUART1_UART_Init(void)
 
   /* USER CODE END LPUART1_Init 1 */
   hlpuart1.Instance = LPUART1;
-  hlpuart1.Init.BaudRate = 209700;
+  hlpuart1.Init.BaudRate = 115200;
   hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
   hlpuart1.Init.StopBits = UART_STOPBITS_1;
   hlpuart1.Init.Parity = UART_PARITY_NONE;
@@ -231,17 +231,17 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     /* USART1 clock enable */
     __HAL_RCC_USART1_CLK_ENABLE();
 
-    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
     /**USART1 GPIO Configuration
-    PA9     ------> USART1_TX
-    PA10     ------> USART1_RX
+    PB6     ------> USART1_TX
+    PB7     ------> USART1_RX
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
+    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* USART1 DMA Init */
     /* USART1_RX Init */
@@ -308,10 +308,10 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     __HAL_RCC_USART1_CLK_DISABLE();
 
     /**USART1 GPIO Configuration
-    PA9     ------> USART1_TX
-    PA10     ------> USART1_RX
+    PB6     ------> USART1_TX
+    PB7     ------> USART1_RX
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6|GPIO_PIN_7);
 
     /* USART1 DMA DeInit */
     HAL_DMA_DeInit(uartHandle->hdmarx);
@@ -326,7 +326,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 /* USER CODE BEGIN 1 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-	if(&huart==&huart1){
+	if(huart->Instance==USART1){
 		GPSbufferoldpos = GPSbuffernewpos; //keep track of the last position in the buffer
 			if(GPSbufferoldpos + GPSRxTamponSize > GPSRxBufferSize){ //if the buffer is full, parse it, then reset the buffer
 
@@ -343,9 +343,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 
 			}
 			HAL_UART_Receive_DMA(&huart1, (uint8_t *)GPS_RX_Tampon, GPSRxTamponSize);//on recoit par dma à nouveau 64 caractères
-			__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);//on desactive l'interruption afin de ne pas être interrompu tout le temps
+			__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);
+			HAL_UART_Receive_DMA(&huart1, (uint8_t *)GPS_RX_Tampon, GPSRxTamponSize);
 			}
-	if(&huart==&hlpuart1){
+	if(huart->Instance==LPUART1){
 		TarvosRXbufferoldpos = TarvosRXbuffernewpos; //keep track of the last position in the buffer
 				if(TarvosRXbufferoldpos + TarvosRxTamponSize > TarvosRxBufferSize){ //if the buffer is full, parse it, then reset the buffer
 
