@@ -134,6 +134,9 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 12, 10/12/24
 - Modélisation Station sol 
 <img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
+
+- Test du système de vérrouillage sur la canette entière
+
 ### Séance 13, 17/12/24
 
 ## Livrables
