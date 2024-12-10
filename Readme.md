@@ -132,7 +132,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Début modélisation 3D de la station sol
 
 ### Séance 12, 10/12/24
-
+- Modélisation Station sol 
+<img src="./IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
 ### Séance 13, 17/12/24
 
 ## Livrables
