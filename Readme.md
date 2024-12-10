@@ -128,6 +128,12 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 11, 03/12/24
 - 3e passage oral
+- Test du nouveau servomoteur
+- Début modélisation 3D de la station sol
+
+### Séance 12, 10/12/24
+
+### Séance 13, 17/12/24
 
 ## Livrables
 ### PCB
