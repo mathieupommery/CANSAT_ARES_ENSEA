@@ -65,7 +65,11 @@ main-build: mainboardcansat.elf secondary-outputs
 
 # Tool invocations
 mainboardcansat.elf mainboardcansat.map: $(OBJS) $(USER_OBJS) C:\Users\mathi\Documents\GitHub\2425_PROJET2A_CANSAT\Software\mainboardcansat\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+<<<<<<< HEAD
 	arm-none-eabi-gcc -o "mainboardcansat.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\mathi\Documents\GitHub\2425_PROJET2A_CANSAT\Software\mainboardcansat\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mainboardcansat.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+=======
+	arm-none-eabi-gcc -o "mainboardcansat.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\mathi\Documents\GitHub\2425_PROJET2A_CANSAT\Software\mainboardcansat\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mainboardcansat.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+>>>>>>> e54ac6655dd7b198f115799a66c315c3d7a436dd
 	@echo 'Finished building target: $@'
 	@echo ' '
 

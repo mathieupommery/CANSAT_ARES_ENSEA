@@ -31,6 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "fatfs_sd.h"
+#include "nmea_parse.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,19 +67,23 @@ uint8_t tarvos_RX_Tampon[TarvosRxTamponSize];
 uint8_t GPS_RX_Buffer[GPSRxBufferSize];
 uint8_t GPS_RX_Tampon[GPSRxTamponSize];
 
+uint8_t SD_Card_Write_Buffer[256];
+
 int GPSbufferoldpos=0;
 int GPSbuffernewpos=0;
 int TarvosRXbufferoldpos=0;
 int TarvosRXbuffernewpos=0;
 
+uint8_t commandtarvos[]={0x02,0x00,};
 
-extern uint16_t rawADCdata[5];
+
+uint16_t rawADCdata[5];
 float temp=0;
 float vrefint=0;
 float vbat=0;
 float current=0;
-int power=0;
-int vexternalsensor=0;
+float power=0;
+float vexternalsensor=0;
 
 /* USER CODE END PV */
 
@@ -136,21 +141,53 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
+  MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_ADC_Start_DMA(&hadc1,(uint16_t*)rawADCdata, 5);
+  HAL_ADC_Start_DMA(&hadc2,(uint16_t*)rawADCdata+4, 1);
+  HAL_TIM_Base_Start(&htim4);
+
+  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_15,GPIO_PIN_SET);
+
+
+  HAL_Delay(100);
+  HAL_UART_Abort(&huart1);
+  HAL_UART_Receive_DMA(&huart1, (uint8_t *)GPS_RX_Tampon, GPSRxTamponSize);
+
+  HAL_Delay(100);
+    HAL_UART_Abort(&hlpuart1);
+    HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Tampon, TarvosRxTamponSize);
+
+
+
+
   f_mount(&fs, "", 0);
 
- f_open(&fil, "first.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
+// f_open(&fil, "debut.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
+//
+// f_getfree("", &fre_clust, &pfs);
+//
+//  total = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
+//  free1 = (uint32_t)(fre_clust * pfs->csize * 0.5);
+//
+//  snprintf((uint8_t *) SD_Card_Write_Buffer,256,"adc1=%d,adc2=%d,adc3=%d,adc4=%d,adc5=%d\n\r",rawADCdata[0],rawADCdata[1],rawADCdata[2],rawADCdata[3],rawADCdata[4]);
+//
+//  f_puts("test", &fil);
+//  f_puts((uint8_t *) SD_Card_Write_Buffer, &fil);
+//  snprintf((uint8_t *) SD_Card_Write_Buffer,256,"adc1=%d,adc2=%d,adc3=%d,adc4=%d,adc5=%d\n\r",rawADCdata[0],rawADCdata[1],rawADCdata[2],rawADCdata[3],rawADCdata[4]);
+//  f_puts((uint8_t *) SD_Card_Write_Buffer, &fil);
+//  f_close(&fil);
+//  /* Unmount SDCARD */
+//  f_mount(NULL, "", 1);
 
- f_getfree("", &fre_clust, &pfs);
 
-  total = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
-  free1 = (uint32_t)(fre_clust * pfs->csize * 0.5);
+  int indexboucle=0;
+  int tarvosen=0;
+  f_open(&fil, "adc.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
 
-  f_puts("ta grosse mere la pute louis\n", &fil);
-  f_puts("va te faire enculer!!!", &fil);
-  f_close(&fil);
-  /* Unmount SDCARD */
-  f_mount(NULL, "", 1);
+  		   f_getfree("", &fre_clust, &pfs);
+
 
 
   /* USER CODE END 2 */
@@ -160,9 +197,50 @@ int main(void)
   while (1)
   {
 
-	  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_14);
-	  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_15);
-	  HAL_Delay(3000);
+
+	  if(indexboucle<=50){
+
+
+
+
+
+
+		  snprintf((uint8_t *) SD_Card_Write_Buffer,256,"adc1=%d,adc2=%d,adc3=%d,adc4=%d,adc5=%d\n\r",rawADCdata[0],rawADCdata[1],rawADCdata[2],rawADCdata[3],rawADCdata[4]);
+		   f_puts((uint8_t *) SD_Card_Write_Buffer, &fil);
+
+
+		  indexboucle++;
+		  HAL_Delay(100);
+	  }
+	  else{
+
+
+		  if(indexboucle<=51){
+			  f_close(&fil);
+		  f_mount(NULL, "", 1);
+		  indexboucle++;
+		  tarvosen=1;
+
+		  }
+
+		  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_14);
+		  HAL_Delay(500);
+
+
+
+
+	  }
+
+	  if(tarvosen==1){
+
+		  HAL_UART_Transmit(&hlpuart1,"caca",sizeof("caca"),100);
+		  HAL_Delay(1000);
+	  }
+
+
+
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
