@@ -89,7 +89,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Test sur servo via contrôle PWM
 - RPi5 : Génération d'une trame UART générée par STM32L476RG
 - Schéma fonctionnel de la V0 :
-<img src="./IMG/Schema Fct PCB v0.png" alt="TOP" style="float: left; width: 70%">
+<img src="./Docs/IMG/Schema Fct PCB v0.png" alt="TOP" style="float: left; width: 70%">
 
 ### Séance 7, 05/11/24
 - Modélisation 3D Cannette et PCB
@@ -119,7 +119,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Amélioration de la mise en forme code pour le 6 axes
 - Simulation matlab/python de la chute de la canette
 - Mécanique : Réalisation de la fermeture permettant aux 2 parties du CANSAT de se séparer.
-   <img src="./IMG/meca.png" alt="MECA" style="float: left; width: 45%">
+   <img src="./Docs/IMG/meca.png" alt="MECA" style="float: left; width: 45%">
 
 ### Séance 10, 26/11/24
 - Soudure des composants sur les sensors PCBs
@@ -128,11 +128,21 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 11, 03/12/24
 - 3e passage oral
+- Test du nouveau servomoteur
+- Début modélisation 3D de la station sol
+
+### Séance 12, 10/12/24
+- Modélisation Station sol 
+<img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
+
+- Test du système de vérrouillage sur la canette entière
+
+### Séance 13, 17/12/24
 
 ## Livrables
 ### PCB
-   <img src="./IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 45%">
-   <img src="./IMG/pcb v1 bottom.png" alt="BOT" style="float: right; width: 45%">
+   <img src="./Docs/IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 45%">
+   <img src="./Docs/IMG/pcb v1 bottom.png" alt="BOT" style="float: right; width: 45%">
 
   Mainboard, pcb 6 couches avec:
   * accelerometre
