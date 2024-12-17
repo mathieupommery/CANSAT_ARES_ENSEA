@@ -117,7 +117,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 9, 19/11/24
 - RPi5 : Écriture du code permettant la mise en forme des données UART reçues
 - Amélioration de la mise en forme code pour le 6 axes
-- Simulation matlab/python de la chute de la canette
+- Simulation Python de la chute de la canette
 - Mécanique : Réalisation de la fermeture permettant aux 2 parties du CANSAT de se séparer.
    <img src="./Docs/IMG/meca.png" alt="MECA" style="float: left; width: 45%">
 
@@ -130,12 +130,14 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - 3e passage oral
 - Test du nouveau servomoteur
 - Début modélisation 3D de la station sol
+- Changement dde la simulation python selon les conseils du jury.
 
 ### Séance 12, 10/12/24
 - Modélisation Station sol 
 <img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
 
 - Test du système de vérrouillage sur la canette entière
+- Soudage du PCB avec la partie accéléromètre
 
 ### Séance 13, 17/12/24
 
