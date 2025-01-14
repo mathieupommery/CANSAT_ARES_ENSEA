@@ -139,6 +139,14 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Test du système de vérrouillage sur la canette entière
 - Soudage du PCB avec la partie accéléromètre
 
+### Séance 13, 14/01/25
+- Réunion mise au point de l'avancée du projet et nouvelles tâches assignées 
+- Qt Hugo
+- Début de l'implémentation du code sur la mainboard
+- Capteur laser pour mesurer la distance
+   - Démontage d'un capteur de 50m pour l'adapter au CanSat
+
+
 ## Livrables
 ### PCB
    <img src="./Docs/IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 45%">
