@@ -139,8 +139,6 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Test du système de vérrouillage sur la canette entière
 - Soudage du PCB avec la partie accéléromètre
 
-### Séance 13, 17/12/24
-
 ## Livrables
 ### PCB
    <img src="./Docs/IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 45%">
