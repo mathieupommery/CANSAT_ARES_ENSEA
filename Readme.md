@@ -162,7 +162,9 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 14, 21/01/25
 - 3D station sol -> intégration dans le châssis des emplacements pour l'électronique
 - Recherches sur un télémètre laser viable pour le projet (Mission 3)
-
+- Réalisation d'un code pour envoyer une trame et en recevoir une en DMA sur le module de communication (Tarvos III)
+- Début de la création de la machine à état avec pour l'instant un échantillonnage des capteurs tous les 0.25s et de l'envoi des données toutes les secondes
+- Impression de la cannette avec les modifications faites
 
 ## Livrables
 ### PCB
