@@ -16,15 +16,28 @@
 
 ## Introduction
 - C'est un projet de 2e année d'école d'ingénieur en électronique à l'[ENSEA](https://www.ensea.fr/fr) à Cergy.
-- Le but étant de réaliser - pour la compétiton CanSat organisée par Planète science et le CNES - un satellite en forme de canette.
-- Celui-ci devra réaliser plusieurs missions lorsqu'il sera lâché d'un drone à envrion 120m de hauteur devant un jury.
-- Le projet consiste à faire la conception et la fabrication de ce satellite.
+- Le but étant de réaliser - pour la **compétiton CanSat** organisée par **Planète science et le CNES** - un satellite en forme de canette.
+- Celui-ci devra **réaliser plusieurs missions** lorsqu'il sera **lâché d'un drone à envrion 120m de hauteur devant un jury**.
+- Le projet consiste à faire la **conception** et la **fabrication** de ce satellite.
    - Partie électronique
    (PCB, capteurs, alimentation, station au sol,... )
    - Partie mécanique
    (Châssis, taille, matériau,... )
    - Partie résultats
    (Exploitation des mesures, les mettre en formes en développent ou non une interface, les présenter devant le jury,... )
+- Les 4 missions principales imposées en plus du réglement sont :
+   - **Mission 1 : Séparation & Transmission**
+      - Le CanSat doit se séparer en deux parties à une altitude comprise entre 40 et 60 mètres.​
+      - La chaîne de séparation doit résister à une traction de 30N.​
+      - Transmission : ​une des parties du CanSat doit transmettre l’altitude et une donnée sur l’atmosphère en temps réel vers une station sol.
+   - **Mission 2 : Rétrécissement​**
+      - Réduire le CanSat au format 33 cl vous permettra de multiplier votre score par 2 sur la partie technique.
+   - **Mission 3 : Instrumentation cassé​**
+      - Trouvez un moyen de déterminer votre altitude à partir d’un capteur autre qu’un altimètre barométrique ou un GPS.
+   - **Mission 4 : Distance​**
+      - Intégrez de quoi mesurer la distance entre les deux parties du CanSat et la communiquer par télémétrie vers la station sol.
+      - La Mission 3 n'intervient pas ici.
+
 
 ## Équipe
 
@@ -117,7 +130,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 9, 19/11/24
 - RPi5 : Écriture du code permettant la mise en forme des données UART reçues
 - Amélioration de la mise en forme code pour le 6 axes
-- Simulation matlab/python de la chute de la canette
+- Simulation Python de la chute de la canette
 - Mécanique : Réalisation de la fermeture permettant aux 2 parties du CANSAT de se séparer.
    <img src="./Docs/IMG/meca.png" alt="MECA" style="float: left; width: 45%">
 
@@ -130,14 +143,26 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - 3e passage oral
 - Test du nouveau servomoteur
 - Début modélisation 3D de la station sol
+- Changement dde la simulation python selon les conseils du jury.
 
 ### Séance 12, 10/12/24
 - Modélisation Station sol 
 <img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
 
 - Test du système de vérrouillage sur la canette entière
+- Soudage du PCB avec la partie accéléromètre
 
-### Séance 13, 17/12/24
+### Séance 13, 14/01/25
+- Réunion mise au point de l'avancée du projet et nouvelles tâches assignées 
+- Qt Hugo
+- Début de l'implémentation du code sur la mainboard
+- Capteur laser pour mesurer la distance
+   - Démontage d'un capteur de 50m pour l'adapter au CanSat
+
+### Séance 14, 21/01/25
+- 3D station sol -> intégration dans le châssis des emplacements pour l'électronique
+- Recherches sur un télémètre laser viable pour le projet (Mission 3)
+
 
 ## Livrables
 ### PCB
@@ -166,4 +191,4 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
                                                                                    
 
 ### Rendu final
-> Video ici de votre projet
+> Video ici 
