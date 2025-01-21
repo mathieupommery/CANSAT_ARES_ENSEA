@@ -25,7 +25,7 @@
    (Châssis, taille, matériau,... )
    - Partie résultats
    (Exploitation des mesures, les mettre en formes en développent ou non une interface, les présenter devant le jury,... )
-- Les 4 missions principales imposée en plus du réglement sont :
+- Les 4 missions principales imposées en plus du réglement sont :
    - **Mission 1 : Séparation & Transmission**
       - Le CanSat doit se séparer en deux parties à une altitude comprise entre 40 et 60 mètres.​
       - La chaîne de séparation doit résister à une traction de 30N.​
