@@ -146,6 +146,9 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Capteur laser pour mesurer la distance
    - Démontage d'un capteur de 50m pour l'adapter au CanSat
 
+### Séance 14, 21/01/25
+- 
+
 
 ## Livrables
 ### PCB
@@ -174,4 +177,4 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
                                                                                    
 
 ### Rendu final
-> Video ici de votre projet
+> Video ici 

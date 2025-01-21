@@ -119,8 +119,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  check_device_communication();
-  Init_HighPerf_Mode_6_axis();
+  
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -130,6 +129,8 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  check_device_communication();
+  Init_HighPerf_Mode_6_axis();
   /* USER CODE END 2 */
 
   /* Infinite loop */
