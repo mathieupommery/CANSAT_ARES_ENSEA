@@ -16,27 +16,27 @@
 
 ## Introduction
 - C'est un projet de 2e année d'école d'ingénieur en électronique à l'[ENSEA](https://www.ensea.fr/fr) à Cergy.
-- Le but étant de réaliser - pour la compétiton CanSat organisée par Planète science et le CNES - un satellite en forme de canette.
-- Celui-ci devra réaliser plusieurs missions lorsqu'il sera lâché d'un drone à envrion 120m de hauteur devant un jury.
-- Le projet consiste à faire la conception et la fabrication de ce satellite.
+- Le but étant de réaliser - pour la **compétiton CanSat** organisée par **Planète science et le CNES** - un satellite en forme de canette.
+- Celui-ci devra **réaliser plusieurs missions** lorsqu'il sera **lâché d'un drone à envrion 120m de hauteur devant un jury**.
+- Le projet consiste à faire la **conception** et la **fabrication** de ce satellite.
    - Partie électronique
    (PCB, capteurs, alimentation, station au sol,... )
    - Partie mécanique
    (Châssis, taille, matériau,... )
    - Partie résultats
    (Exploitation des mesures, les mettre en formes en développent ou non une interface, les présenter devant le jury,... )
-- Les 4 missions princiaples imposée en plus réglement sont :
-   - Mission 1 : Séparation & Transmission ​
-   Le CanSat doit se séparer en deux parties à une altitude comprise entre 40 et 60 mètres.​
-   La chaîne de séparation doit résister à une traction de 30N.​
-   Transmission : ​une des parties du CanSat doit transmettre l’altitude et une donnée sur l’atmosphère en temps réel vers une station sol.
-   - Mission 2 : Rétrécissement​
-   Réduire le CanSat au format 33 cl vous permettra de multiplier votre score par 2 sur la partie technique.
-   - Mission 3 : Instrumentation cassé​
-   Trouvez un moyen de déterminer votre altitude à partir d’un capteur autre qu’un altimètre barométrique ou un GPS.
-   - Mission 4 : Distance​
-   Intégrez de quoi mesurer la distance entre les deux parties du CanSat et la communiquer par télémétrie vers la station sol.
-   (La Mission 3 n'intervient pas ici)
+- Les 4 missions principales imposée en plus du réglement sont :
+   - **Mission 1 : Séparation & Transmission**
+      - Le CanSat doit se séparer en deux parties à une altitude comprise entre 40 et 60 mètres.​
+      - La chaîne de séparation doit résister à une traction de 30N.​
+      - Transmission : ​une des parties du CanSat doit transmettre l’altitude et une donnée sur l’atmosphère en temps réel vers une station sol.
+   - **Mission 2 : Rétrécissement​**
+      - Réduire le CanSat au format 33 cl vous permettra de multiplier votre score par 2 sur la partie technique.
+   - **Mission 3 : Instrumentation cassé​**
+      - Trouvez un moyen de déterminer votre altitude à partir d’un capteur autre qu’un altimètre barométrique ou un GPS.
+   - **Mission 4 : Distance​**
+      - Intégrez de quoi mesurer la distance entre les deux parties du CanSat et la communiquer par télémétrie vers la station sol.
+      - La Mission 3 n'intervient pas ici.
 
 
 ## Équipe
