@@ -25,6 +25,19 @@
    (Châssis, taille, matériau,... )
    - Partie résultats
    (Exploitation des mesures, les mettre en formes en développent ou non une interface, les présenter devant le jury,... )
+- Les 4 missions princiaples imposée en plus réglement sont :
+   - Mission 1 : Séparation & Transmission ​
+   Le CanSat doit se séparer en deux parties à une altitude comprise entre 40 et 60 mètres.​
+   La chaîne de séparation doit résister à une traction de 30N.​
+   Transmission : ​une des parties du CanSat doit transmettre l’altitude et une donnée sur l’atmosphère en temps réel vers une station sol.
+   - Mission 2 : Rétrécissement​
+   Réduire le CanSat au format 33 cl vous permettra de multiplier votre score par 2 sur la partie technique.
+   - Mission 3 : Instrumentation cassé​
+   Trouvez un moyen de déterminer votre altitude à partir d’un capteur autre qu’un altimètre barométrique ou un GPS.
+   - Mission 4 : Distance​
+   Intégrez de quoi mesurer la distance entre les deux parties du CanSat et la communiquer par télémétrie vers la station sol.
+   (La Mission 3 n'intervient pas ici)
+
 
 ## Équipe
 
@@ -147,7 +160,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Démontage d'un capteur de 50m pour l'adapter au CanSat
 
 ### Séance 14, 21/01/25
-- 
+- 3D station sol -> intégration dans le châssis des emplacements pour l'électronique
+- Recherches sur un télémètre laser viable pour le projet (Mission 3)
 
 
 ## Livrables
