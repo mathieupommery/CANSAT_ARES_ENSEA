@@ -160,6 +160,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Démontage d'un capteur de 50m pour l'adapter au CanSat
 
 ### Séance 14, 21/01/25
+<img src="./Docs/IMG/Case_v20.png" alt="TOP" style="float: left; width: 45%">
+<img src="./Docs/IMG/Case_v20_int.png" alt="BOT" style="float: left; width: 45%">
 - 3D station sol -> intégration dans le châssis des emplacements pour l'électronique
 - Recherches sur un télémètre laser viable pour le projet (Mission 3)
 - Réalisation d'un code pour envoyer une trame et en recevoir une en DMA sur le module de communication (Tarvos III)
