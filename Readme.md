@@ -175,8 +175,12 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ## Livrables
 ### PCB
-   <img src="./Docs/IMG/pcb v1 top.png" alt="TOP" style="float: left; width: 45%">
-   <img src="./Docs/IMG/pcb v1 bottom.png" alt="BOT" style="float: right; width: 45%">
+<div style="display: flex; justify-content: space-between;">
+
+<img src="./Docs/IMG/pcb v1 top.png" alt="TOP PCB" width="45%"/>
+<img src="./Docs/IMG/pcb v1 bottom.png" alt="BOTTOM PCB" width="45%"/>
+
+</div>
 
   Mainboard, pcb 6 couches avec:
   * accelerometre
