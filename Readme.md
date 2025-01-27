@@ -58,7 +58,7 @@
 ## Journal de bord
 
 ### Présentation orale
-- Vous pouvez trouver ici le lien en consultation de l'ensemble de nos [présentation orales](https://enseafr-my.sharepoint.com/:p:/g/personal/nelven_thebault_ensea_fr/EQFq_InugDZNr_ZuubaXSGAB7BGOFKGy7X5Re6X6XMLlZA?e=Kv3kp6)
+- Vous pouvez trouver ici le lien en consultation de l'ensemble de nos [présentations orales](https://enseafr-my.sharepoint.com/:p:/g/personal/nelven_thebault_ensea_fr/EQFq_InugDZNr_ZuubaXSGAB7BGOFKGy7X5Re6X6XMLlZA?e=Kv3kp6)
 
 ### Objectifs
 
