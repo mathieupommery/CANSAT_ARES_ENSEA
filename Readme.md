@@ -57,6 +57,9 @@
 
 ## Journal de bord
 
+### Présentation orale
+- Vous pouvez trouver ici le lien en consultation de l'ensemble de nos [présentation orales](https://enseafr-my.sharepoint.com/:p:/g/personal/nelven_thebault_ensea_fr/EQFq_InugDZNr_ZuubaXSGAB7BGOFKGy7X5Re6X6XMLlZA?e=Kv3kp6)
+
 ### Objectifs
 
 | Date       | Objectif                                                                 | Check      |
@@ -172,6 +175,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Réalisation d'un code pour envoyer une trame et en recevoir une en DMA sur le module de communication (Tarvos III)
 - Début de la création de la machine à état avec pour l'instant un échantillonnage des capteurs tous les 0.25s et de l'envoi des données toutes les secondes
 - Impression de la cannette avec les modifications faites
+
+### Séance 15, 28/01/25
+
+- Présentation orale
 
 ## Livrables
 ### PCB
