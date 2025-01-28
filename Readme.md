@@ -179,6 +179,23 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 15, 28/01/25
 
 - Présentation orale
+   - Retours :
+      - Faire plus concis (20min max)
+      - Attention à la visibilité du code et en réduire la quantité montrée
+      - Respecter la table des matières
+      - Changer la police
+   - Objectifs pour le prochain oral :
+      - Commencer traitement des données du 6 axes en plus du Radio/GPS 
+      - Imprimer des parties de la station sol
+      - Tester la vitesse de chute et la résistance du CanSat
+      - Finir la soudure de la mainboard
+      - Refaire carte GPS plus carte ecran led.
+      - Tests avec la Tarvos III & Raspberry Pi 5
+      - Avoir fait un choix pour le capteur de distance et l’avoir commandé (si besoin)
+      - Faire fonctionner le baromètre
+- Station sol
+   - Pour être près à imprimer, il faut :
+      - Baisser l'épaisseur des murs 
 
 ## Livrables
 ### PCB
