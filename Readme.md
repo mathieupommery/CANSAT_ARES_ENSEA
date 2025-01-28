@@ -194,8 +194,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
       - Avoir fait un choix pour le capteur de distance et l’avoir commandé (si besoin)
       - Faire fonctionner le baromètre
 - Station sol
-   - Pour être près à imprimer, il faut :
-      - Baisser l'épaisseur des murs 
+   - L'épaisseur des murs a été baissé
+   - Prêt à être imprimé
 
 ## Livrables
 ### PCB
