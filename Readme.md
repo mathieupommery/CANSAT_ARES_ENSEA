@@ -197,6 +197,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Station sol
    - L'épaisseur des murs a été baissé
    - Prêt à être imprimé
+<div style="display: flex; justify-content: space-between;">
+
+<img src="./Docs/IMG/case v26 exterieur.jpg" alt="exterior" width="45%"/>
+<img src="./Docs/IMG/case v26 interieur.jpg" alt="interior" width="45%"/>
 
 ## Livrables
 ### PCB
