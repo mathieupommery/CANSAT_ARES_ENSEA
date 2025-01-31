@@ -66,6 +66,7 @@
 |------------|--------------------------------------------------------------------------|------------|
 | 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches       | ✅ Terminé |
 | 23-10-2024 | Schématique et routage fini → Commander le PCB V0                        | ✅ Terminé |
+| 01-04-2025 | Livrable : Prototype CanSat Fonctionnel + Git final                      | 🔵 En cours|
 
 
 ### Séance 1, 17/09/24
