@@ -345,22 +345,22 @@ void TIM2_IRQHandler(void)
   /* USER CODE END TIM2_IRQn 0 */
   HAL_TIM_IRQHandler(&htim2);
   /* USER CODE BEGIN TIM2_IRQn 1 */
-//  if(indexsdcard<=5000){
-//  Read_sensor_data();
-//  snprintf((uint8_t *) SD_Card_Write_Buffer,100,"%d,%d,%d,%d,%d,%d \n",buffer6axe[0],buffer6axe[1],buffer6axe[2],buffer6axe[3],buffer6axe[4],buffer6axe[5]);
-//  f_puts((uint8_t *) SD_Card_Write_Buffer, &fil);
-//  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_14);
-//  indexsdcard++;
-//  }
-//
-//  if(indexsdcard==5000){
-//	  f_close(&fil);
-//	  f_mount(NULL, "", 1);
-//	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_14,GPIO_PIN_RESET);
-//
-//
-//    indexsdcard++;
-//    }
+  if(indexsdcard<=5000){
+  Read_sensor_data();
+  snprintf((uint8_t *) SD_Card_Write_Buffer,100,"%d,%d,%d,%d,%d,%d,%d \n",indexsdcard,buffer6axe[0],buffer6axe[1],buffer6axe[2],buffer6axe[3],buffer6axe[4],buffer6axe[5]);
+  f_puts((uint8_t *) SD_Card_Write_Buffer, &fil);
+  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_14);
+  indexsdcard++;
+  }
+
+  if(indexsdcard==5000){
+	  f_close(&fil);
+	  f_mount(NULL, "", 1);
+	  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_14,GPIO_PIN_RESET);
+
+
+    indexsdcard++;
+    }
 
 
   /* USER CODE END TIM2_IRQn 1 */

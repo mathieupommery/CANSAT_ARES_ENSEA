@@ -203,8 +203,9 @@ int main(void)
 
   int indexboucle=0;
   int tarvosen=0;
-  f_open(&fil, "6axe.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
+  f_open(&fil, "test.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
   f_getfree("", &fre_clust, &pfs);
+  f_puts("test\n", &fil);
 
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_Base_Start_IT(&htim4);
