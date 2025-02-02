@@ -223,7 +223,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 
    ## boitier et design exterieur:
-   ![CANSAT v60 GIF Feb 02 2025 (1)](https://github.com/user-attachments/assets/119db2c7-f37b-4ee2-b364-fa650764cbdd)
+   ![Video to GIF Animation](https://github.com/user-attachments/assets/e469f96b-9811-490a-bc3c-5a03ff35372c)
 
 
 
