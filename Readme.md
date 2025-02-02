@@ -223,7 +223,6 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 
    ## boitier et design exterieur:
-</div>
 ![Video to GIF Animation](https://github.com/user-attachments/assets/289c33de-5aa6-4a00-9a96-228ff6e49a7c)
 
    
