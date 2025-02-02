@@ -228,7 +228,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
         v1_
         top.png" alt="TOP PCB" style="width: 45%;">
     <video style="width: 45%;" controls>
-        <source src="./impr3d/Video to GIF Animation.gif" type="video/mp4">
+        <source src="./impr3d/CANSAT v60.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
