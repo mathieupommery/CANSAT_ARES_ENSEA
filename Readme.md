@@ -223,6 +223,15 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 
    ## boitier et design exterieur:
+   <div style="display: flex; justify-content: space-between; align-items: center;">
+    <img src="./Docs/IMG/pcb_v1_top.png" alt="TOP PCB" style="width: 45%;">
+    <video style="width: 45%;" controls>
+        <source src="https://github.com/user-attachments/assets/e469f96b-9811-490a-bc3c-5a03ff35372c" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+   
+
 
 
  
