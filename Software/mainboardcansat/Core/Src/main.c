@@ -85,6 +85,8 @@ float current=0;
 float power=0;
 float vexternalsensor=0;
 
+extern ADC_HandleTypeDef hadc1;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -141,11 +143,10 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
-  MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_ADC_Start_DMA(&hadc1,(uint16_t*)rawADCdata, 5);
-  HAL_ADC_Start_DMA(&hadc2,(uint16_t*)rawADCdata+4, 1);
+//  HAL_ADC_Start_DMA(&hadc2,(uint16_t*)rawADCdata+4, 1);
   HAL_TIM_Base_Start(&htim4);
 
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_15,GPIO_PIN_SET);

@@ -58,7 +58,7 @@
 ## Journal de bord
 
 ### Présentation orale
-- Vous pouvez trouver ici le lien en consultation de l'ensemble de nos [présentation orales](https://enseafr-my.sharepoint.com/:p:/g/personal/nelven_thebault_ensea_fr/EQFq_InugDZNr_ZuubaXSGAB7BGOFKGy7X5Re6X6XMLlZA?e=Kv3kp6)
+- Vous pouvez trouver ici le lien en consultation de l'ensemble de nos [présentations orales](https://enseafr-my.sharepoint.com/:p:/g/personal/nelven_thebault_ensea_fr/EQFq_InugDZNr_ZuubaXSGAB7BGOFKGy7X5Re6X6XMLlZA?e=Kv3kp6)
 
 ### Objectifs
 
@@ -66,6 +66,7 @@
 |------------|--------------------------------------------------------------------------|------------|
 | 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches       | ✅ Terminé |
 | 23-10-2024 | Schématique et routage fini → Commander le PCB V0                        | ✅ Terminé |
+| 01-04-2025 | Livrable : Prototype CanSat Fonctionnel + Git final                      | 🔵 En cours|
 
 
 ### Séance 1, 17/09/24
@@ -179,6 +180,27 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 15, 28/01/25
 
 - Présentation orale
+   - Retours :
+      - Faire plus concis (20min max)
+      - Attention à la visibilité du code et en réduire la quantité montrée
+      - Respecter la table des matières
+      - Changer la police
+   - Objectifs pour le prochain oral :
+      - Commencer traitement des données du 6 axes en plus du Radio/GPS 
+      - Imprimer des parties de la station sol
+      - Tester la vitesse de chute et la résistance du CanSat
+      - Finir la soudure de la mainboard
+      - Refaire carte GPS plus carte ecran led.
+      - Tests avec la Tarvos III & Raspberry Pi 5
+      - Avoir fait un choix pour le capteur de distance et l’avoir commandé (si besoin)
+      - Faire fonctionner le baromètre
+- Station sol
+   - L'épaisseur des murs a été baissé
+   - Prêt à être imprimé
+<div style="display: flex; justify-content: space-between;">
+
+<img src="./Docs/IMG/case v26 exterieur.jpg" alt="exterior" width="45%"/>
+<img src="./Docs/IMG/case v26 interieur.jpg" alt="interior" width="45%"/>
 
 ## Livrables
 ### PCB
