@@ -205,7 +205,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 <img src="./Docs/IMG/case v26 interieur.jpg" alt="interior" width="45%"/>
 
 ### Séance 16, 04/02/25
-
+- Impression de la station sol + CanSat détaillé
 
 ## Livrables
 ### PCB
