@@ -197,10 +197,15 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Station sol
    - L'épaisseur des murs a été baissé
    - Prêt à être imprimé
+- Teste de la mesure de distance via RSSI intégré au moduleradio Tharvos III
+   - On abandone donc l'idée du capteur laser pour mesurer la distance
 <div style="display: flex; justify-content: space-between;">
 
 <img src="./Docs/IMG/case v26 exterieur.jpg" alt="exterior" width="45%"/>
 <img src="./Docs/IMG/case v26 interieur.jpg" alt="interior" width="45%"/>
+
+### Séance 16, 04/02/25
+
 
 ## Livrables
 ### PCB
