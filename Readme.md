@@ -206,6 +206,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 16, 04/02/25
 - Impression de la station sol + CanSat détaillé
+- Nous continuons à implémenter le code sur notre mainboard
+- Préparation pour première démo (partiellement fonctionnelle) pour
+   - Portes ouvertes de l'ENSEA le 08/02/25
+   - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours
 
 ## Livrables
 ### PCB
