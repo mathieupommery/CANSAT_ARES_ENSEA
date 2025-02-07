@@ -209,7 +209,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Nous continuons à implémenter le code sur notre mainboard
 - Préparation pour première démo (partiellement fonctionnelle) pour
    - Portes ouvertes de l'ENSEA le 08/02/25
-   - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours
+   - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours le 09/02/25
 
 ## Livrables
 ### PCB
