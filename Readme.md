@@ -197,10 +197,15 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Station sol
    - L'épaisseur des murs a été baissé
    - Prêt à être imprimé
+- Teste de la mesure de distance via RSSI intégré au moduleradio Tharvos III
+   - On abandone donc l'idée du capteur laser pour mesurer la distance
 <div style="display: flex; justify-content: space-between;">
 
 <img src="./Docs/IMG/case v26 exterieur.jpg" alt="exterior" width="45%"/>
 <img src="./Docs/IMG/case v26 interieur.jpg" alt="interior" width="45%"/>
+
+### Séance 16, 04/02/25
+- Impression de la station sol + CanSat détaillé
 
 ## Livrables
 ### PCB
@@ -223,13 +228,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 
    ## boitier et design exterieur:
-   <div style="display: flex; justify-content: space-between; align-items: center;">
-    <img src="./Docs/IMG/pcb_v1_top.png" alt="TOP PCB" style="width: 45%;">
-    <video style="width: 45%;" controls>
-        <source src="https://github.com/user-attachments/assets/e469f96b-9811-490a-bc3c-5a03ff35372c" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+![Video to GIF Animation](https://github.com/user-attachments/assets/289c33de-5aa6-4a00-9a96-228ff6e49a7c)
+
    
 
 

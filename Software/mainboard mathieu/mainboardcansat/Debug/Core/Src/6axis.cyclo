@@ -1,3 +1,0 @@
-../Core/Src/6axis.c:44:6:Init_HighPerf_Mode_6_axis	3
-../Core/Src/6axis.c:90:9:read_sensor_axis	3
-../Core/Src/6axis.c:112:6:Read_sensor_data	3
