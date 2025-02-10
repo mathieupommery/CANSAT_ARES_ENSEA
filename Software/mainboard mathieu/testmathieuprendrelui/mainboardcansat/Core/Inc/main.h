@@ -61,6 +61,8 @@ void conversion_char(char *envoi /*,uint16_t accel_data,uint16_t gyro_data,uint8
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define BAROEXTI_Pin GPIO_PIN_5
+#define BAROEXTI_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 #define GPSRxBufferSize 512
