@@ -11,5 +11,7 @@
 #include <stdio.h>
 void rote(int,int);
 void duty_cycle(int,int);
+void ouverture_canette(void);
+void fermeture_canette(void);
 
 #endif /* INC_SERVOENDA_H_ */
