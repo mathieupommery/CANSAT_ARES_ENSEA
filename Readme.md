@@ -213,7 +213,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 17, 11/02/25
 - Commande parachute et connecteurs
-- 
+- MAJ du modèle 3D de la station sol
+- Soudures pour le bouton et l'afficheur de la batterie pour la station sol
 
 ## Livrables
 ### PCB
