@@ -211,6 +211,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Portes ouvertes de l'ENSEA le 08/02/25
    - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours le 09/02/25
 
+### Séance 17, 11/02/25
+- Commande parachute et connecteurs
+- 
+
 ## Livrables
 ### PCB
 <div style="display: flex; justify-content: space-between;">
