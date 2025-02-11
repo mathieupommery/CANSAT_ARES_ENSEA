@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP BM03B-SRSS-TB
+D CONN HEADER SMD 3POS 1MM
+K
+F https://datasheet.datasheetarchive.com/originals/dk/DKDS-2/32971.pdf
+$ENDCMP
+#
+#End Doc Library
