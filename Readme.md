@@ -210,6 +210,11 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Préparation pour première démo (partiellement fonctionnelle) pour
    - Portes ouvertes de l'ENSEA le 08/02/25
    - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours le 09/02/25
+### Séance 15, 28/01/25
+
+-Nous cherchons des parachutes coherent pour nos deux parties, donc des parachutes qui permettent une vitesse de descenbte comprise entre 2m/s et 15m/s, il nous en faut donc deux, un pour le tout, un autre pour le bas, d'un poids de respectivement 300gr et 150gr, on choisit donc les parachutes en 28' 14' et 18' afin de fair edes test:
+https://www.sierrafoxhobbies.com/fr/parachute/2301-parachute-cansat-xchute-cs.html
+
 
 ### Séance 17, 11/02/25
 - Commande parachute et connecteurs
