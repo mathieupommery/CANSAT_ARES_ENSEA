@@ -3450,6 +3450,12 @@
 		(uuid "6090a944-00d5-4cb8-9b77-64bd5a615fcf")
 	)
 	(junction
+		(at 179.07 127)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6319aa74-c5ed-450a-b0c6-8f0cb66c81c9")
+	)
+	(junction
 		(at 100.33 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3514,6 +3520,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a7d72748-bc55-4d19-a35b-ead42389938f")
+	)
+	(junction
+		(at 170.18 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a875f6da-aec7-4334-ab82-8fc0343352f0")
 	)
 	(junction
 		(at 227.33 34.29)
@@ -3611,6 +3623,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 132.08) (xy 179.07 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00625e2d-7743-4253-b438-42bec190ae1a")
+	)
+	(wire
+		(pts
 			(xy 247.65 55.88) (xy 247.65 49.53)
 		)
 		(stroke
@@ -3648,6 +3670,16 @@
 			(type default)
 		)
 		(uuid "0870de58-5593-444e-b6c7-7d562f8d0672")
+	)
+	(wire
+		(pts
+			(xy 179.07 127) (xy 186.69 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08b23311-e1c5-4998-9133-cdc6b3f21f52")
 	)
 	(wire
 		(pts
@@ -4711,6 +4743,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 127) (xy 179.07 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e416239f-15c7-46b7-a988-ed3c76719558")
+	)
+	(wire
+		(pts
 			(xy 38.1 48.26) (xy 34.29 48.26)
 		)
 		(stroke
@@ -4952,28 +4994,6 @@
 			)
 		)
 		(uuid "e4b06bc0-a380-4539-9635-b386c779286c")
-	)
-	(global_label "VIN"
-		(shape input)
-		(at 140.97 133.35 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "03e0b735-3dd6-4722-b1ef-13725cff352a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 140.97 127.3409 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
 	)
 	(global_label "SWDIO"
 		(shape input)
@@ -5283,6 +5303,28 @@
 			)
 		)
 	)
+	(global_label "EXTI0"
+		(shape input)
+		(at 140.97 133.35 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "72ad8bc1-acab-4395-a5e4-c6f781c1c75f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 140.97 125.2244 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "VIN"
 		(shape input)
 		(at 163.83 30.48 180)
@@ -5384,6 +5426,28 @@
 		(uuid "9e702770-68c8-4781-b2df-5ad1b4b6cfcd")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 134.2791 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "EXTI0"
+		(shape input)
+		(at 186.69 127 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bf9af044-7e82-4e5e-bb76-1af2a74cf23d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 194.8156 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7194,6 +7258,72 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 170.18 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5300b764-55a2-41a8-ae17-27f1c40eaa98")
+		(property "Reference" "#PWR064"
+			(at 170.18 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 170.18 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 170.18 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 170.18 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 170.18 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6473b2aa-fa0c-40ad-9e9f-356edca17624")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "#PWR064")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 130.81 161.29 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7674,6 +7804,76 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "#PWR061")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 179.07 129.54 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6c6e57d0-24d5-4c35-b75a-7d5c81fafe78")
+		(property "Reference" "C22"
+			(at 181.61 128.2635 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 181.61 130.8035 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+			(at 179.07 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 179.07 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 179.07 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "741ef423-e508-42d4-96b3-a7e21baa3b8b")
+		)
+		(pin "2"
+			(uuid "83a17d52-178f-4ba0-90d6-f71450b4a7c5")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "C22")
 					(unit 1)
 				)
 			)
@@ -9109,6 +9309,76 @@
 			(project "cansatperso"
 				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
 					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 170.18 129.54 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bf141c6a-a4a6-4431-b83b-6c2582c13387")
+		(property "Reference" "R28"
+			(at 172.72 128.2699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 172.72 130.8099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+			(at 170.18 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 170.18 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77f84f84-2147-4d18-9436-9a92cfb05f83")
+		)
+		(pin "2"
+			(uuid "54336d2b-cb68-4f8c-a47d-e18ce5edf319")
+		)
+		(instances
+			(project "cansatperso"
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "R28")
 					(unit 1)
 				)
 			)

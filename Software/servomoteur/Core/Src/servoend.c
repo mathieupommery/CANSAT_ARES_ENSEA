@@ -21,3 +21,9 @@ void rote(int deg,int arr_value){
 void duty_cycle(int alpha, int arr_value){
 	__HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,alpha*arr_value/100);
 }
+void ouverture_canette(){
+	rote(0,arr_value);
+}
+void fermeture_canette(){
+	rote(160,arr_value);
+}
