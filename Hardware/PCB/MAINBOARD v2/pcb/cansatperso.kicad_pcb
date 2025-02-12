@@ -27893,6 +27893,46 @@
 		)
 	)
 	(zone
+		(net 37)
+		(net_name "LPUART1_TX_RADIO")
+		(layer "F.Cu")
+		(uuid "3a895746-a285-41b0-8474-e75e34d8dc9f")
+		(name "$teardrop_padvia$")
+		(hatch full 0.1)
+		(priority 30000)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(filled_areas_thickness no)
+		(fill yes
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 1)
+			(island_area_min 10)
+		)
+		(polygon
+			(pts
+				(xy 186.930191 90.424125) (xy 186.824125 90.530191) (xy 186.975224 90.836537) (xy 187.160707 90.760707)
+				(xy 187.236537 90.575224)
+			)
+		)
+		(filled_polygon
+			(layer "F.Cu")
+			(pts
+				(xy 186.937707 90.427832) (xy 187.226755 90.570399) (xy 187.232658 90.577131) (xy 187.232409 90.585319)
+				(xy 187.162564 90.756162) (xy 187.156261 90.762523) (xy 187.156162 90.762564) (xy 186.985319 90.832409)
+				(xy 186.976364 90.832368) (xy 186.970399 90.826755) (xy 186.827832 90.537708) (xy 186.827247 90.528775)
+				(xy 186.830051 90.524264) (xy 186.924263 90.430052) (xy 186.932535 90.426626)
+			)
+		)
+	)
+	(zone
 		(net 0)
 		(net_name "")
 		(layer "F.Cu")
@@ -28471,46 +28511,6 @@
 				(xy 193.312663 88.768656) (xy 193.344065 88.764601) (xy 193.392973 88.753129) (xy 193.459992 88.718648)
 				(xy 193.459992 88.718647) (xy 193.466748 88.715172) (xy 193.467979 88.717566) (xy 193.522314 88.700043)
 				(xy 193.525585 88.7) (xy 194.075332 88.7)
-			)
-		)
-	)
-	(zone
-		(net 37)
-		(net_name "LPUART1_TX_RADIO")
-		(layer "F.Cu")
-		(uuid "bae48635-83ad-4a97-b9f9-1fba49d1485f")
-		(name "$teardrop_padvia$")
-		(hatch full 0.1)
-		(priority 30000)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(filled_areas_thickness no)
-		(fill yes
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-			(island_removal_mode 1)
-			(island_area_min 10)
-		)
-		(polygon
-			(pts
-				(xy 186.930191 90.424125) (xy 186.824125 90.530191) (xy 186.975224 90.836537) (xy 187.160707 90.760707)
-				(xy 187.236537 90.575224)
-			)
-		)
-		(filled_polygon
-			(layer "F.Cu")
-			(pts
-				(xy 186.937707 90.427832) (xy 187.226755 90.570399) (xy 187.232658 90.577131) (xy 187.232409 90.585319)
-				(xy 187.162564 90.756162) (xy 187.156261 90.762523) (xy 187.156162 90.762564) (xy 186.985319 90.832409)
-				(xy 186.976364 90.832368) (xy 186.970399 90.826755) (xy 186.827832 90.537708) (xy 186.827247 90.528775)
-				(xy 186.830051 90.524264) (xy 186.924263 90.430052) (xy 186.932535 90.426626)
 			)
 		)
 	)
@@ -29347,10 +29347,38 @@
 		)
 	)
 	(zone
+		(net 0)
+		(net_name "")
+		(layer "In1.Cu")
+		(uuid "66330e86-c8f8-4955-90bf-b01384056185")
+		(hatch edge 0.5)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(filled_areas_thickness no)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour not_allowed)
+			(footprints allowed)
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+		)
+		(polygon
+			(pts
+				(xy 190.02 86.24) (xy 190.02 87.36) (xy 187.97 87.36) (xy 187.91 87.3) (xy 187.91 86.44) (xy 188.11 86.24)
+			)
+		)
+	)
+	(zone
 		(net 37)
 		(net_name "LPUART1_TX_RADIO")
 		(layer "In1.Cu")
-		(uuid "33ca3973-8078-475b-a14f-b8b9f0ac5243")
+		(uuid "d6e82466-8226-45af-9d75-4b8ffd2e8ee4")
 		(name "$teardrop_padvia$")
 		(hatch full 0.1)
 		(priority 30000)
@@ -29383,34 +29411,6 @@
 				(xy 187.349601 90.826754) (xy 187.342868 90.832658) (xy 187.33468 90.832409) (xy 187.163837 90.762564)
 				(xy 187.157476 90.756261) (xy 187.157435 90.756162) (xy 187.08759 90.585319) (xy 187.087631 90.576364)
 				(xy 187.093242 90.5704) (xy 187.382291 90.427832) (xy 187.391224 90.427247)
-			)
-		)
-	)
-	(zone
-		(net 0)
-		(net_name "")
-		(layer "In1.Cu")
-		(uuid "66330e86-c8f8-4955-90bf-b01384056185")
-		(hatch edge 0.5)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(filled_areas_thickness no)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-		)
-		(polygon
-			(pts
-				(xy 190.02 86.24) (xy 190.02 87.36) (xy 187.97 87.36) (xy 187.91 87.3) (xy 187.91 86.44) (xy 188.11 86.24)
 			)
 		)
 	)
