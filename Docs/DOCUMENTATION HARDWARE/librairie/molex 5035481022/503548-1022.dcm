@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 503548-1022
+D SlimStack Board-to-Board Connector, 0.40mm Pitch, HRF (High Retention Force) Series, Receptacle, 0.70mm Mated Height, 2.60 Mated Width, 10 Circuits
+K
+F https://www.molex.com/pdm_docs/sd/5035481022_sd.pdf
+$ENDCMP
+#
+#End Doc Library

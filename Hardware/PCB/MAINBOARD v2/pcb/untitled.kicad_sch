@@ -2683,6 +2683,141 @@
 				)
 			)
 		)
+		(symbol "jst_librairie:bm03b"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "bm03b_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -5.08)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "bm03b_1_1"
+				(pin free line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin free line
+					(at -7.62 -1.27 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin free line
+					(at -7.62 -3.81 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin free line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(name "MP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_numbers hide)
@@ -3115,231 +3250,6 @@
 				)
 			)
 		)
-		(symbol "sm03B:BM03B-SRSS-TB"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 19.05 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Value" "BM03B-SRSS-TB"
-				(at 19.05 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "BM03BSRSSTB"
-				(at 19.05 -94.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/dk/DKDS-2/32971.pdf"
-				(at 19.05 -194.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Description" "CONN HEADER SMD 3POS 1MM"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Height" "4.25"
-				(at 19.05 -394.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Name" "JST (JAPAN SOLDERLESS TERMINALS)"
-				(at 19.05 -494.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Part_Number" "BM03B-SRSS-TB"
-				(at 19.05 -594.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Part Number" "N/A"
-				(at 19.05 -694.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/JST/BM03B-SRSS-TB?qs=cIziFXvMxOVukqkiHi0bdg%3D%3D"
-				(at 19.05 -794.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Arrow Part Number" ""
-				(at 19.05 -894.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Arrow Price/Stock" ""
-				(at 19.05 -994.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(symbol "BM03B-SRSS-TB_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 17.78 -7.62)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 22.86 -5.08 180)
-					(length 5.08)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 22.86 -2.54 180)
-					(length 5.08)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 22.86 0 180)
-					(length 5.08)
-					(name "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "MP1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MP1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 0 0)
-					(length 5.08)
-					(name "MP2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "MP2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 	)
 	(junction
 		(at 68.58 53.34)
@@ -3394,12 +3304,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1d8fe799-c369-4584-8764-20724a836f63")
-	)
-	(junction
-		(at 160.02 105.41)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2b3e6396-46e2-4336-a2e0-bc7c9427f5ec")
 	)
 	(junction
 		(at 237.49 123.19)
@@ -3733,16 +3637,6 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 105.41) (xy 163.83 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "10b88fbd-258e-4bc5-b629-f514bcc4e111")
-	)
-	(wire
-		(pts
 			(xy 132.08 54.61) (xy 133.35 54.61)
 		)
 		(stroke
@@ -3973,16 +3867,6 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 102.87) (xy 160.02 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "583543c8-1119-4874-8575-f23daf7e09a3")
-	)
-	(wire
-		(pts
 			(xy 203.2 55.88) (xy 209.55 55.88)
 		)
 		(stroke
@@ -4020,16 +3904,6 @@
 			(type default)
 		)
 		(uuid "5bb4794e-1905-4fe7-b3a6-1832af442de3")
-	)
-	(wire
-		(pts
-			(xy 160.02 102.87) (xy 160.02 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f782ea7-767b-47da-84bb-642dc72cee8a")
 	)
 	(wire
 		(pts
@@ -4323,6 +4197,16 @@
 	)
 	(wire
 		(pts
+			(xy 184.15 102.87) (xy 187.96 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c4dfb23-2e2e-4464-8ea6-09a72f4bde6d")
+	)
+	(wire
+		(pts
 			(xy 166.37 30.48) (xy 166.37 31.75)
 		)
 		(stroke
@@ -4503,16 +4387,6 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 105.41) (xy 160.02 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b0fd9fd8-40c8-48dd-a829-ea623d988841")
-	)
-	(wire
-		(pts
 			(xy 269.24 68.58) (xy 269.24 49.53)
 		)
 		(stroke
@@ -4640,16 +4514,6 @@
 			(type default)
 		)
 		(uuid "d459b0ab-53b2-4c2a-86b6-0f4e058f9d86")
-	)
-	(wire
-		(pts
-			(xy 187.96 102.87) (xy 186.69 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6eb329c-f5f4-4ee0-8e1c-a556d81a93d5")
 	)
 	(wire
 		(pts
@@ -5680,7 +5544,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 186.69 107.95 90)
+		(at 184.15 109.22 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5688,7 +5552,7 @@
 		(dnp no)
 		(uuid "0a69b081-8efb-4145-9b88-c48506cc2d70")
 		(property "Reference" "#PWR048"
-			(at 193.04 107.95 0)
+			(at 190.5 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5697,7 +5561,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 190.5 107.95 90)
+			(at 187.96 109.22 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5706,7 +5570,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 186.69 107.95 0)
+			(at 184.15 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5715,7 +5579,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 186.69 107.95 0)
+			(at 184.15 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5724,7 +5588,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 186.69 107.95 0)
+			(at 184.15 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6781,7 +6645,7 @@
 				)
 			)
 		)
-		(property "Footprint" "L7981:SON50P300X300X100-9N-D"
+		(property "Footprint" "l7981:SON50P300X300X100-9N-D"
 			(at 209.55 126.67 0)
 			(effects
 				(font
@@ -7388,155 +7252,6 @@
 		)
 	)
 	(symbol
-		(lib_id "sm03B:BM03B-SRSS-TB")
-		(at 163.83 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5c24d044-917a-4b9f-b4d4-971e45802c80")
-		(property "Reference" "J3"
-			(at 175.26 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BM03B-SRSS-TB"
-			(at 175.26 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_JST:JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical"
-			(at 182.88 197.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/dk/DKDS-2/32971.pdf"
-			(at 182.88 297.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "CONN HEADER SMD 3POS 1MM"
-			(at 163.83 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "4.25"
-			(at 182.88 497.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "JST (JAPAN SOLDERLESS TERMINALS)"
-			(at 182.88 597.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "BM03B-SRSS-TB"
-			(at 182.88 697.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "N/A"
-			(at 182.88 797.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/JST/BM03B-SRSS-TB?qs=cIziFXvMxOVukqkiHi0bdg%3D%3D"
-			(at 182.88 897.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 182.88 997.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 182.88 1097.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "MP1"
-			(uuid "068840f8-752e-407e-9ead-17c95e73951d")
-		)
-		(pin "MP2"
-			(uuid "1098f449-5276-4553-939c-d2b9a14e367a")
-		)
-		(pin "3"
-			(uuid "495ce18e-64fd-475e-ad3e-685da13550ab")
-		)
-		(pin "2"
-			(uuid "e859bf7a-20c2-4fc1-9b2e-c5568cf96f65")
-		)
-		(pin "1"
-			(uuid "c137f258-67a1-483a-8172-1be67114a314")
-		)
-		(instances
-			(project ""
-				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
-					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 53.34 120.65 270)
 		(unit 1)
@@ -7908,7 +7623,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "customhole:mountinghole1.2mm"
+		(property "Footprint" "custom hole:mountinghole1.2mm"
 			(at 67.31 180.34 0)
 			(effects
 				(font
@@ -7973,7 +7688,7 @@
 				)
 			)
 		)
-		(property "Footprint" "inductancewurth:INDPM7373X340N"
+		(property "Footprint" "inductance wurth:INDPM7373X340N"
 			(at 233.68 34.29 0)
 			(effects
 				(font
@@ -8245,7 +7960,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LDO40PURY:SON95P300X300X90-7N-D"
+		(property "Footprint" "ldo40pury:SON95P300X300X90-7N-D"
 			(at 128.27 145.72 0)
 			(effects
 				(font
@@ -8376,7 +8091,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 160.02 109.22 0)
+		(at 173.99 99.06 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8385,7 +8100,7 @@
 		(fields_autoplaced yes)
 		(uuid "7c49024e-62c5-4113-b84f-4377f9964cb1")
 		(property "Reference" "#PWR049"
-			(at 160.02 115.57 0)
+			(at 173.99 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8394,7 +8109,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 160.02 114.3 0)
+			(at 173.99 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8402,7 +8117,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 160.02 109.22 0)
+			(at 173.99 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8411,7 +8126,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 160.02 109.22 0)
+			(at 173.99 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8420,7 +8135,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 160.02 109.22 0)
+			(at 173.99 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9735,7 +9450,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "customhole:mountinghole1.2mm"
+		(property "Footprint" "custom hole:mountinghole1.2mm"
 			(at 74.93 180.34 0)
 			(effects
 				(font
@@ -10074,7 +9789,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "customhole:mountinghole1.2mm"
+		(property "Footprint" "custom hole:mountinghole1.2mm"
 			(at 52.07 180.34 0)
 			(effects
 				(font
@@ -10448,6 +10163,82 @@
 		)
 	)
 	(symbol
+		(lib_id "jst_librairie:bm03b")
+		(at 176.53 106.68 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7431fd6-5541-41fe-900d-6a603725d7a2")
+		(property "Reference" "U2"
+			(at 170.18 105.4099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 170.18 107.315 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical"
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e558f7d5-af07-4a0a-8a4f-2c8340ae2cce")
+		)
+		(pin "2"
+			(uuid "c12e19f1-db40-4127-aafb-6b7625a39cbc")
+		)
+		(pin "3"
+			(uuid "d127aa0d-c60b-451a-b5be-f8502cd49899")
+		)
+		(pin "MP"
+			(uuid "b18f0deb-9ece-4f5c-8c72-aebc3b46a6c9")
+		)
+		(instances
+			(project ""
+				(path "/a7691323-d1b6-4adc-9d41-420408972038/881e657e-679a-47b2-bc39-ff2764da8d47"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 81.28 120.65 90)
 		(unit 1)
@@ -10787,7 +10578,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LDO40PURY:SON95P300X300X90-7N-D"
+		(property "Footprint" "ldo40pury:SON95P300X300X90-7N-D"
 			(at 64.77 140.64 0)
 			(effects
 				(font
@@ -11117,7 +10908,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 186.69 105.41 270)
+		(at 184.15 105.41 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11126,7 +10917,7 @@
 		(fields_autoplaced yes)
 		(uuid "ed26c5c2-9717-4b96-9b65-7aa8b8c08771")
 		(property "Reference" "#PWR035"
-			(at 182.88 105.41 0)
+			(at 180.34 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11135,7 +10926,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 190.5 105.4099 90)
+			(at 187.96 105.4099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11144,7 +10935,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 186.69 105.41 0)
+			(at 184.15 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11153,7 +10944,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 186.69 105.41 0)
+			(at 184.15 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11162,7 +10953,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 186.69 105.41 0)
+			(at 184.15 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11474,7 +11265,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "customhole:mountinghole1.2mm"
+		(property "Footprint" "custom hole:mountinghole1.2mm"
 			(at 59.69 180.34 0)
 			(effects
 				(font

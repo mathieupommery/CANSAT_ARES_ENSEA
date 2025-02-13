@@ -3790,6 +3790,10 @@
 		(uuid "0d7fd99c-db2b-407f-a664-74e3860a7bd6")
 	)
 	(no_connect
+		(at 119.38 88.9)
+		(uuid "104a3ef4-e0c3-47ae-9ec7-4555bc77922c")
+	)
+	(no_connect
 		(at 86.36 127)
 		(uuid "15b4e389-0a28-4776-959a-36981004acd0")
 	)
@@ -3800,6 +3804,10 @@
 	(no_connect
 		(at 86.36 111.76)
 		(uuid "309a200d-ffe3-4b98-8f3b-a67670bfc1a4")
+	)
+	(no_connect
+		(at 86.36 137.16)
+		(uuid "38684451-a0a9-4960-a3a4-7e1a0ae502ff")
 	)
 	(no_connect
 		(at 119.38 106.68)
@@ -6245,28 +6253,6 @@
 			)
 		)
 	)
-	(global_label "ADC2_IN17"
-		(shape input)
-		(at 119.38 88.9 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "dcf6cd22-f32f-455f-8a47-97cdbd9b86a1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.5252 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "EXTI0"
 		(shape input)
 		(at 119.38 78.74 0)
@@ -6324,28 +6310,6 @@
 		(uuid "ed52c303-df1d-4ce7-875d-63adb1f2015e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 65.5343 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "USART3_RX"
-		(shape input)
-		(at 86.36 137.16 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f75762d9-912d-47cd-8607-c02ee44aa24e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.852 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6625,7 +6589,7 @@
 				)
 			)
 		)
-		(property "Footprint" "bmp581:BMP581"
+		(property "Footprint" "BMP581:BMP581"
 			(at 135.89 319.71 0)
 			(effects
 				(font
@@ -6991,7 +6955,7 @@
 				)
 			)
 		)
-		(property "Footprint" "molexmicrosd:47309-2651"
+		(property "Footprint" "micro sd:47309-2651"
 			(at 308.61 146.99 0)
 			(effects
 				(font
@@ -7347,7 +7311,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "WSEN-ISDS:2536030320001"
+		(property "Footprint" "WSEN ISDS:2536030320001"
 			(at 321.31 261.29 0)
 			(effects
 				(font
@@ -11522,7 +11486,7 @@
 				)
 			)
 		)
-		(property "Footprint" "crystalmulticomp:MCSJK7U1200101080B10"
+		(property "Footprint" "crystal:MCSJK7U1200101080B10"
 			(at 54.61 87.63 0)
 			(effects
 				(font
