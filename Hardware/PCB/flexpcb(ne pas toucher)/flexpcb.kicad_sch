@@ -815,224 +815,6 @@
 				)
 			)
 		)
-		(symbol "Device:Battery"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "BT"
-				(at 2.54 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Battery"
-				(at 2.54 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 1.524 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 1.524 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Multiple-cell battery"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "batt voltage-source cell"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Battery_0_1"
-				(rectangle
-					(start -2.286 -1.27)
-					(end 2.286 -1.524)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -2.286 1.778)
-					(end 2.286 1.524)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -1.524 -2.032)
-					(end 1.524 -2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -1.524 1.016)
-					(end 1.524 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.016) (xy 0 -0.762)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -0.508) (xy 0 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.778) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 3.048) (xy 1.778 3.048)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 3.556) (xy 1.27 2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Battery_1_1"
-				(pin passive line
-					(at 0 5.08 270)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
 			(pin_names
@@ -2402,23 +2184,25 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at 0 0 0)
+			(property "Reference" "U2"
+				(at 6.35 -0.6351 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "~"
+				(at 6.35 1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2459,7 +2243,7 @@
 				)
 			)
 			(symbol "bm02B_jst_sh_1_1"
-				(pin bidirectional line
+				(pin free line
 					(at -6.35 2.54 0)
 					(length 2.54)
 					(name "1"
@@ -2469,7 +2253,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2477,7 +2261,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at -6.35 -1.27 0)
 					(length 2.54)
 					(name "2"
@@ -2487,7 +2271,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2495,7 +2279,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at 2.54 -7.62 90)
 					(length 2.54)
 					(name "MP"
@@ -2505,7 +2289,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "MP"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2519,23 +2303,25 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at 0 0 0)
+			(property "Reference" "U1"
+				(at 6.35 1.9051 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "~"
+				(at 6.35 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Connector_JST:JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2576,7 +2362,7 @@
 				)
 			)
 			(symbol "jst_sh_6pin_1_1"
-				(pin bidirectional line
+				(pin free line
 					(at -11.43 10.16 0)
 					(length 2.54)
 					(name "1"
@@ -2586,7 +2372,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2594,7 +2380,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at -11.43 6.35 0)
 					(length 2.54)
 					(name "2"
@@ -2604,7 +2390,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2612,7 +2398,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at -11.43 2.54 0)
 					(length 2.54)
 					(name "3"
@@ -2622,7 +2408,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2630,7 +2416,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at -11.43 -1.27 0)
 					(length 2.54)
 					(name "4"
@@ -2640,7 +2426,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2648,7 +2434,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at -11.43 -5.08 0)
 					(length 2.54)
 					(name "5"
@@ -2658,7 +2444,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2666,7 +2452,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at -11.43 -8.89 0)
 					(length 2.54)
 					(name "6"
@@ -2676,7 +2462,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2684,7 +2470,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin free line
 					(at 1.27 -13.97 90)
 					(length 2.54)
 					(name "MP"
@@ -2694,7 +2480,7 @@
 							)
 						)
 					)
-					(number ""
+					(number "MP"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3261,22 +3047,10 @@
 		(uuid "51f7b0a7-3b78-43e7-9c80-f9fdc15bc2fa")
 	)
 	(junction
-		(at 93.218 93.726)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "66ee80a7-a05b-4216-9e08-48e72365dd82")
-	)
-	(junction
 		(at 83.82 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6f2db692-f4a6-4f16-b3b7-a80b0763e51e")
-	)
-	(junction
-		(at 98.806 83.566)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7ddb2c57-7f67-4dd5-bd05-efb30bab571a")
 	)
 	(junction
 		(at 104.648 40.386)
@@ -3343,7 +3117,7 @@
 		(uuid "6419cd58-5ef3-4941-ba63-ca06bbe36de2")
 	)
 	(no_connect
-		(at 105.41 162.56)
+		(at 107.95 162.56)
 		(uuid "6f7b1fa3-d960-48df-99b8-c1fdcb6ae36a")
 	)
 	(no_connect
@@ -3403,6 +3177,16 @@
 			(type default)
 		)
 		(uuid "003bcadc-09ad-4256-8ef8-82e030d3c85c")
+	)
+	(wire
+		(pts
+			(xy 107.95 151.13) (xy 105.41 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03426068-6fe6-4900-b802-8cf0b9c727ff")
 	)
 	(wire
 		(pts
@@ -3556,6 +3340,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 147.32) (xy 105.41 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "316a09be-bb5e-44e7-905e-825a40c7f5b3")
+	)
+	(wire
+		(pts
 			(xy 49.022 92.456) (xy 49.022 91.44)
 		)
 		(stroke
@@ -3656,6 +3450,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 143.51) (xy 105.41 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a1a9178-4601-4229-8c6b-fb3db8ad038a")
+	)
+	(wire
+		(pts
 			(xy 66.04 43.18) (xy 61.722 43.18)
 		)
 		(stroke
@@ -3673,16 +3477,6 @@
 			(type default)
 		)
 		(uuid "7729e939-fc9e-4128-ae29-cbd8d6496585")
-	)
-	(wire
-		(pts
-			(xy 98.806 83.566) (xy 102.108 83.566)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7cea1ae5-c20a-4d35-94d1-58a4ac8267cc")
 	)
 	(wire
 		(pts
@@ -3836,6 +3630,16 @@
 	)
 	(wire
 		(pts
+			(xy 120.65 167.64) (xy 118.11 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c06ef0b6-ba8a-465d-8308-deeda926821e")
+	)
+	(wire
+		(pts
 			(xy 90.17 35.306) (xy 87.884 35.306)
 		)
 		(stroke
@@ -3936,16 +3740,6 @@
 	)
 	(wire
 		(pts
-			(xy 93.218 93.726) (xy 102.108 93.726)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea78e082-c890-40b8-bc77-1dac65bc8356")
-	)
-	(wire
-		(pts
 			(xy 83.82 71.882) (xy 83.82 76.2)
 		)
 		(stroke
@@ -3986,6 +3780,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 158.75) (xy 105.41 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc97a2f4-84d4-43bc-8f3e-5b2d9a222dac")
+	)
+	(wire
+		(pts
 			(xy 79.248 40.386) (xy 91.694 40.386)
 		)
 		(stroke
@@ -4003,6 +3807,16 @@
 			(type default)
 		)
 		(uuid "fd1b0e52-749a-4535-9546-cc041d44ea7e")
+	)
+	(wire
+		(pts
+			(xy 107.95 154.94) (xy 105.41 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fdda30cc-0e5b-4f20-b4a4-f17852d03b27")
 	)
 	(rectangle
 		(start 151.13 27.94)
@@ -5900,75 +5714,6 @@
 			(project "flexpcb"
 				(path "/46b50a93-e56b-49e1-bdd2-66a4d6fc6bf5"
 					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:Battery")
-		(at 102.108 88.646 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "407649a7-7629-485c-a4f9-68dea760d756")
-		(property "Reference" "BT1"
-			(at 106.426 85.852 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "ML414S"
-			(at 105.918 89.408 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ms414:MS421R-IV03E"
-			(at 102.108 87.122 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 102.108 87.122 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Multiple-cell battery"
-			(at 102.108 88.646 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "0edd2be8-9de2-4d9f-bc85-a6d1aaf3b307")
-		)
-		(pin "1"
-			(uuid "20b578bb-9ae7-4e99-9855-bd6479f94584")
-		)
-		(instances
-			(project "flexpcb"
-				(path "/46b50a93-e56b-49e1-bdd2-66a4d6fc6bf5"
-					(reference "BT1")
 					(unit 1)
 				)
 			)
@@ -8239,7 +7984,7 @@
 	)
 	(symbol
 		(lib_id "jst_sh_symboles:jst_sh_6pin")
-		(at 116.84 153.67 0)
+		(at 119.38 153.67 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8248,7 +7993,7 @@
 		(fields_autoplaced yes)
 		(uuid "a3da8cf4-4e85-4904-b241-6d93ad8caf76")
 		(property "Reference" "U1"
-			(at 123.19 151.7649 0)
+			(at 125.73 151.7649 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8257,7 +8002,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 123.19 153.67 0)
+			(at 125.73 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8266,7 +8011,7 @@
 			)
 		)
 		(property "Footprint" "Connector_JST:JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical"
-			(at 116.84 153.67 0)
+			(at 119.38 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8275,7 +8020,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 153.67 0)
+			(at 119.38 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8284,7 +8029,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 153.67 0)
+			(at 119.38 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8292,25 +8037,25 @@
 				(hide yes)
 			)
 		)
-		(pin ""
+		(pin "MP"
 			(uuid "c41930af-7940-41d8-81a6-5a1c3e5978df")
 		)
-		(pin ""
+		(pin "5"
 			(uuid "77cb9bf0-0442-49e2-bada-9e949c0c40a8")
 		)
-		(pin ""
+		(pin "1"
 			(uuid "273c192e-4330-477d-81e5-df3cd4d52176")
 		)
-		(pin ""
+		(pin "3"
 			(uuid "9c421e99-3630-4f03-8cf0-8e9f688d492c")
 		)
-		(pin ""
+		(pin "4"
 			(uuid "d76bf9d8-a935-42db-8163-2522d5cd11b1")
 		)
-		(pin ""
+		(pin "6"
 			(uuid "25cf2465-9ad0-4df9-b75b-7bee21c891fd")
 		)
-		(pin ""
+		(pin "2"
 			(uuid "b40a1583-c07a-477c-8d31-fa801dc9e45d")
 		)
 		(instances
@@ -8838,13 +8583,13 @@
 				(hide yes)
 			)
 		)
-		(pin ""
+		(pin "2"
 			(uuid "be0a6816-f3c1-4a2e-86b2-c6201641e01a")
 		)
-		(pin ""
+		(pin "MP"
 			(uuid "3ee8c92a-a7d5-4b11-b475-a41bf4115be5")
 		)
-		(pin ""
+		(pin "1"
 			(uuid "ecdbf952-4286-44e4-a717-e7688faf16c5")
 		)
 		(instances

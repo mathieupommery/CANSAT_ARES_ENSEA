@@ -1,4 +1,11 @@
-23796799663018374
+23821074991378979
+2N7002KQBZ
+2N7002KQB
+
+
+0
+4
+3
 5035481022
 5035481022
 503548-1022-2
@@ -64420,6 +64427,34 @@ Yellow 5381 Series LED
 0
 2
 2
+LFCN2400D
+DLF162500LT5028A1
+DLF162500LT-5028A1-2
+Filter
+0
+4
+4
+MLPFWB01E3
+MLPFWB01E3
+MLPF-WB-01E3
+Integrated Circuit
+0
+6
+6
+MMBZ33VBQBZ
+BC847BQBZ
+DFN1110D-3(SOT8015)
+Diode ESD (Bi-directional)
+0
+4
+4
+MS414
+MS421R-IV03E
+
+
+0
+2
+2
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -88710,6 +88745,13 @@ rotary encoder illuminated switch vertical
 0
 9
 8
+SW_PCM
+SW_PCM
+
+
+0
+7
+4
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf
@@ -95689,6 +95731,13 @@ igbt diode module
 0
 25
 25
+USBCWURTH
+USBC-WURTH
+USB 2.0 Type C Receptacle, GCT, 16P, top mounted, horizontal, 5A, https://gct.co/files/drawings/usb4110.pdf
+USB 2.0 C Type-C Receptacle SMD 16P 16C USB4110-GF-A
+0
+20
+17
 Valve
 Valve_ECC-83-1
 Valve ECC-83-1 round pins
@@ -96480,9 +96529,23 @@ Integrated Circuit
 0
 14
 14
+antennesmd
+74889302450
+74889302450-1
+Antenna
+0
+2
+2
 crystal
 MCSJK7U1200101080B10
 MCSJK-7U-12.00-10-10-80-B-10
+Crystal or Oscillator
+0
+4
+4
+crystal 32Mhz
+830069494
+830069494-1
 Crystal or Oscillator
 0
 4
@@ -96557,6 +96620,27 @@ logo ensea
 0
 0
 0
+ltc4065
+DFN-6_DC_LIT
+
+LTC4065AEDC 
+0
+7
+7
+ltc4065
+DFN-6_DC_LIT-L
+
+LTC4065AEDC 
+0
+7
+7
+ltc4065
+DFN-6_DC_LIT-M
+
+LTC4065AEDC 
+0
+7
+7
 micro sd
 47309-2651
 47309-2651
@@ -96564,6 +96648,13 @@ Connector
 0
 12
 12
+pts845
+PTS845VM20PSMTR4LFS
+PTS845
+Switch
+0
+5
+5
 tarvos iii
 Tarvos III
 
@@ -96571,3 +96662,10 @@ Tarvos III
 0
 27
 27
+w25q128
+SON127P600X500X80-9N-D
+8-Pad WSON 6x5-mm (Package Code P)
+Integrated Circuit
+0
+9
+9
