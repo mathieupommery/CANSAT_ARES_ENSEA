@@ -212,8 +212,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours le 09/02/25
 ### Séance 17, 28/01/25
 
--Nous cherchons des parachutes coherent pour nos deux parties, donc des parachutes qui permettent une vitesse de descenbte comprise entre 2m/s et 15m/s, il nous en faut donc deux, un pour le tout, un autre pour le bas, d'un poids de respectivement 300gr et 150gr, on choisit donc les parachutes en 28' 14' et 18' afin de fair edes test:
-https://www.sierrafoxhobbies.com/fr/parachute/2301-parachute-cansat-xchute-cs.html
+-Nous cherchons des parachutes coherent pour nos deux parties, donc des parachutes qui permettent une vitesse de descenbte comprise entre 2m/s et 15m/s, il nous en faut donc deux, un pour le tout, un autre pour le bas, d'un poids de respectivement 300gr et 150gr, on choisit donc les parachutes en 28' 14' et 18' afin de faire des test:
+- [Sierrafoxhobbies](https://www.sierrafoxhobbies.com/fr/parachute/2301-parachute-cansat-xchute-cs.html)
 
 
 ### Séance 18, 11/02/25
