@@ -465,23 +465,6 @@
         "via_diameter": 0.4,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "bus_width": 12,
-        "clearance": 0.1,
-        "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.2,
-        "line_style": 0,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
-        "name": "POWER",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
-        "via_diameter": 0.4,
-        "via_drill": 0.3,
-        "wire_width": 6
       }
     ],
     "meta": {
@@ -513,7 +496,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "../fichier gerber pcb/gerber mainboard/",
+      "plot": "../fichier gerber/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "../../../../../../Desktop/cansatperso.step",
@@ -624,7 +607,7 @@
   "sheets": [
     [
       "a7691323-d1b6-4adc-9d41-420408972038",
-      "Root"
+      "Racine"
     ],
     [
       "881e657e-679a-47b2-bc39-ff2764da8d47",

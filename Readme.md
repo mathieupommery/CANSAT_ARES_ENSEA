@@ -220,6 +220,8 @@ https://www.sierrafoxhobbies.com/fr/parachute/2301-parachute-cansat-xchute-cs.ht
 - Commande parachute et connecteurs
 - MAJ du modèle 3D de la station sol
 - Soudures pour le bouton et l'afficheur de la batterie pour la station sol
+- Modification du mécanisme pour réduire les frottements + impression et validation du test
+- Montage du mécanisme complet et test du mécanisme avec canette fermée , Test concluant ✅
 
 ## Livrables
 ### PCB
