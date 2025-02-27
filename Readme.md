@@ -147,18 +147,18 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - 3e passage oral
 - Test du nouveau servomoteur
 - Début modélisation 3D de la station sol
-- Changement dde la simulation python selon les conseils du jury.
+- Changement de la simulation python selon les conseils du jury.
 
 ### Séance 12, 10/12/24
 - Modélisation Station sol 
 <img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
-
+- Avancement programmation station sol Qt
 - Test du système de vérrouillage sur la canette entière
 - Soudage du PCB avec la partie accéléromètre
 
 ### Séance 13, 14/01/25
 - Réunion mise au point de l'avancée du projet et nouvelles tâches assignées 
-- Qt Hugo
+- Avancement programmation station sol Qt + traitement des problèmes softwares
 - Début de l'implémentation du code sur la mainboard
 - Capteur laser pour mesurer la distance
    - Démontage d'un capteur de 50m pour l'adapter au CanSat
@@ -173,6 +173,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 - 3D station sol -> intégration dans le châssis des emplacements pour l'électronique
 - Recherches sur un télémètre laser viable pour le projet (Mission 3)
+- Réadaptation de l'interface graphique Qt + développement software station sol
 - Réalisation d'un code pour envoyer une trame et en recevoir une en DMA sur le module de communication (Tarvos III)
 - Début de la création de la machine à état avec pour l'instant un échantillonnage des capteurs tous les 0.25s et de l'envoi des données toutes les secondes
 - Impression de la cannette avec les modifications faites
@@ -207,6 +208,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ### Séance 16, 04/02/25
 - Impression de la station sol + CanSat détaillé
 - Nous continuons à implémenter le code sur notre mainboard
+- Travail sur le software station sol
 - Préparation pour première démo (partiellement fonctionnelle) pour
    - Portes ouvertes de l'ENSEA le 08/02/25
    - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours le 09/02/25
@@ -217,6 +219,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 
 ### Séance 18, 11/02/25
+- Finalisation du programme de la station sol + validation 
 - Commande parachute et connecteurs pour la station sols
 - MAJ du modèle 3D de la station sol
 - Soudures pour le bouton et l'afficheur de la batterie pour la station sol
