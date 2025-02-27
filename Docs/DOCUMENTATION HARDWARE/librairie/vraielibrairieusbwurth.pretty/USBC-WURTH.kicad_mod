@@ -22,6 +22,7 @@
 		(at 0 5 0)
 		(unlocked yes)
 		(layer "F.Fab")
+		(hide yes)
 		(uuid "3cfe376f-f022-4e48-98ce-8c45a59286c1")
 		(effects
 			(font
@@ -111,16 +112,6 @@
 		(uuid "d6f9f5ee-60b0-46f2-854a-e24f1a95668f")
 	)
 	(fp_line
-		(start -5 3.695)
-		(end 5 3.695)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Dwgs.User")
-		(uuid "4fd20463-4808-462b-877e-c5cab64c40db")
-	)
-	(fp_line
 		(start -3.7 -3.675)
 		(end -3.2 -3.095)
 		(stroke
@@ -139,42 +130,6 @@
 		)
 		(layer "F.Fab")
 		(uuid "d93cd51d-864c-41d6-b959-82521ba52761")
-	)
-	(fp_rect
-		(start -4.47 -3.675)
-		(end 4.47 3.695)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(fill none)
-		(layer "F.Fab")
-		(uuid "3a1cadae-b375-4cc1-8183-3a6b45148be8")
-	)
-	(fp_text user "PCB Edge"
-		(at 0 3.075 0)
-		(unlocked yes)
-		(layer "Dwgs.User")
-		(uuid "3b0ec688-ee0e-46d2-9684-78ef8e9cbd1b")
-		(effects
-			(font
-				(size 0.5 0.5)
-				(thickness 0.1)
-				(bold yes)
-			)
-		)
-	)
-	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "89c6f9df-192a-421d-a35b-1414397eb535")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
 	)
 	(pad "" np_thru_hole circle
 		(at -2.89 -2.605)
