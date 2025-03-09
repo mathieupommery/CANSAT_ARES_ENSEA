@@ -2315,17 +2315,6 @@
 			(pintype "passive")
 			(uuid "decf15b9-b064-41f2-8fe0-4893f7feef33")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_1.00mm.3dshapes/PinHeader_1x02_P1.00mm_Horizontal.wrl"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
 	)
 	(footprint ""
 		(layer "F.Cu")
@@ -3490,6 +3479,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "de16dd8d-d104-498a-acc1-d7dec59a0f9d")
 		)
+		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/Docs/DOCUMENTATION HARDWARE/librairie/fichier 3d composant/CD-PA1010D--3DModel-STEP-271329.STEP"
+			(offset
+				(xyz 5 5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Connector_JST:JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical"
 		(layer "B.Cu")
@@ -3861,15 +3861,15 @@
 			(pintype "free")
 			(uuid "7160d6c6-e38d-4b68-a0e4-2025c06f1151")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical.wrl"
+		(model "C:/Users/mathi/Desktop/SAMACSYS/SamacSys_Parts.3dshapes/BM02B-SRSS-TB_LF__SN_.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz -1 0.4 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -5106,15 +5106,15 @@
 			(pintype "free")
 			(uuid "46caa64e-aad5-48c4-be39-bdff8c21b11c")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical.wrl"
+		(model "C:/Users/mathi/Desktop/SAMACSYS/SamacSys_Parts.3dshapes/BM06B-SRSS-TB_LF__SN_.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 1.85 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -5973,7 +5973,7 @@
 			(pintype "passive")
 			(uuid "a8711617-2e07-4ea7-9c2e-71ee512c74de")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Button_Switch_SMD.3dshapes/SW_Push_1P1T_NO_CK_PTS125Sx43PSMTR.wrl"
+		(model "C:/Users/mathi/Desktop/SAMACSYS/SamacSys_Parts.3dshapes/PTS125SJL73P25M_LFS.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5981,7 +5981,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 90)
 			)
 		)
 	)
@@ -6316,7 +6316,7 @@
 			(pintype "passive")
 			(uuid "bcc2e722-2f61-43e6-9ef5-63105863be52")
 		)
-		(model "587-1024-147F.stp"
+		(model "C:/Users/mathi/Desktop/SAMACSYS/SamacSys_Parts.3dshapes/5871024147F.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7344,7 +7344,7 @@
 			(pintype "passive")
 			(uuid "c7e9b497-5130-4492-a47c-421b8f76acb1")
 		)
-		(model "587-1024-147F.stp"
+		(model "C:/Users/mathi/Desktop/SAMACSYS/SamacSys_Parts.3dshapes/5871024147F.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8186,9 +8186,9 @@
 				)
 			)
 		)
-		(model "/Users/louisvoz/Downloads/Wurth Electronics Libraries/Download_STP_WIRL-PRO8-2609011081001 (rev1).stp"
+		(model "C:/Users/mathi/Desktop/SAMACSYS/SamacSys_Parts.3dshapes/2609011181000.stp"
 			(offset
-				(xyz -3.9 -16.8 0)
+				(xyz -4 -17 0)
 			)
 			(scale
 				(xyz 1 1 1)
