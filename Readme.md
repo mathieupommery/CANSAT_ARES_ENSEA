@@ -227,6 +227,22 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Modification du mécanisme pour réduire les frottements + impression et validation du test
 - Montage du mécanisme complet et test du mécanisme avec canette fermée , Test concluant ✅
 
+## Séance 19, 04/03/25
+- 5e passage oral
+   - Mieux sur la gestion du temps mais toujours au dessus de 20min (à cause des questions et échanges)
+   - Sinon le reste des remarques a été corrigé.
+   - Objectifs pour la prochaine séance
+      - Avoir un POC (proof of concept) fonctionnel
+      - Pouvoir utiliser la station sol
+      - Avoir commencé le Poster du CanSat (requis pour la compétition)
+- Nouvelles soudures/électronique pour la station sol
+   - Réglage d'un problème de connection lié à une couche du PCB arrachée au niveau du bouton
+   - Changement pour des câbles plus souple
+   - Arrivée et bon fonctionnement des nappes avec connectiques interchangeables pour $\mu$HDMI/HDMI et $\mu$USB/USB
+
+
+## Séance 20, 11/03/25
+
 ## Livrables
 ### PCB
 <div style="display: flex; justify-content: space-between;">
