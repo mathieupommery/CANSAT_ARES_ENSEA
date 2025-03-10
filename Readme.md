@@ -238,13 +238,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Nouvelles soudures/électronique pour la station sol
    - Réglage d'un problème de connection lié à une couche du PCB arrachée au niveau du bouton
    - Changement pour des câbles plus souple
-   - Arrivée et bon fonctionnement des nappes avec connectiques interchangeables pour $\mu$HDMI/HDMI et $\mu$USB/USB
-- [x] Completed task
-- [~] Inapplicable task
-- [ ] Incomplete task
-  - [x] Sub-task 1
-  - [~] Sub-task 2
-  - [ ] Sub-task 3
+   - Arrivée et bon fonctionnement des nappes avec connectiques interchangeables pour $`\mu`$HDMI/HDMI et $`\mu`$USB/USB
+
 
 ## Séance 20, 11/03/25
 
