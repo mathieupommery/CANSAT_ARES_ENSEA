@@ -5,7 +5,7 @@
 
 ## Table des Matières
 
-[_TOC_]
+[[_TOC_]]
 
 - [Introduction](#introduction)
 - [Équipe](#équipe)
