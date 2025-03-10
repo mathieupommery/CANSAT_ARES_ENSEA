@@ -227,7 +227,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Modification du mécanisme pour réduire les frottements + impression et validation du test
 - Montage du mécanisme complet et test du mécanisme avec canette fermée , Test concluant ✅
 
->[!note] Séance 19, 04/03/25
+> [!note] Séance 19, 04/03/25
 - 5e passage oral
    - Mieux sur la gestion du temps mais toujours au dessus de 20min (à cause des questions et échanges)
    - Sinon le reste des remarques a été corrigé.
