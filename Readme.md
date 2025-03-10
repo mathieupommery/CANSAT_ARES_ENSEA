@@ -15,7 +15,7 @@
 ---
 
 ## Introduction
-- C'est un projet de 2e année d'école d'ingénieur en électronique à l'[ENSEA](https://www.ensea.fr/fr) à Cergy.
+- Il s'agit d'un projet de 2e année d'école d'ingénieur en électronique à l'[ENSEA](https://www.ensea.fr/fr) à Cergy.
 - Le but étant de réaliser - pour la **compétiton CanSat** organisée par **Planète science et le CNES** - un satellite en forme de canette.
 - Celui-ci devra **réaliser plusieurs missions** lorsqu'il sera **lâché d'un drone à envrion 120m de hauteur devant un jury**.
 - Le projet consiste à faire la **conception** et la **fabrication** de ce satellite.
@@ -237,8 +237,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
       - Avoir commencé le Poster du CanSat (requis pour la compétition)
 - Nouvelles soudures/électronique pour la station sol
    - Réglage d'un problème de connection lié à une couche du PCB arrachée au niveau du bouton
-   - Changement pour des câbles plus souple
-   - Arrivée et bon fonctionnement des nappes avec connectiques interchangeables pour $`\mu`$HDMI/HDMI et $`\mu`$USB/USB
+   - Changement pour des câbles plus souples
+   - Arrivée et bon fonctionnement des nappes en molex avec connectiques interchangeables pour $`\mu`$HDMI/HDMI et $`\mu`$USB/USB pour la Raspberry Pi 5
 
 
 ## Séance 20, 11/03/25
