@@ -511,7 +511,7 @@
       "plot": "fichier gerber/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../../../../../Downloads/flexpcb.step",
       "svg": "",
       "vrml": ""
     },
