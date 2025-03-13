@@ -1,0 +1,9 @@
+../Core/Src/main.c:139:5:main	88	static
+../Core/Src/main.c:304:6:SystemClock_Config	88	static
+../Core/Src/main.c:351:6:uint16_to_char_buffer	32	static
+../Core/Src/main.c:357:6:conversion_char	88	static
+../Core/Src/main.c:411:6:conv_float_to_char	32	static
+../Core/Src/main.c:415:6:mef_pos	32	static
+../Core/Src/main.c:419:6:Set_Servo_Position	16	static
+../Core/Src/main.c:423:6:convertIntToChar	40	static
+../Core/Src/main.c:435:6:Error_Handler	4	static,ignoring_inline_asm
