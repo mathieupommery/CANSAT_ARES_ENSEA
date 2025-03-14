@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "6axis.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -74,7 +74,7 @@ extern int hauteur_0;
 #define P0 101325.0  // Pression au niveau de la mer en Pascals
 #define L 0.0065     // Gradient thermique en K/m
 #define T0 288.15    // Température au niveau de la mer en Kelvin
-#define g 9.80665    // Accélération gravitationnelle en m/s²
+#define gconst 9.80665    // Accélération gravitationnelle en m/s²
 #define M 0.0289644  // Masse molaire de l'air en kg/mol
 #define R 8.31432    // Constante des gaz parfaits en J/(mol·K)
 

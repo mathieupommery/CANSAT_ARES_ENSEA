@@ -32,6 +32,10 @@
 /* USER CODE BEGIN Includes */
 #include "fatfs_sd.h"
 #include "nmea_parse.h"
+#include "baro.h"
+#include "6axis.h"
+#include "led.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -115,7 +119,14 @@ extern int position_servo;
 extern int flag_servo;
 int flag_ouverture = 0;
 
+int hauteur_0=0;
+
 int pointnull = 123;
+
+
+LEDDATARGB LEDDATA[LED_NUM];
+uint8_t LEDDMABUF[DMABUFLEN];
+uint8_t DMA_COMPLETE_FLAG=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -126,7 +137,10 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
 
+	LED_Callback();
+}
 
 
 /* USER CODE END 0 */
@@ -174,6 +188,7 @@ int main(void)
   MX_TIM4_Init();
   MX_ADC2_Init();
   MX_I2C1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
 
@@ -197,6 +212,8 @@ int main(void)
   HAL_Delay(100);
   HAL_UART_Abort(&hlpuart1);
   HAL_UART_Receive_DMA(&hlpuart1, (char*)usart_buffer, BUFFER_SIZE);
+
+  LED_Init();
 
 
 
@@ -290,6 +307,18 @@ int main(void)
 		//SEND_DATA_NETW(envoi, 0x82, 0x16, strlen(envoi));
 		flag_sensor = 0;
 	}
+
+
+	LED_Setcolour(0, 255, 0, 0);
+	LED_Setcolour(1, 0, 255, 255);
+	LED_Update();
+
+
+
+
+
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

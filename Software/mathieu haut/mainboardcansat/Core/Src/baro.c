@@ -58,7 +58,7 @@ void BARO_FILL(BARO *data){
 	READ_PRES(temperature,pression);
 	data->Pression = pression / (2^8);
 	data->Temperature = temperature / (2^16);
-	data->Hauteur = ((T0 / L) * (1 - pow(pression / P0, (R * L) / (g * M))));
+	data->Hauteur = ((T0 / L) * (1 - pow(pression / P0, (R * L) / (gconst * M))));
 
 
 }

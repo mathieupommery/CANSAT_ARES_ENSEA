@@ -1,0 +1,68 @@
+/*
+ * led.h
+ *
+ *  Created on: Mar 14, 2025
+ *      Author: mathi
+ */
+
+#ifndef INC_LED_H_
+#define INC_LED_H_
+
+
+
+#endif /* INC_LED_H_ */
+
+#include "main.h"
+#include "tim.h"
+
+
+typedef enum COLOR{
+	jaune,
+	bleu,
+	vert,
+	rouge,
+	blanc,
+	orange,
+	rose,
+	violet
+};
+
+#define LED_TIM htim2
+#define LED_TIM_CHANNEL TIM_CHANNEL_4
+
+#define LED_NUM 2
+
+#define HI_VAL 58
+#define LOW_VAL 19
+
+#define RSTPERIOD 202
+
+#define BIT_PER_LED 24
+
+
+#define DMABUFLEN ((LED_NUM*BIT_PER_LED)+RSTPERIOD)
+
+typedef union {
+
+	struct {
+		uint8_t g;
+		uint8_t r;
+		uint8_t b;
+	}COLOUR;
+
+	uint32_t data;
+}LEDDATARGB;
+
+
+
+HAL_StatusTypeDef LED_Init();
+void LED_Setcolour(uint8_t index, uint8_t r, uint8_t g, uint8_t b);
+HAL_StatusTypeDef LED_Update();
+void LED_Callback();
+
+
+
+
+
+
+
