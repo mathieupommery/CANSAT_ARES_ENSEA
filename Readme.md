@@ -248,6 +248,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Réarrangement des pièces et impression finale - si tout marche bien lors de la prochaine séance - des pièces
 - 1er test du CanSat
    - Test concluant du parachute en larguant le CanSat d'un drone à environ 30-50 m, reste à valider la vitesse de chute
+- Poster de projet
+   - Nous avons commencé l'affiche du projet (nécessaire pour la compétition), choix du support : feuille A3 en $`\LaTeX`$
 
 ## Livrables
 ### PCB
