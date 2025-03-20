@@ -1,10 +1,7 @@
-//// --- Includes --- ///
 #include "main.h"
 #include "tarvos.h"
-#include "main.h"
 #include <stdint.h>
-
-//// --- Defines --- ///
+// Définition des variables
 #define CMD_PAYLOAD_MAX 224
 typedef struct {
 uint8_t Stx; //start of text
@@ -29,8 +26,7 @@ uint8_t buffer_RSSI[10];
 extern uint8_t tarvos_RX_Tampon[TarvosRxTamponSize];
 
 extern UART_HandleTypeDef hlpuart1;
-
-//// --- Functions --- ///
+// Définition des fonctions qui vont être utiles
 void INIT_TARVOS(UART_HandleTypeDef hlpuart1){
 	SET_tcMODE("command");
 
@@ -70,7 +66,6 @@ void INIT_PERM_TARVOS(uint8_t Hadr, uint8_t Sadr) {
 
     HAL_Delay(1000);
 }
-
 //Changement de mode (transparent,command)
 void SET_tcMODE(char mode){
 	uint8_t transparent[] = {0x02, 0x04, 0x01, 0x00, 0x07};
@@ -82,13 +77,15 @@ void SET_tcMODE(char mode){
 		HAL_UART_Transmit(&hlpuart1,command,sizeof(command),500);
 	}
 }
-
 //Calcule du CRC
-uint8_t Get_CRC8(uint8_t * bufP, uint16_t len) {
-	uint8_t crc = 0x00;
-	for (uint16_t i = 0; i < len; i++) {
-		crc ^= bufP[i];}
-	return crc;
+uint8_t Get_CRC8(uint8_t * bufP, uint16_t len)
+{
+uint8_t crc = 0x00;
+for (uint16_t i = 0; i < len; i++)
+{
+crc ^= bufP[i];
+}
+return crc;
 }
 
 int SEND_DATA_NETW(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length) {
@@ -120,6 +117,7 @@ int SEND_DATA_NETW(uint8_t *data, uint8_t channel, uint8_t dest_adress, int leng
     else { return SUCCESS;}
 
 }
+
 
 uint8_t* copyTarvosBuffer() {
     static uint8_t buffer[5];  // Utilisation de static pour éviter la perte des données
@@ -154,3 +152,5 @@ void REQ_RSSI(){
 	uint8_t buffer_RSSI[4]={0x02,0x0D,0x00,0x0F};
     HAL_UART_Transmit(&hlpuart1,buffer_RSSI, sizeof(buffer_RSSI), 500);
 }
+
+

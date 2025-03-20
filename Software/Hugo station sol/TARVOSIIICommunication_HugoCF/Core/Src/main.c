@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "tarvos.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,16 +42,31 @@
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef hlpuart1;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+
+
+#define PIN_ENABLE GPIO_PIN_15
+#define LED_ROUGE GPIO_PIN_14
+
 uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
 uint8_t tarvos_TX_Tampon[TarvosTxTamponSize];
 uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 uint8_t tarvos_RX_Tampon[TarvosRxTamponSize];
-//
-//uint8_t usart_buffer[BUFFER_SIZE];
-//
-//uint8_t commandtarvos[]={0x02,0x00,};
+
+int TarvosRXbufferoldpos=0;
+int TarvosRXbuffernewpos=0;
+
+uint8_t commandtarvos[]={0x02,0x00,};
+
+char envoi[200];
+
+extern int flag_envoi;
+extern int flag_sensor;
+int erreur ;
+int pointnull = 123;
+
 
 /* USER CODE END PV */
 
@@ -58,6 +74,7 @@ uint8_t tarvos_RX_Tampon[TarvosRxTamponSize];
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_LPUART1_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -97,16 +114,34 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_LPUART1_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+
+  HAL_GPIO_WritePin(GPIOB,PIN_ENABLE,GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB,LED_ROUGE,GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+
   INIT_PERM_TARVOS(0x15, 0x16); //mon adresse est 1° et on envoit à 2°
+  uint8_t* receptionbuffer;
+
   while (1)
   {
-	SEND_DATA_NETW("$23,42,N,2,E,14,120,1013,2025,01,18,14,30,45*", 0x82, 0x16, strlen("$23,42,N,2,E,14,120,1013,2025,01,18,14,30,45*"));
+
+
+	/// Permet envoi des données
+	/*SEND_DATA_NETW("Hello", 0x82, 0x16, strlen("Hello"));
+	HAL_Delay(500);*/
+	/// Permet réception des données
+	/*&receptionbuffer = copyTarvosBuffer();
+    HAL_UART_Transmit(&huart2, (uint8_t*)receptionbuffer, strlen(receptionbuffer), HAL_MAX_DELAY);
+    HAL_Delay(1000);*/
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -198,6 +233,41 @@ static void MX_LPUART1_UART_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -223,14 +293,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : USART_TX_Pin USART_RX_Pin */
-  GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
