@@ -254,6 +254,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 ## Séance 21, 18/03/25
 - Station sol
    - Modilisation et impression des finitions 
+   <img src="./Docs/IMG/finition v1 station sol.jpeg" alt="TOP" style="float: left; width: 45%">
 - Canette
    - Ajout de fonctions (servomoteur) sur le bouton : appuie simple -> verrouille ; appuie long libère
 
