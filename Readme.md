@@ -251,6 +251,13 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Poster de projet
    - Nous avons commencé l'affiche du projet (nécessaire pour la compétition), choix du support : feuille A3 en $`\LaTeX`$
 
+## Séance 21, 18/03/25
+- Station sol
+   - Modilisation et impression des finitions 
+- Canette
+   - Ajout de fonctions (servomoteur) sur le bouton : appuie simple -> verrouille ; appuie long libère
+
+
 ## Livrables
 ### PCB
 <div style="display: flex; justify-content: space-between;">
