@@ -22,7 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "tarvos.h"
-#include <string.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +46,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-
+#define BUFFER_SIZE 20
 #define PIN_ENABLE GPIO_PIN_15
 #define LED_ROUGE GPIO_PIN_14
 
@@ -54,6 +54,7 @@ uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
 uint8_t tarvos_TX_Tampon[TarvosTxTamponSize];
 uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 uint8_t tarvos_RX_Tampon[TarvosRxTamponSize];
+uint8_t usart_buffer[BUFFER_SIZE];
 
 int TarvosRXbufferoldpos=0;
 int TarvosRXbuffernewpos=0;
@@ -66,7 +67,6 @@ extern int flag_envoi;
 extern int flag_sensor;
 int erreur ;
 int pointnull = 123;
-
 
 /* USER CODE END PV */
 
@@ -117,30 +117,27 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  INIT_PERM_TARVOS(0x15, 0x16); //mon adresse est 1° et on envoit à 2°
 
-  HAL_GPIO_WritePin(GPIOB,PIN_ENABLE,GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOB,LED_ROUGE,GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-
-  INIT_PERM_TARVOS(0x15, 0x16); //mon adresse est 1° et on envoit à 2°
-  uint8_t* receptionbuffer;
-
   while (1)
   {
 
-
 	/// Permet envoi des données
-	/*SEND_DATA_NETW("Hello", 0x82, 0x16, strlen("Hello"));
-	HAL_Delay(500);*/
-	/// Permet réception des données
-	/*&receptionbuffer = copyTarvosBuffer();
-    HAL_UART_Transmit(&huart2, (uint8_t*)receptionbuffer, strlen(receptionbuffer), HAL_MAX_DELAY);
-    HAL_Delay(1000);*/
+	SEND_DATA_NETW("Hello", 0x82, 0x16, strlen("Hello"));
+	HAL_Delay(500);
 
+	/*
+	/// Permet réception des données
+	uint8_t *buffer = copyTarvosBuffer();  // Récupération du buffer
+    uint16_t length = strlen((char*)buffer);  // Supposons qu'il contient du texte
+    HAL_UART_Transmit(&huart2, buffer, length, HAL_MAX_DELAY);
+    HAL_UART_Transmit(&huart2, (uint8_t*)"\n", 1, HAL_MAX_DELAY);
+    HAL_Delay(500);
+	*/
 
     /* USER CODE END WHILE */
 
