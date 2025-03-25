@@ -257,7 +257,14 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    <img src="./Docs/IMG/finition v1 station sol.jpeg" alt="TOP" style="float: left; width: 45%">
 - Canette
    - Ajout de fonctions (servomoteur) sur le bouton : appuie simple -> verrouille ; appuie long libère
+   - Problème sur la liaison ST-Link avec le PCB problèmes pour téléverser le code
 
+## Séance 22, 25/03/25
+- Stockage
+   - modélisation et impression boite pour les tharvos III
+- Canette
+   - Identification des problèmes liés au pcb (mauvaises résistances, ...)
+   
 
 ## Livrables
 ### PCB
