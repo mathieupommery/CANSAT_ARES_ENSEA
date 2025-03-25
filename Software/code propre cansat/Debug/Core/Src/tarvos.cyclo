@@ -1,0 +1,8 @@
+../Core/Src/tarvos.c:15:19:SET_tcMODE	5
+../Core/Src/tarvos.c:36:19:INIT_TARVOS	1
+../Core/Src/tarvos.c:42:19:INIT_PERM_TARVOS	7
+../Core/Src/tarvos.c:115:9:Get_CRC8	2
+../Core/Src/tarvos.c:126:5:SEND_DATA_NETW	4
+../Core/Src/tarvos.c:170:19:SET_Destadr	2
+../Core/Src/tarvos.c:183:19:REQ	2
+../Core/Src/tarvos.c:196:19:REQ_RSSI	2

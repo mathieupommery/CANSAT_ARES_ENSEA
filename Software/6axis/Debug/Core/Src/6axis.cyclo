@@ -1,4 +1,0 @@
-../Core/Src/6axis.c:16:6:check_device_communication	2
-../Core/Src/6axis.c:29:6:Init_HighPerf_Mode_6_axis	3
-../Core/Src/6axis.c:70:19:Read_sensor_data	9
-../Core/Src/6axis.c:128:6:Display_6_axis_data	2

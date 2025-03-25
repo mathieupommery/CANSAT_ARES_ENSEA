@@ -1,9 +1,0 @@
-../Core/Src/main.c:139:5:main	10
-../Core/Src/main.c:304:6:SystemClock_Config	3
-../Core/Src/main.c:351:6:uint16_to_char_buffer	2
-../Core/Src/main.c:357:6:conversion_char	8
-../Core/Src/main.c:411:6:conv_float_to_char	1
-../Core/Src/main.c:415:6:mef_pos	1
-../Core/Src/main.c:419:6:Set_Servo_Position	1
-../Core/Src/main.c:423:6:convertIntToChar	1
-../Core/Src/main.c:435:6:Error_Handler	1
