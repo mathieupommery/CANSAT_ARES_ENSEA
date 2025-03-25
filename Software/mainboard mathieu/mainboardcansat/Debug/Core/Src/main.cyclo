@@ -1,4 +1,0 @@
-../Core/Src/main.c:122:5:main	4
-../Core/Src/main.c:251:6:SystemClock_Config	3
-../Core/Src/main.c:297:6:mise_sous_buffer	1
-../Core/Src/main.c:306:6:Error_Handler	1

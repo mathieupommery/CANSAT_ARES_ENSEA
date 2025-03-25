@@ -242,6 +242,14 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 
 ## Séance 20, 11/03/25
+- Station sol
+   - Modification du bouton général par un plus jolie avec LED
+   - Découpe au laser d'une planche en MDF pour faire la face du dessus de la station sol
+   - Réarrangement des pièces et impression finale - si tout marche bien lors de la prochaine séance - des pièces
+- 1er test du CanSat
+   - Test concluant du parachute en larguant le CanSat d'un drone à environ 30-50 m, reste à valider la vitesse de chute
+- Poster de projet
+   - Nous avons commencé l'affiche du projet (nécessaire pour la compétition), choix du support : feuille A3 en $`\LaTeX`$
 
 ## Livrables
 ### PCB
