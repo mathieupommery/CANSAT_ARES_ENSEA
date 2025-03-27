@@ -261,10 +261,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Software
    - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soit libérées, et un appuie long le mécanisme se referme
    - Test du baromètre et mise en place du code pour l'ouverture du Cansat à une certaine distance (testé et validé)
-     ![Demo](Docs/IMG/Largage.gif)
+     ![Demo](Docs/IMG/Mecanisme.gif)
 - Canette
    - En fin de séance, nous avons tester l'ouverture du cansat avec déploiement du second parachute
-  ![Demo](Docs/IMG/Mecanisme.gif)
+  ![Demo](Docs/IMG/Largage.gif)
 
 ## Séance 22, 25/03/25
 - Stockage
