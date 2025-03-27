@@ -264,7 +264,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
      ![Til](./Docs/IMG/Conversion Success Image.gif)
 - Canette
    - En fin de séance, nous avons tester l'ouverture du cansat avec déploiement du second parachute
-  ![Til](Docs/IMG/largage.GIF)
+  ![Demo](Docs/IMG/Mecanisme.gif)
 
 ## Séance 22, 25/03/25
 - Stockage
