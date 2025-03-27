@@ -258,6 +258,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Canette
    - Ajout de fonctions (servomoteur) sur le bouton : appuie simple -> verrouille ; appuie long libère
    - Problème sur la liaison ST-Link avec le PCB problèmes pour téléverser le code
+- Software
+   - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soit libérées, et un appuie long le mécanisme se referme
+   - Test du baromètre et mise en place du code pour l'ouverture du Cansat à une certaine distance (testé et validé)
+   ![alt text](GMP_U2F2ZUdIMDE=.GIF)
 
 ## Séance 22, 25/03/25
 - Stockage
