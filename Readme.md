@@ -151,10 +151,10 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 12, 10/12/24
 - Modélisation Station sol 
-<img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
-- Avancement programmation station sol Qt
-- Test du système de vérrouillage sur la canette entière
-- Soudage du PCB avec la partie accéléromètre
+<img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">  
+- Avancement programmation station sol Qt  
+- Test du système de vérrouillage sur la canette entière  
+- Soudage du PCB avec la partie accéléromètre  
 
 ### Séance 13, 14/01/25
 - Réunion mise au point de l'avancée du projet et nouvelles tâches assignées 
