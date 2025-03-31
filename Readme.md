@@ -290,22 +290,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
   * port de carte micro sd
   * 2 port uart dédiée
   * port servo dédié
-  * pads de soudures pour accéssoire et debug(swd)
-
-
-   ## boitier et design exterieur:
-![Video to GIF Animation]()
-
-   
-
-
-
- 
-### Code
-
-
-
-                                                                                   
+  * pads de soudures pour accéssoire et debug(swd)                                                              
 
 ### Rendu final
 > Video ici 
