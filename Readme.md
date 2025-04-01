@@ -319,7 +319,11 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 #Suite à de nombreux probleme long a debugger:
    ##V3:
-
+![image](https://github.com/user-attachments/assets/e7469fed-02ef-4e96-ba3d-03e8abccf841)
+![image](https://github.com/user-attachments/assets/8da8ab3d-ad4c-427f-91be-2d5945198fd7)
+*Connecteurs plus robustes
+*Connecteur de la batterie deporte
+*Servomoteur uniquement soude
 
 
    
