@@ -1,4 +1,0 @@
-../Core/Src/led.c:14:19:LED_Init	2
-../Core/Src/led.c:33:6:LED_Setcolour	6
-../Core/Src/led.c:69:19:LED_Update	1
-../Core/Src/led.c:83:6:LED_Callback	1
