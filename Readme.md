@@ -272,6 +272,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 - Canette
    - Identification des problèmes liés au pcb (mauvaises résistances, ...)
    
+## Séance 23, 01/04/25
+- Présentation du POC
 
 ## Livrables
 ### PCB
@@ -292,23 +294,23 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
   * port servo dédié
   * pads de soudures pour accéssoire et debug(swd)
 
-    ##V1:
+    ## V1:
     ![image](https://github.com/user-attachments/assets/cd9e87d8-c2c3-4230-bf21-cc41be00fb7c)
 
     ![image](https://github.com/user-attachments/assets/d206f71e-0aa6-4205-9962-9d1119d65502)
 
 
-    ##V2:
+    ## V2:
     ![image](https://github.com/user-attachments/assets/0bf2e5e1-f7a6-4f15-8080-7eab5975f991)
 
     ![image](https://github.com/user-attachments/assets/66e0acc7-4901-464f-aa7d-59c530588c99)
 
-*Capteur de courant enlevé car peu utile.
-*Barometre bmp581 precision relative:+/-2cm ! 
-*connecteur carte a carte 10 et 12 contacts pour une reduction de la place !
-*carte principale avec carte auxiliaires flexibles.
+* Capteur de courant enlevé car peu utile.
+* Barometre bmp581 precision relative:+/-2cm ! 
+* connecteur carte a carte 10 et 12 contacts pour une reduction de la place !
+* carte principale avec carte auxiliaires flexibles.
 
-##Carte auxiliaire flexible:
+## Carte auxiliaire flexible:
     ![image](https://github.com/user-attachments/assets/cfff1de9-bf17-4cf1-af5d-3f29cedd3072)
 
    *Module radio tarvos.
@@ -317,26 +319,26 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    *Double témoin lumineux adressable 16millions de couleurs.
    *connecteur 2 broche pour connecter l'indicateur de largage.
 
-#Suite à de nombreux probleme long a debugger:
-   ##V3:
+# Suite à de nombreux probleme long a debugger:
+   ## V3:
 ![image](https://github.com/user-attachments/assets/e7469fed-02ef-4e96-ba3d-03e8abccf841)
 ![image](https://github.com/user-attachments/assets/8da8ab3d-ad4c-427f-91be-2d5945198fd7)
-*Connecteurs plus robustes
-*Connecteur de la batterie deporte
-*Servomoteur uniquement soude
+* Connecteurs plus robustes
+* Connecteur de la batterie deporte
+* Servomoteur uniquement soude
 
 
    
-*But: revenir a une design plus simple et robuste avec des connecteurs plus gros, tout en gardant le design estetique et le plus fonctionnel et robuste.
-##PCB sensor Vfinale:
+* But: revenir a une design plus simple et robuste avec des connecteurs plus gros, tout en gardant le design estetique et le plus fonctionnel et robuste.
+## PCB sensor Vfinale:
    ![image](https://github.com/user-attachments/assets/f4664456-b87f-4ebb-b6fe-57d5ffe10136)
 
-   *Nous avons donc sortie le barometre
-   *Design plus simple mais robuste
-   *Uniquement des soudures ou connecteurs robuste
-   *Debug beaucoup plus rapide
-   *Modulaire
-   *Beaucoup de fonctionnalitee.
+   * Nous avons donc sortie le barometre
+   * Design plus simple mais robuste
+   * Uniquement des soudures ou connecteurs robuste
+   * Debug beaucoup plus rapide
+   * Modulaire
+   * Beaucoup de fonctionnalitee.
 
    
    
