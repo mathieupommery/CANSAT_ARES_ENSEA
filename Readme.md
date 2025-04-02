@@ -311,13 +311,13 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 * carte principale avec carte auxiliaires flexibles.
 
 ## Carte auxiliaire flexible:
-    ![image](https://github.com/user-attachments/assets/cfff1de9-bf17-4cf1-af5d-3f29cedd3072)
+   ![image](https://github.com/user-attachments/assets/cfff1de9-bf17-4cf1-af5d-3f29cedd3072)
 
-   *Module radio tarvos.
-   *module gps pa1010d.
-   *connection swd rapide avec bouton de gestion des modes.
-   *Double témoin lumineux adressable 16millions de couleurs.
-   *connecteur 2 broche pour connecter l'indicateur de largage.
+   * Module radio tarvos.
+   * module gps pa1010d.
+   * connection swd rapide avec bouton de gestion des modes.
+   * Double témoin lumineux adressable 16millions de couleurs.
+   * connecteur 2 broche pour connecter l'indicateur de largage.
 
 # Suite à de nombreux probleme long a debugger:
    ## V3:
