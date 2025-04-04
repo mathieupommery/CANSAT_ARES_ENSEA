@@ -12526,7 +12526,7 @@
 			(extension_offset 0.5)
 			(keep_text_aligned yes)
 		)
-		(gr_text "35,1400 mm"
+		(gr_text "35.1400 mm"
 			(at 145.2 179.67 0)
 			(layer "User.1")
 			(uuid "5d75f9c8-898d-4d23-bcb7-de2a11dee1ea")
