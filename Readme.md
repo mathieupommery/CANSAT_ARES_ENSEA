@@ -357,6 +357,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Châssis interne imprimé en 3D en PLA
    - Façade en MDF découpée et gravée au laser
    - Accès simplifié à l’intérieur de la boîte grâce aux vis à main (capuchons noirs)
+
    Fichier 3D aller dans `./Hardware/Fichier%203D%20Station%20sol/` :
    - Fichier global avec tout l'historique : `Case.f3z`
    - Pour impression, découpage en 3 prints pour le châssis : `Case G.stl`,`Case D.stl`, `Range cable.stl`
