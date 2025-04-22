@@ -11,6 +11,7 @@
    - [Objectifs](#objectifs)
 - [Livrable](#livrables)
    - [PCB](#pcb)
+   - [Station sol](#station-sol)
 
 ---
 
@@ -62,11 +63,11 @@
 
 ### Objectifs
 
-| Date       | Objectif                                                                 | Check      |
-|------------|--------------------------------------------------------------------------|------------|
-| 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches       | ✅ Terminé |
-| 23-10-2024 | Schématique et routage fini → Commander le PCB V0                        | ✅ Terminé |
-| 01-04-2025 | Livrable : Prototype CanSat Fonctionnel + Git final                      | 🔵 En cours|
+| Date       | Objectif                                                                          | Check      |
+|------------|-----------------------------------------------------------------------------------|------------|
+| 17-09-2024 | Définir les objectifs du projet, planifier et organiser les tâches                | ✅ Terminé |
+| 23-10-2024 | Schématique et routage fini → Commander le PCB V0                                 | ✅ Terminé |
+| 27-04-2025 | Livrable : Prototype CanSat Fonctionnel + Git final (manque partie communication) | ✅ Terminé |
 
 
 ### Séance 1, 17/09/24
@@ -241,7 +242,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Arrivée et bon fonctionnement des nappes en molex avec connectiques interchangeables pour $`\mu`$HDMI/HDMI et $`\mu`$USB/USB pour la Raspberry Pi 5
 
 
-## Séance 20, 11/03/25
+### Séance 20, 11/03/25
 - Station sol
    - Modification du bouton général par un plus jolie avec LED
    - Découpe au laser d'une planche en MDF pour faire la face du dessus de la station sol
@@ -259,24 +260,24 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Ajout de fonctions (servomoteur) sur le bouton : appuie simple -> verrouille ; appuie long libère
    - Problème sur la liaison ST-Link avec le PCB problèmes pour téléverser le code
 - Software
-   - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soit libérées, et un appuie long le mécanisme se referme
+   - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soient libérées, et un appuie long le mécanisme se referme
    - Test du baromètre et mise en place du code pour l'ouverture du Cansat à une certaine distance (testé et validé)  
      ![Demo](Docs/IMG/Mecanisme.gif)
 - Canette
    - En fin de séance, nous avons tester l'ouverture du cansat avec déploiement du second parachute
   ![Demo](Docs/IMG/Largage.gif)
 
-## Séance 22, 25/03/25
+### Séance 22, 25/03/25
 - Stockage
    - modélisation et impression boite pour les tharvos III
 - Canette
    - Identification des problèmes liés au pcb (mauvaises résistances, ...)
    
-## Séance 23, 01/04/25
+### Séance 23, 01/04/25
 - Présentation du POC
 
-## Livrables
-### PCB
+# Livrables
+## PCB
 <div style="display: flex; justify-content: space-between;">
 
 <img src="./Docs/IMG/pcb v1 top.png" alt="TOP PCB" width="45%"/>
@@ -294,13 +295,13 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
   * port servo dédié
   * pads de soudures pour accéssoire et debug(swd)
 
-    ## V1:
+    ### V1:
     ![image](https://github.com/user-attachments/assets/cd9e87d8-c2c3-4230-bf21-cc41be00fb7c)
 
     ![image](https://github.com/user-attachments/assets/d206f71e-0aa6-4205-9962-9d1119d65502)
 
 
-    ## V2:
+    ### V2:
     ![image](https://github.com/user-attachments/assets/0bf2e5e1-f7a6-4f15-8080-7eab5975f991)
 
     ![image](https://github.com/user-attachments/assets/66e0acc7-4901-464f-aa7d-59c530588c99)
@@ -310,7 +311,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 * connecteur carte a carte 10 et 12 contacts pour une reduction de la place !
 * carte principale avec carte auxiliaires flexibles.
 
-## Carte auxiliaire flexible:
+### Carte auxiliaire flexible:
    ![image](https://github.com/user-attachments/assets/cfff1de9-bf17-4cf1-af5d-3f29cedd3072)
 
    * Module radio tarvos.
@@ -319,8 +320,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    * Double témoin lumineux adressable 16millions de couleurs.
    * connecteur 2 broche pour connecter l'indicateur de largage.
 
-# Suite à de nombreux probleme long a debugger:
-   ## V3:
+### Suite à de nombreux probleme long a debugger:
+   ### V3:
 ![image](https://github.com/user-attachments/assets/e7469fed-02ef-4e96-ba3d-03e8abccf841)
 ![image](https://github.com/user-attachments/assets/8da8ab3d-ad4c-427f-91be-2d5945198fd7)
 * Connecteurs plus robustes
@@ -340,12 +341,26 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    * Modulaire
    * Beaucoup de fonctionnalitee.
 
+## Station Sol
+### Boîtier et électronique
+   ![Station_sol](./Docs/IMG/Station_sol%20finale.jpeg)
+   Spécifications :
+   - Raspberry Pi 5 intégré
+   - Module radio Tarvos III (Würth Elektronik)
+   - Écran tactile 7" connecté au Raspberry Pi 5
+   - Batterie Li-Ion de 20 000 mAh avec BMS et prises intégrées
+   - Indicateur de charge et de niveau de la batterie
+   - Prise USB-C (femelle) de 9V⎓2A (18W) pour la recharge de la batterie
+   - Bouton ON/OFF (LED allumée lorsque le Pi 5 est sous tension)
+   - Emplacement dédié pour ranger le CanSat
+   - Emplacement pour le parachute
+   - Châssis interne imprimé en 3D en PLA
+   - Façade en MDF découpée et gravée au laser
+   - Accès simplifié à l’intérieur de la boîte grâce aux vis à main (capuchons noirs)
+   Fichier 3D aller dans `./Hardware/Fichier%203D%20Station%20sol/` :
+   - Fichier global avec tout l'historique : `Case.f3z`
+   - Pour impression, découpage en 3 prints pour le châssis : `Case G.stl`,`Case D.stl`, `Range cable.stl`
+   - Pour la découpe laser de la planche en bois : `Plaque bois Cansat_laser.dxf`
+   - Le reste, caches et contours sont pour la finition
    
-   
-
-
-
-
-
-### Rendu final
-> Video ici 
+### Software
