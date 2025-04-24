@@ -1,0 +1,4 @@
+../Core/Src/servo.c:14:19:Init_servo	1
+../Core/Src/servo.c:23:6:release_mecanism	1
+../Core/Src/servo.c:28:6:lock_mecanism	1
+../Core/Src/servo.c:33:19:set_duty	3
