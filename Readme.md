@@ -17,24 +17,24 @@
 
 ## Introduction
 - Il s'agit d'un projet de 2e année d'école d'ingénieur en électronique à l'[ENSEA](https://www.ensea.fr/fr) à Cergy.
-- Le but étant de réaliser - pour la **compétiton CanSat** organisée par **Planète science et le CNES** - un satellite en forme de canette.
-- Celui-ci devra **réaliser plusieurs missions** lorsqu'il sera **lâché d'un drone à envrion 120m de hauteur devant un jury**.
+- Le but étant de réaliser - pour la **compétition CanSat** organisée par **Planète Sciences et le CNES** - un satellite en forme de canette.
+- Celui-ci devra **réaliser plusieurs missions** lorsqu'il sera **lâché d'un drone à environ 120m de hauteur devant un jury**.
 - Le projet consiste à faire la **conception** et la **fabrication** de ce satellite.
    - Partie électronique
    (PCB, capteurs, alimentation, station au sol,... )
    - Partie mécanique
    (Châssis, taille, matériau,... )
    - Partie résultats
-   (Exploitation des mesures, les mettre en formes en développent ou non une interface, les présenter devant le jury,... )
-- Les 4 missions principales imposées en plus du réglement sont :
+   (Exploitation des mesures, les mettre en forme en développant ou non une interface, les présenter devant le jury,... )
+- Les 4 missions principales imposées en plus du règlement sont :
    - **Mission 1 : Séparation & Transmission**
       - Le CanSat doit se séparer en deux parties à une altitude comprise entre 40 et 60 mètres.​
       - La chaîne de séparation doit résister à une traction de 30N.​
-      - Transmission : ​une des parties du CanSat doit transmettre l’altitude et une donnée sur l’atmosphère en temps réel vers une station sol.
+      - Transmission : ​une des parties du CanSat doit transmettre l'altitude et une donnée sur l'atmosphère en temps réel vers une station sol.
    - **Mission 2 : Rétrécissement​**
       - Réduire le CanSat au format 33 cl vous permettra de multiplier votre score par 2 sur la partie technique.
-   - **Mission 3 : Instrumentation cassé​**
-      - Trouvez un moyen de déterminer votre altitude à partir d’un capteur autre qu’un altimètre barométrique ou un GPS.
+   - **Mission 3 : Instrumentation cassée​**
+      - Trouvez un moyen de déterminer votre altitude à partir d'un capteur autre qu'un altimètre barométrique ou un GPS.
    - **Mission 4 : Distance​**
       - Intégrez de quoi mesurer la distance entre les deux parties du CanSat et la communiquer par télémétrie vers la station sol.
       - La Mission 3 n'intervient pas ici.
@@ -72,11 +72,11 @@
 
 ### Séance 1, 17/09/24
 - Organisation du projet et son déroulement
-- Plannification des livrables et définition des tâches
+- Planification des livrables et définition des tâches
 - Capteurs
    - 6 axes --> branchements OK, code OK, fonctionnement OK
    - baromètre --> prise en main : fonctionnement & branchements
-   - thermomète--> compréhension de la datsaheet
+   - thermomètre --> compréhension de la datasheet
 ### Séance 2, 24/09/24
 - Modélisation CanSat 3D V0
 - Prise en main du GPS
@@ -101,7 +101,7 @@
 ### Séance 6, 22/10/24
 - Test du module Tarvos-III:
 
-Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son antenne USB. Cependant nous n'avons pas réussi, en identifiant les 2 parties, on se rend vite compte d'un problème sur l'EV-Board car lorsqu'on lui envoi des informations (par exemple sa réinitialisation) la carte ne répond pas. Il y a surement un composant HS sur l'EV-Board
+Nous avons essayé de faire communiquer l'EV-Board du Tarvos-III avec son antenne USB. Cependant nous n'avons pas réussi, en identifiant les 2 parties, on se rend vite compte d'un problème sur l'EV-Board car lorsqu'on lui envoie des informations (par exemple sa réinitialisation) la carte ne répond pas. Il y a sûrement un composant HS sur l'EV-Board.
 - Vérification et commande du PCB V0
 - Avancement sur le module radio
 - Test sur servo via contrôle PWM
@@ -125,7 +125,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - MAJ du CdC
    - Présentation du PCB V0 (MAJ) reçu
    - Mise en forme de la stratégie de code
-   - Présentation de la modélisation de la partie châssis et du mécanisme de vérrouillage
+   - Présentation de la modélisation de la partie châssis et du mécanisme de verrouillage
    - Présentation de l'avancement sur la rPi 5
    - Présentation du travail sur le servomoteur
 - En attente des composants pour commencer soudure et pour continuer sur le Tharvos III
@@ -152,7 +152,7 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ### Séance 12, 10/12/24
 - Avancement programmation station sol Qt
-- Test du système de vérrouillage sur la canette entière
+- Test du système de verrouillage sur la canette entière
 - Soudage du PCB avec la partie accéléromètre
 - Modélisation Station sol
 <img src="./Docs/IMG/stationSol.png" alt="TOP" style="float: left; width: 45%">
@@ -192,15 +192,15 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
       - Imprimer des parties de la station sol
       - Tester la vitesse de chute et la résistance du CanSat
       - Finir la soudure de la mainboard
-      - Refaire carte GPS plus carte ecran led.
+      - Refaire carte GPS plus carte écran led.
       - Tests avec la Tarvos III & Raspberry Pi 5
-      - Avoir fait un choix pour le capteur de distance et l’avoir commandé (si besoin)
+      - Avoir fait un choix pour le capteur de distance et l'avoir commandé (si besoin)
       - Faire fonctionner le baromètre
 - Station sol
-   - L'épaisseur des murs a été baissé
+   - L'épaisseur des murs a été baissée
    - Prêt à être imprimé
-- Teste de la mesure de distance via RSSI intégré au moduleradio Tharvos III
-   - On abandone donc l'idée du capteur laser pour mesurer la distance
+- Test de la mesure de distance via RSSI intégré au module radio Tharvos III
+   - On abandonne donc l'idée du capteur laser pour mesurer la distance
 <div style="display: flex; justify-content: space-between;">
 
 <img src="./Docs/IMG/case v26 exterieur.jpg" alt="exterior" width="45%"/>
@@ -216,35 +216,35 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Réunion d'avancement sur le CanSat sur Paris avec l'organisation du concours le 09/02/25
 ### Séance 17, 28/01/25
 
-- Nous cherchons des parachutes coherent pour nos deux parties, donc des parachutes qui permettent une vitesse de descenbte comprise entre 2m/s et 15m/s, il nous en faut donc deux, un pour le tout, un autre pour le bas, d'un poids de respectivement 300gr et 150gr, on choisit donc les parachutes en 28' 14' et 18' afin de faire des test:
+- Nous cherchons des parachutes cohérents pour nos deux parties, donc des parachutes qui permettent une vitesse de descente comprise entre 2m/s et 15m/s, il nous en faut donc deux, un pour le tout, un autre pour le bas, d'un poids de respectivement 300gr et 150gr, on choisit donc les parachutes en 28' 14' et 18' afin de faire des tests:
 - [Sierrafoxhobbies](https://www.sierrafoxhobbies.com/fr/parachute/2301-parachute-cansat-xchute-cs.html)
 
 
 ### Séance 18, 11/02/25
 - Finalisation du programme de la station sol + validation 
-- Commande parachute et connecteurs pour la station sols
+- Commande parachute et connecteurs pour la station sol
 - MAJ du modèle 3D de la station sol
 - Soudures pour le bouton et l'afficheur de la batterie pour la station sol
 - Modification du mécanisme pour réduire les frottements + impression et validation du test
-- Montage du mécanisme complet et test du mécanisme avec canette fermée , Test concluant ✅
+- Montage du mécanisme complet et test du mécanisme avec canette fermée, Test concluant ✅
 
 ### Séance 19, 04/03/25
 - 5e passage oral
-   - Mieux sur la gestion du temps mais toujours au dessus de 20min (à cause des questions et échanges)
+   - Mieux sur la gestion du temps mais toujours au-dessus de 20min (à cause des questions et échanges)
    - Sinon le reste des remarques a été corrigé.
    - Objectifs pour la prochaine séance
       - Avoir un POC (proof of concept) fonctionnel
       - Pouvoir utiliser la station sol
       - Avoir commencé le Poster du CanSat (requis pour la compétition)
 - Nouvelles soudures/électronique pour la station sol
-   - Réglage d'un problème de connection lié à une couche du PCB arrachée au niveau du bouton
+   - Réglage d'un problème de connexion lié à une couche du PCB arrachée au niveau du bouton
    - Changement pour des câbles plus souples
    - Arrivée et bon fonctionnement des nappes en molex avec connectiques interchangeables pour $`\mu`$HDMI/HDMI et $`\mu`$USB/USB pour la Raspberry Pi 5
 
 
 ### Séance 20, 11/03/25
 - Station sol
-   - Modification du bouton général par un plus jolie avec LED
+   - Modification du bouton général par un plus joli avec LED
    - Découpe au laser d'une planche en MDF pour faire la face du dessus de la station sol
    - Réarrangement des pièces et impression finale - si tout marche bien lors de la prochaine séance - des pièces
 - 1er test du CanSat
@@ -254,22 +254,22 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
 ## Séance 21, 18/03/25
 - Station sol
-   - Modilisation et impression des finitions 
+   - Modélisation et impression des finitions 
    <img src="./Docs/IMG/finition v1 station sol.jpeg" alt="TOP" style="float: left; width: 45%">
 - Canette
-   - Ajout de fonctions (servomoteur) sur le bouton : appuie simple -> verrouille ; appuie long libère
-   - Problème sur la liaison ST-Link avec le PCB problèmes pour téléverser le code
+   - Ajout de fonctions (servomoteur) sur le bouton : appui simple -> verrouille ; appui long libère
+   - Problème sur la liaison ST-Link avec le PCB, problèmes pour téléverser le code
 - Software
-   - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soient libérées, et un appuie long le mécanisme se referme
+   - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soient libérées, et un appui long, le mécanisme se referme
    - Test du baromètre et mise en place du code pour l'ouverture du Cansat à une certaine distance (testé et validé)  
      ![Demo](Docs/IMG/Mecanisme.gif)
 - Canette
-   - En fin de séance, nous avons tester l'ouverture du cansat avec déploiement du second parachute
+   - En fin de séance, nous avons testé l'ouverture du cansat avec déploiement du second parachute
   ![Demo](Docs/IMG/Largage.gif)
 
 ### Séance 22, 25/03/25
 - Stockage
-   - modélisation et impression boite pour les tharvos III
+   - modélisation et impression boîte pour les tharvos III
 - Canette
    - Identification des problèmes liés au pcb (mauvaises résistances, ...)
    
@@ -286,14 +286,14 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 </div>
 
   Mainboard, pcb 6 couches avec:
-  * accelerometre
+  * accéléromètre
   * stm32g431cbu6
-  * regulateur buck 6-28v vers 5v
+  * régulateur buck 6-28v vers 5v
   * 2 ldo 5v vers 3.3v dont 1 activable sur commande du MCU.
   * port de carte micro sd
-  * 2 port uart dédiée
+  * 2 ports uart dédiés
   * port servo dédié
-  * pads de soudures pour accéssoire et debug(swd)
+  * pads de soudures pour accessoires et debug(swd)
 
     ### V1:
     ![image](https://github.com/user-attachments/assets/cd9e87d8-c2c3-4230-bf21-cc41be00fb7c)
@@ -307,8 +307,8 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
     ![image](https://github.com/user-attachments/assets/66e0acc7-4901-464f-aa7d-59c530588c99)
 
 * Capteur de courant enlevé car peu utile.
-* Barometre bmp581 precision relative:+/-2cm ! 
-* connecteur carte a carte 10 et 12 contacts pour une reduction de la place !
+* Baromètre bmp581 précision relative:+/-2cm ! 
+* connecteur carte à carte 10 et 12 contacts pour une réduction de la place !
 * carte principale avec carte auxiliaires flexibles.
 
 ### Carte auxiliaire flexible:
@@ -316,30 +316,30 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
 
    * Module radio tarvos.
    * module gps pa1010d.
-   * connection swd rapide avec bouton de gestion des modes.
-   * Double témoin lumineux adressable 16millions de couleurs.
-   * connecteur 2 broche pour connecter l'indicateur de largage.
+   * connexion swd rapide avec bouton de gestion des modes.
+   * Double témoin lumineux adressable 16 millions de couleurs.
+   * connecteur 2 broches pour connecter l'indicateur de largage.
 
-### Suite à de nombreux probleme long a debugger:
+### Suite à de nombreux problèmes longs à débugger:
    ### V3:
 ![image](https://github.com/user-attachments/assets/e7469fed-02ef-4e96-ba3d-03e8abccf841)
 ![image](https://github.com/user-attachments/assets/8da8ab3d-ad4c-427f-91be-2d5945198fd7)
 * Connecteurs plus robustes
-* Connecteur de la batterie deporte
-* Servomoteur uniquement soude
+* Connecteur de la batterie déporté
+* Servomoteur uniquement soudé
 
 
    
-* But: revenir a une design plus simple et robuste avec des connecteurs plus gros, tout en gardant le design estetique et le plus fonctionnel et robuste.
+* But: revenir à un design plus simple et robuste avec des connecteurs plus gros, tout en gardant le design esthétique et le plus fonctionnel et robuste.
 ## PCB sensor Vfinale:
    ![image](https://github.com/user-attachments/assets/f4664456-b87f-4ebb-b6fe-57d5ffe10136)
 
-   * Nous avons donc sortie le barometre
+   * Nous avons donc sorti le baromètre
    * Design plus simple mais robuste
-   * Uniquement des soudures ou connecteurs robuste
+   * Uniquement des soudures ou connecteurs robustes
    * Debug beaucoup plus rapide
    * Modulaire
-   * Beaucoup de fonctionnalitee.
+   * Beaucoup de fonctionnalités.
 
 ## Station Sol
 ### Boîtier et électronique
@@ -351,12 +351,12 @@ Nous avons essayés de faire communiquer l'EV-Board du Tarvos-III avec son anten
    - Batterie Li-Ion de 20 000 mAh avec BMS et prises intégrées
    - Indicateur de charge et de niveau de la batterie
    - Prise USB-C (femelle) de 9V⎓2A (18W) pour la recharge de la batterie
-   - Bouton ON/OFF (LED allumée lorsque le Pi 5 est sous tension)
+   - Bouton ON/OFF (LED allumée lorsque la rPi 5 est sous tension)
    - Emplacement dédié pour ranger le CanSat
    - Emplacement pour le parachute
    - Châssis interne imprimé en 3D en PLA
    - Façade en MDF découpée et gravée au laser
-   - Accès simplifié à l’intérieur de la boîte grâce aux vis à main (capuchons noirs)
+   - Accès simplifié à l'intérieur de la boîte grâce aux vis à main (capuchons noirs)
 
    Fichier 3D aller dans `./Hardware/Fichier%203D%20Station%20sol/` :
    - Fichier global avec tout l'historique : `Case.f3z`
