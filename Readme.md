@@ -320,6 +320,10 @@ Nous avons essayé de faire communiquer l'EV-Board du Tarvos-III avec son antenn
    * Double témoin lumineux adressable 16 millions de couleurs.
    * connecteur 2 broches pour connecter l'indicateur de largage.
 
+Carte auxiliaire flexible + mainboard flexible installée dans la partie haute du CanSat :
+
+   <img src="./Docs/IMG/Flex_PCB_top_can.jpeg" alt="TOP PCB" width="45%"/>
+
 ### Suite à de nombreux problèmes longs à débugger:
    ### V3:
 ![image](https://github.com/user-attachments/assets/e7469fed-02ef-4e96-ba3d-03e8abccf841)
