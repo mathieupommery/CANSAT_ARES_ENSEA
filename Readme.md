@@ -261,13 +261,17 @@ Nous avons essayé de faire communiquer l'EV-Board du Tarvos-III avec son antenn
    - Problème sur la liaison ST-Link avec le PCB, problèmes pour téléverser le code
 - Software
    - Optimisation du code et mise en place d'un bouton pour que lorsqu'on appuie, les 2 parties soient libérées, et un appui long, le mécanisme se referme
-   - Test du baromètre et mise en place du code pour l'ouverture du Cansat à une certaine distance (testé et validé)  
+   - Test du baromètre et mise en place du code pour l'ouverture du Cansat à une certaine distance (testé et validé)
+   - Amélioration code existant pour la station sol
      ![Demo](Docs/IMG/Mecanisme.gif)
 - Canette
    - En fin de séance, nous avons testé l'ouverture du cansat avec déploiement du second parachute
   ![Demo](Docs/IMG/Largage.gif)
 
 ### Séance 22, 25/03/25
+- Station sol
+  - Derniers ajustements du code de la station sol
+  - Essais & Validations
 - Stockage
    - modélisation et impression boîte pour les tharvos III
 - Canette
@@ -275,6 +279,10 @@ Nous avons essayé de faire communiquer l'EV-Board du Tarvos-III avec son antenn
    
 ### Séance 23, 01/04/25
 - Présentation du POC
+
+### 11/04/25  
+- Soudure de cartes de secours
+- Réalisation de deux modèles CanSat pour le jour J  
 
 # Livrables
 ## PCB
