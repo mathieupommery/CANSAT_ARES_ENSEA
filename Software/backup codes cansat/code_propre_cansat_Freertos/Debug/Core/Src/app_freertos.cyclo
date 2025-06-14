@@ -1,0 +1,7 @@
+../Core/Src/app_freertos.c:145:6:MX_FREERTOS_Init	1
+../Core/Src/app_freertos.c:215:6:Startstatemachine	1
+../Core/Src/app_freertos.c:235:6:StartGNSSParse	4
+../Core/Src/app_freertos.c:271:6:StartSdcard	2
+../Core/Src/app_freertos.c:310:6:Startservo	7
+../Core/Src/app_freertos.c:355:6:Startdistancecalc	3
+../Core/Src/app_freertos.c:393:6:startTarvosDecode	3

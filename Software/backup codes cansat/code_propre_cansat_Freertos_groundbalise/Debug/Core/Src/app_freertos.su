@@ -1,0 +1,5 @@
+../Core/Src/app_freertos.c:106:6:MX_FREERTOS_Init	96	static
+../Core/Src/app_freertos.c:158:6:Startstatemachine	32	static
+../Core/Src/app_freertos.c:183:6:StartSdcard	16	static
+../Core/Src/app_freertos.c:222:6:Startdistancecalc	16	static
+../Core/Src/app_freertos.c:241:6:startTarvosDecode	16	static

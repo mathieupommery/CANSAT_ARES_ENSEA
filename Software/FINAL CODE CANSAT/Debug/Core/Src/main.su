@@ -1,5 +1,0 @@
-../Core/Src/main.c:116:6:HAL_GPIO_EXTI_Callback	16	static
-../Core/Src/main.c:161:6:HAL_TIM_PWM_PulseFinishedCallback	16	static
-../Core/Src/main.c:171:5:main	40	static
-../Core/Src/main.c:394:6:SystemClock_Config	88	static
-../Core/Src/main.c:443:6:Error_Handler	4	static,ignoring_inline_asm

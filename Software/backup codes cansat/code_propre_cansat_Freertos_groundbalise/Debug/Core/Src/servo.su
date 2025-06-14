@@ -1,0 +1,5 @@
+../Core/Src/servo.c:14:19:Init_servo	8	static
+../Core/Src/servo.c:23:19:release_mecanism	8	static
+../Core/Src/servo.c:29:19:lock_mecanism	8	static
+../Core/Src/servo.c:35:6:stop_servo	8	static
+../Core/Src/servo.c:39:19:set_duty	16	static
