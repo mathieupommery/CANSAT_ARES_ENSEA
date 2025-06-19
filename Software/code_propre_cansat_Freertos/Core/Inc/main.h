@@ -66,9 +66,10 @@ void Error_Handler(void);
 #define SPI1_CS_Pin GPIO_PIN_4
 #define SPI1_CS_GPIO_Port GPIOC
 #define SD_SPI_HANDLE hspi1
-#define PARTIE_HAUT
-//#define PARTIE_BAS
-//#define PARTIE_SOL
+
+
+//#define PARTIE_HAUT
+#define PARTIE_BAS
 
 
 

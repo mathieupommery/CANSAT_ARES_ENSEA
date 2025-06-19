@@ -5,7 +5,8 @@
  *      Author: louisvoz
  */
 
-
+#ifndef INC_tarvos_H_
+#define INC_tarvos_H_
 #include "main.h"
 
 
@@ -21,15 +22,22 @@
 typedef struct {
 	uint8_t workingbuffer[64];
     uint16_t header_code;
-    uint8_t flag1;
-    uint8_t flag2;
+    uint8_t flag_calib;
+    uint8_t flag_drop;
+    uint8_t flag_separation;
+    uint8_t flag_sup;
     float latitude;
     float longitude;
-    float altitude;
+    float hMSL;
     float altitude_baro;
-    float extra1;
-    float extra2;
-    int32_t extra_int;
+    float vspeed;
+    float hspeed;
+    float temperature;
+    float Accx;
+    float Accy;
+    float Accz;
+    float pression;
+    uint32_t timeindex;
     uint8_t RSSI;
     uint8_t senderadress;
 } DecodedPayload;
@@ -45,7 +53,7 @@ int SEND_DATA_NETW(uint8_t *data, uint8_t channel, uint8_t dest_adress, int leng
 
 void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length);
 
-void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag1,uint8_t flag2,float latitude,float longitude,float altitude,float altitude_baro,float extra1,float extra2,int32_t extra_int);
+void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag_sup,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex);
 
 void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer);
 
@@ -64,7 +72,7 @@ HAL_StatusTypeDef REQ_RSSI();
 
 
 
-
+#endif /* INC_tarvos_H_ */
 
 
 

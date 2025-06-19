@@ -59,13 +59,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int tbtn1=0;
 
-
-uint16_t rawADCdata[3];
-float temp=0;
-float vrefint=0;
-float vbat=0;
 
 
 uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
@@ -89,9 +83,11 @@ DWORD free_sectors;	  // Free Sectors
 DWORD total_sectors;
 
 
-
-
-
+int tbtn1=0;
+uint16_t rawADCdata[3];
+float temp=0;
+float vrefint=0;
+float vbat=0;
 
 #ifdef PARTIE_BAS
 DecodedPayload TOPData;
@@ -128,6 +124,8 @@ int pbmseeker=0;
 int received_flag=0;
 
 int trameready=0;
+
+uint32_t timeindex=0;
 
 /* USER CODE END PV */
 
@@ -173,7 +171,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 							hauteur_Initiale=GNSSData.fhMSL;
 						}
 
-						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,CHANNEL,BOTTOM_ADDR,0x20,0,0,0.0,0.0,0.0,hauteur_Initiale,0.0,0.0,0);
+						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x20,0,0.0,0.0,GNSSData.fhMSL,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
 						flag_calib=1;
 #endif
 

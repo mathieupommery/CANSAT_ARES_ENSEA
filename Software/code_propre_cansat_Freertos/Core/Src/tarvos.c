@@ -16,6 +16,7 @@ extern float hauteur_Initiale;
 #ifdef PARTIE_BAS
 int noreturn_flag1=0;
 int noreturn_flag2=0;
+int noreturn_flag3=0;
 #endif
 
 HAL_StatusTypeDef SET_tcMODE(char mode){
@@ -238,25 +239,30 @@ HAL_StatusTypeDef REQ_RSSI(){
 
 }
 
-//payload size==32
-void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag1,uint8_t flag2,float latitude,float longitude,float altitude,float altitude_baro,float extra1,float extra2,int32_t extra_int){
-    uint8_t buffdonnee[34];
+//payload size==54
+void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag_sup,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex){
+    uint8_t buffdonnee[54];
     buffdonnee[0] = (header_code >> 8) & 0xFF;
     buffdonnee[1] = header_code & 0xFF;
-    buffdonnee[2] = flag1;
-    buffdonnee[3] = flag2;
+    buffdonnee[2] = flag_calib;
+    buffdonnee[3] = flag_drop;
+    buffdonnee[4] = flag_separation;
+    buffdonnee[5] = flag_sup;
 
-    memcpy(&buffdonnee[4],  &latitude,      sizeof(float));
-    memcpy(&buffdonnee[8],  &longitude,     sizeof(float));
-    memcpy(&buffdonnee[12], &altitude,      sizeof(float));
-    memcpy(&buffdonnee[16], &altitude_baro, sizeof(float));
-    memcpy(&buffdonnee[20], &extra1,        sizeof(float));
-    memcpy(&buffdonnee[24], &extra2,        sizeof(float));
-    memcpy(&buffdonnee[28], &extra_int,     sizeof(int32_t));
-    buffdonnee[33]=0x00;
-    buffdonnee[34]=0x00;
+    memcpy(&buffdonnee[6],  &latitude,      sizeof(float));
+    memcpy(&buffdonnee[10],  &longitude,     sizeof(float));
+    memcpy(&buffdonnee[14], &hMSL,      sizeof(float));
+    memcpy(&buffdonnee[18], &altitude_baro, sizeof(float));
+    memcpy(&buffdonnee[22], &vspeed,        sizeof(float));
+    memcpy(&buffdonnee[26], &hspeed,        sizeof(float));
+    memcpy(&buffdonnee[30], &temperature,    sizeof(float));
+    memcpy(&buffdonnee[34], &pression,    sizeof(float));
+    memcpy(&buffdonnee[38], &Accx,    sizeof(float));
+    memcpy(&buffdonnee[42], &Accy,    sizeof(float));
+    memcpy(&buffdonnee[46], &Accz,    sizeof(float));
+    memcpy(&buffdonnee[50], &timeindex,    sizeof(uint32_t));
 
-    SEND_DATA_NETW1((uint8_t *)buffdonnee, channel,dest_adress, 32);
+    SEND_DATA_NETW1((uint8_t *)buffdonnee, channel,dest_adress, 54);
 
 }
 
@@ -264,42 +270,54 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
 	if(receivingbuffer[0]!=0x02 || receivingbuffer[1]!=0x81){
 		return;
 	}
-	if(receivingbuffer[2]!=34){
+	if(receivingbuffer[2]!=56){
 		return;
 	}
 
 	out->senderadress=receivingbuffer[3];
 	out->header_code = (receivingbuffer[4] << 8) | receivingbuffer[5];
-    out->flag1 = receivingbuffer[6];
-    out->flag2 = receivingbuffer[7];
+    out->flag_calib = receivingbuffer[6];
+    out->flag_drop = receivingbuffer[7];
+    out->flag_separation = receivingbuffer[8];
+    out->flag_sup = receivingbuffer[9];
 #ifdef PARTIE_BAS
     if((out->header_code)==0x20){
 
-    	memcpy(&out->altitude_baro, &receivingbuffer[20], sizeof(float));
-
-    	hauteur_Initiale=out->altitude_baro;
+    	memcpy(&out->hMSL, &receivingbuffer[18], sizeof(float));
+    	hauteur_Initiale=out->hMSL;
     	flag_calib=1;
  }
     else{
-    memcpy(&out->latitude,      &receivingbuffer[8],  sizeof(float));
-    memcpy(&out->longitude,     &receivingbuffer[12],  sizeof(float));
-    memcpy(&out->altitude,      &receivingbuffer[16], sizeof(float));
-    memcpy(&out->altitude_baro, &receivingbuffer[20], sizeof(float));
-    memcpy(&out->extra1,        &receivingbuffer[24], sizeof(float));
-    memcpy(&out->extra2,        &receivingbuffer[28], sizeof(float));
-    memcpy(&out->extra_int,     &receivingbuffer[32], sizeof(int32_t));
+    memcpy(&out->latitude,      &receivingbuffer[10],  sizeof(float));
+    memcpy(&out->longitude,     &receivingbuffer[14],  sizeof(float));
+    memcpy(&out->hMSL,      &receivingbuffer[18], sizeof(float));
+    memcpy(&out->altitude_baro, &receivingbuffer[22], sizeof(float));
+    memcpy(&out->vspeed,        &receivingbuffer[26], sizeof(float));
+    memcpy(&out->hspeed,        &receivingbuffer[30], sizeof(float));
+    memcpy(&out->temperature,     &receivingbuffer[34], sizeof(float));
+    memcpy(&out->pression,     &receivingbuffer[38], sizeof(float));
+    memcpy(&out->Accx,     &receivingbuffer[42], sizeof(float));
+    memcpy(&out->Accy,     &receivingbuffer[46], sizeof(float));
+    memcpy(&out->Accz,     &receivingbuffer[50], sizeof(float));
+    memcpy(&out->timeindex,     &receivingbuffer[54], sizeof(uint32_t));
+    memcpy(&out->RSSI,     &receivingbuffer[58], sizeof(uint8_t));
     }
 #endif
 
 #ifdef PARTIE_HAUT
-    memcpy(&out->latitude,      &receivingbuffer[8],  sizeof(float));
-    memcpy(&out->longitude,     &receivingbuffer[12],  sizeof(float));
-    memcpy(&out->altitude,      &receivingbuffer[16], sizeof(float));
-    memcpy(&out->altitude_baro, &receivingbuffer[20], sizeof(float));
-    memcpy(&out->extra1,        &receivingbuffer[24], sizeof(float));
-    memcpy(&out->extra2,        &receivingbuffer[28], sizeof(float));
-    memcpy(&out->extra_int,     &receivingbuffer[32], sizeof(int32_t));
-
+    memcpy(&out->latitude,      &receivingbuffer[10],  sizeof(float));
+    memcpy(&out->longitude,     &receivingbuffer[14],  sizeof(float));
+    memcpy(&out->hMSL,      &receivingbuffer[18], sizeof(float));
+    memcpy(&out->altitude_baro, &receivingbuffer[22], sizeof(float));
+    memcpy(&out->vspeed,        &receivingbuffer[26], sizeof(float));
+    memcpy(&out->hspeed,        &receivingbuffer[30], sizeof(float));
+    memcpy(&out->temperature,     &receivingbuffer[34], sizeof(float));
+    memcpy(&out->pression,     &receivingbuffer[38], sizeof(float));
+    memcpy(&out->Accx,     &receivingbuffer[42], sizeof(float));
+    memcpy(&out->Accy,     &receivingbuffer[46], sizeof(float));
+    memcpy(&out->Accz,     &receivingbuffer[50], sizeof(float));
+    memcpy(&out->timeindex,     &receivingbuffer[54], sizeof(uint32_t));
+    memcpy(&out->RSSI,     &receivingbuffer[58], sizeof(uint8_t));
 #endif
 
 

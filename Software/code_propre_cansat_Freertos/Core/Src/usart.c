@@ -361,7 +361,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 			}
 		}
 
-		if(receivingindex==8){
+		if(receivingindex==12){
 			receivingindex=0;
 			receivingflag=0;
 			trameready=1;

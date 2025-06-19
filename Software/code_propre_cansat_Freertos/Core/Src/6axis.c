@@ -114,9 +114,9 @@ HAL_StatusTypeDef Read_sensor_data(AXIS6 *data) {
 		// Combiner les octets pour obtenir la valeur 16 bits
 		accel_data[i] = (int16_t)((high_byte << 8) | low_byte);
 	}
-	data->AccelX = accel_data[0];
-	data->AccelY = accel_data[1];
-	data->AccelZ = accel_data[2];
+	data->AccelX =(float) accel_data[0]*1.0;
+	data->AccelY =(float) accel_data[1]*1.0;
+	data->AccelZ =(float) accel_data[2]*1.0;
 	data->GyroX = gyro_data[0];
 	data->GyroY = gyro_data[1];
 	data->GyroZ = gyro_data[2];

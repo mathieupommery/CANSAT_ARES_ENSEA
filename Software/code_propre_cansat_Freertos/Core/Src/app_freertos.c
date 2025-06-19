@@ -129,6 +129,7 @@ extern DWORD total_sectors;
 int pbmseeker_flag=0;
 
 int sd_counter=0;
+extern uint32_t timeindex;
 
 
 /* USER CODE END Variables */
@@ -262,14 +263,10 @@ void Startstatemachine(void const * argument)
 	  else{
 	  statemachine();
 	  }
+	  timeindex++;
+
 
 #ifdef PARTIE_HAUT
-	  if(flag_calib==1 && GNSSData.fixType>=3){
-
-		  create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,0.0,0.0,0.0,0);
-
-
-	  }
 #endif
 	  ssd1306_UpdateScreen();
     osDelay(100);
@@ -292,6 +289,7 @@ void StartGNSSParse(void const * argument)
   {
 	  GNSS_ParsePVTData(&GNSSData);
 	  bmp581_read_precise_normal(&myDatabmp581);
+	  Read_sensor_data(&myData6AXIS);
 
 	  if(counterrecalib>=20){
 		  if(GNSSData.fixType>=3){
@@ -305,6 +303,9 @@ void StartGNSSParse(void const * argument)
 		  hauteur_servo=(float)(myDatabmp581.altitude-hauteur_Initiale);
 
 	  }
+//#ifdef PARTIE_HAUT
+	  create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+//#endif
 	  counterrecalib++;
 
 
@@ -403,7 +404,6 @@ void Startservo(void const * argument)
 	  if(flag_servo_started==1){
 		  stop_servo();
 		  flag_servo_started=0;
-
 	  }
 	  if(flag_bouton_servo==1){
 		  release_mecanism();
@@ -449,8 +449,8 @@ void Startdistancecalc(void const * argument)
 
 		  if(GNSSData.fixType>=3){
 #ifdef PARTIE_BAS
-			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,GNSSData.fhMSL,TOPData.altitude);
-			  create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,0,0.0,0.0,0.0,0.0,0.0,distance_entre_module,0);
+			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,GNSSData.fhMSL,TOPData.hMSL);
+			  //create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,0,0.0,0.0,0.0,0.0,0.0,distance_entre_module,0);
 
 #endif
 	  }
@@ -498,7 +498,6 @@ void startTarvosDecode(void const * argument)
 		  }
 		  trameready=0;
 	  }
-
 
     osDelay(100);
   }
