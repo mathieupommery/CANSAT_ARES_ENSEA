@@ -111,7 +111,10 @@ int flag_separation = 0;
 int flag_calib=0;
 int flag_bouton_servo=0;
 int flag_servo_started=0;
-int sd_detect_flag=0;
+
+uint16_t cpt_tps_chute=0;
+
+int flag_fin=0;
 
 float hauteur_Initiale=0.0;
 
@@ -159,20 +162,20 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 #endif
 
 							}
-					if(gros_btn_time>=400 && gros_btn_time<=2000){
+					if(gros_btn_time>=400 && gros_btn_time<=1500){
 #ifdef PARTIE_HAUT
 						flag_bouton_servo=1;
 #endif
 					}
-					if(gros_btn_time>=2500 && gros_btn_time<=3500){
+					if(gros_btn_time>=1500 && gros_btn_time<=3500){
 #ifdef PARTIE_HAUT
 						//hauteur_Initiale=myDatabmp581.altitude;
 						if(GNSSData.fixType>=3){
 							hauteur_Initiale=GNSSData.fhMSL;
 						}
-
-						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x20,0,0.0,0.0,GNSSData.fhMSL,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
 						flag_calib=1;
+						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x20,0,0.0,0.0,GNSSData.fhMSL,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+
 #endif
 
 										}

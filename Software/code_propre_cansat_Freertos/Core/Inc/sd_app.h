@@ -11,7 +11,7 @@
 #include "main.h"
 #include "app_fatfs.h"
 
-FRESULT store_in_sd(uint8_t * filename);
+FRESULT store_in_sd(void);
 
 
 

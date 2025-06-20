@@ -59,7 +59,7 @@ extern DWORD total_sectors;
 
 
 
-FRESULT store_in_sd(uint8_t * filename){
+FRESULT store_in_sd(void){
 
 	uint16_t sizeligne=0;
 	FRESULT fres=FR_OK;
@@ -82,9 +82,26 @@ FRESULT store_in_sd(uint8_t * filename){
 				myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,distance_entre_module,timeindex);
 #endif
 
+
 	 fres = f_mount(&FatFs, "", 1);
 			  if (fres == FR_OK) {
-				  fres = f_open(&fil, (char *) filename,FA_WRITE | FA_OPEN_ALWAYS);
+				  if(flag_drop==0){
+		#ifdef PARTIE_HAUT
+					  fres = f_open(&fil, (uint8_t *) "TOP_01.csv",FA_WRITE | FA_OPEN_ALWAYS);
+		#endif
+		#ifdef PARTIE_BAS
+					  fres = f_open(&fil, (uint8_t *) "BOT_01.csv",FA_WRITE | FA_OPEN_ALWAYS);
+		#endif
+				  }
+				  else{
+		#ifdef PARTIE_HAUT
+					  fres = f_open(&fil, (uint8_t *) "TOP_02.csv",FA_WRITE | FA_OPEN_ALWAYS);
+		#endif
+		#ifdef PARTIE_BAS
+					  fres = f_open(&fil, (uint8_t *) "BOT_02.csv",FA_WRITE | FA_OPEN_ALWAYS);
+		#endif
+
+				  }
 				  if (fres == FR_OK) {
 					  fres=f_lseek(&fil, f_size(&fil));
 					  UINT bytesWrote;
@@ -95,14 +112,6 @@ FRESULT store_in_sd(uint8_t * filename){
 			  }
 
 
-
-
 	return fres;
-
-
-
-
-
-
 
 }

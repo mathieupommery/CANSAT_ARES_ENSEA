@@ -1,13 +1,14 @@
 
 #include "tarvos.h"
 #include "usart.h"
+#include "GNSS.h"
 #include <stdint.h>
 // Définition des variables
 
 
 
 extern uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
-
+extern GNSS_StateHandle GNSSData;
 extern UART_HandleTypeDef hlpuart1;
 extern int flag_drop;
 extern int flag_separation;
@@ -16,7 +17,6 @@ extern float hauteur_Initiale;
 #ifdef PARTIE_BAS
 int noreturn_flag1=0;
 int noreturn_flag2=0;
-int noreturn_flag3=0;
 #endif
 
 HAL_StatusTypeDef SET_tcMODE(char mode){
@@ -282,9 +282,7 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
     out->flag_sup = receivingbuffer[9];
 #ifdef PARTIE_BAS
     if((out->header_code)==0x20){
-
-    	memcpy(&out->hMSL, &receivingbuffer[18], sizeof(float));
-    	hauteur_Initiale=out->hMSL;
+    	hauteur_Initiale=GNSSData.fhMSL;
     	flag_calib=1;
  }
     else{
@@ -302,6 +300,22 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
     memcpy(&out->timeindex,     &receivingbuffer[54], sizeof(uint32_t));
     memcpy(&out->RSSI,     &receivingbuffer[58], sizeof(uint8_t));
     }
+
+    if(noreturn_flag1==0){
+    if(receivingbuffer[7]==1){
+    	flag_drop=1;
+    	noreturn_flag1=1;
+    }
+
+    }
+    if(noreturn_flag2==0){
+    if(receivingbuffer[8]==1){
+    	flag_separation=1;
+    	noreturn_flag2=1;
+    }
+
+    }
+
 #endif
 
 #ifdef PARTIE_HAUT
@@ -321,21 +335,7 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
 #endif
 
 
-#ifdef PARTIE_BAS
-    if(noreturn_flag1==0){
-    if(receivingbuffer[6]==1){
-    	flag_drop=1;
-    }
-    noreturn_flag1=1;
-    }
-    if(noreturn_flag2==0){
-    if(receivingbuffer[7]==1){
-    	flag_separation=1;
-    }
-    noreturn_flag2=1;
-    }
 
-#endif
 
     memset((uint8_t *)receivingbuffer,0,64);
 }

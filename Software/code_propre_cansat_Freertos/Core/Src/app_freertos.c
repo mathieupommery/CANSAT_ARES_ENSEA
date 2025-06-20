@@ -90,7 +90,6 @@ extern int flag_separation;
 extern int flag_calib;
 
 extern int flag_bouton_servo;
-extern int sd_detect_flag;
 extern float hauteur_Initiale;
 
 extern float hauteur_servo;
@@ -119,7 +118,12 @@ extern DecodedPayload OTHERData;
 
 
 int pbmseeker_flag=0;
+int blinker_sd_flag=0;
+
 extern uint32_t timeindex;
+
+extern uint16_t cpt_tps_chute;
+extern int flag_fin;
 
 
 /* USER CODE END Variables */
@@ -289,12 +293,6 @@ void StartGNSSParse(void const * argument)
 		  hauteur_servo=(float)(GNSSData.fhMSL-hauteur_Initiale);
 
 	  }
-//#ifdef PARTIE_HAUT
-//	  create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,
-//			  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
-//			  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-//#endif
-	  counterrecalib++;
 
 
     osDelay(100);
@@ -316,39 +314,41 @@ void StartSdcard(void const * argument)
   for(;;)
   {
 
-	  if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_2)==GPIO_PIN_RESET){
-		  sd_detect_flag=1;
+//	  if((HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_2)==GPIO_PIN_RESET) && (flag_fin==0)){
+//		  sd_detect_flag=1;
 		  osMutexWait(SDCard_mutexeHandle, portMAX_DELAY);
+
+		  blinker_sd_flag=1-blinker_sd_flag;
+		  if(blinker_sd_flag==1){
+			  LED_Setcolour(0,0,0,255,255,255);
+		  }
+		  else{
+			  LED_Setcolour(0,0,0,0,0,0);
+		  }
+
+
+
 		  if(flag_drop==0){
 
 			  if(sd_counter==10){
-#ifdef PARTIE_HAUT
-			  store_in_sd("[TOP]montee.csv");
-#endif
-#ifdef PARTIE_BAS
-			  store_in_sd("[BOTTOM]montee.csv");
-#endif
+				  store_in_sd();
+
 			  sd_counter=0;
 			  }
 			  sd_counter++;
 
 		  }
 		  else{
-#ifdef PARTIE_HAUT
-			  store_in_sd("[TOP]descente.csv");
-#endif
-#ifdef PARTIE_BAS
-			  store_in_sd("[BOTTOM]descente.csv");
-#endif
+			  store_in_sd();
 
 		  }
 
 		  osMutexRelease(SDCard_mutexeHandle);
 
-	  }
-	  else{
-		  sd_detect_flag=0;
-	  }
+//	  }
+//	  else{
+//		  sd_detect_flag=0;
+//	  }
 
 
 
@@ -376,25 +376,31 @@ void Startservo(void const * argument)
 		  stop_servo();
 		  flag_servo_started=0;
 	  }
-	  if(flag_bouton_servo==1){
-		  release_mecanism();
-		  flag_bouton_servo=2;
-		  flag_servo_started=1;
-	  }
-	  if(flag_bouton_servo==0){
-		  lock_mecanism();
-		  flag_bouton_servo=2;
-		  flag_servo_started=1;
-	  }
+
 
 	  if((flag_drop==1) && (flag_calib==1)){
-		  if(hauteur_servo<=60.0){
+		  if((hauteur_servo<=60.0)){
 			  release_mecanism();
 			  flag_separation=1;
 			  flag_servo_started=1;
+			  osThreadSuspend(NULL);
+
 
 
 		  }
+	  }
+	  if(flag_drop==0){
+		  if(flag_bouton_servo==1){
+			  release_mecanism();
+			  flag_bouton_servo=2;
+			  flag_servo_started=1;
+		  }
+		  if(flag_bouton_servo==0){
+			  lock_mecanism();
+			  flag_bouton_servo=2;
+			  flag_servo_started=1;
+		  }
+
 	  }
 
     osDelay(200);
@@ -420,7 +426,7 @@ void Startdistancecalc(void const * argument)
 
 		  if(GNSSData.fixType>=3){
 #ifdef PARTIE_BAS
-			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,GNSSData.fhMSL,TOPData.hMSL);
+			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,hauteur_servo,TOPData.hMSL);
 
 #endif
 	  }

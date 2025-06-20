@@ -12,8 +12,8 @@
 
 
 
-#define CLOSED_HIGH_TIME 1280
-#define OPEN_HIGH_TIME 1450
+#define CLOSED_HIGH_TIME 1450
+#define OPEN_HIGH_TIME 1280
 
 
 HAL_StatusTypeDef Init_servo(void);

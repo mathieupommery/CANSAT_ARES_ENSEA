@@ -14,10 +14,17 @@
 #include "usart.h"
 #include "ssd1306.h"
 #include "GNSS.h"
+#include "cmsis_os.h"
 
 extern AXIS6 myData6AXIS;
 extern BMP_t myDatabmp581;
 extern GNSS_StateHandle GNSSData;
+
+extern osThreadId GNSSParseHandle;
+extern osThreadId servoHandle;
+extern osThreadId distancecalcHandle;
+extern osThreadId tarvosDecodeHandle;
+extern osThreadId SdcardwriteHandle;
 
 extern uint8_t LEDDMABUF[DMABUFLEN];
 extern uint8_t DMA_COMPLETE_FLAG;
@@ -39,7 +46,12 @@ extern uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 
 extern int flag_calib;
 extern int flag_drop;
-extern int sd_detect_flag;
+extern int flag_bouton_servo;
+extern int flag_separation;
+extern float hauteur_servo;
+
+extern uint16_t cpt_tps_chute;
+extern int flag_fin;
 int send_data_len=0;
 
 uint8_t screenbuffer[50];
@@ -68,32 +80,26 @@ switch(screenindex){
 case 0:
 	if (vbat <= 7){
 					ssd1306_WriteString("bat_low", Font_7x10, White);
-					LED_Setcolour(255,0,0,255,0,0);
+					LED_Setcolour(255,0,0,0,0,0);
 				}
 	break;
 case 1:
 	if(flag_calib==0){
 		ssd1306_WriteString("alt_cal", Font_7x10, White);
-		LED_Setcolour(0,255,0,0,255,0);
+		LED_Setcolour(0,255,0,0,0,0);
 				}
 	break;
 case 2:
 	if (GNSSData.fixType <= 2){
 		ssd1306_WriteString("gps_fix", Font_7x10, White);
-		LED_Setcolour(255,255,0,255,255,0);
+		LED_Setcolour(255,255,0,0,0,0);
 				}
 
 	break;
 case 3:
 	if(HAL_GPIO_ReadPin(PWEN_GPIO_Port,PWEN_Pin)==0){
 		ssd1306_WriteString("TELEPWR", Font_7x10, White);
-		LED_Setcolour(0,255,255,0,255,255);
-	}
-	break;
-case 4:
-	if(sd_detect_flag==0){
-		ssd1306_WriteString("no_sd", Font_7x10, White);
-		LED_Setcolour(255,0,255,255,0,255);
+		LED_Setcolour(0,255,255,0,0,0);
 	}
 	break;
 }
@@ -145,6 +151,28 @@ else{
 }
 
 
+delaycounterforscreenindex++;
+if(delaycounterforscreenindex>=5){
+	delaycounterforscreenindex=0;
+	screenindex++;
+}
+
+if(screenindex>3){
+	screenindex=0;
+}
+datascreenindex++;
+#ifdef PARTIE_HAUT
+if(datascreenindex>=30){
+	datascreenindex=0;
+}
+#endif
+#ifdef PARTIE_BAS
+if(datascreenindex>=40){
+	datascreenindex=0;
+}
+#endif
+
+
 if((flag_drop==1) && (flag_calib==1)){
 
 				state++;
@@ -153,29 +181,15 @@ if((flag_drop==1) && (flag_calib==1)){
 #endif
 			}
 
-			delaycounterforscreenindex++;
-			if(delaycounterforscreenindex>=5){
-				delaycounterforscreenindex=0;
-				screenindex++;
-			}
-
-			if(screenindex>4){
-				screenindex=0;
-			}
-			datascreenindex++;
-#ifdef PARTIE_HAUT
-			if(datascreenindex>=30){
-				datascreenindex=0;
-			}
-#endif
-#ifdef PARTIE_BAS
-			if(datascreenindex>=40){
-				datascreenindex=0;
-			}
-#endif
 		break;
 
 	case PRESEPARATION:
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(32, 32);
+		ssd1306_WriteString("PRE", Font_16x24, White);
+		ssd1306_SetCursor(32, 56);
+		snprintf((char *)screenbuffer,50,"h=%f",hauteur_servo);
+		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 #ifdef PARTIE_HAUT
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
@@ -185,7 +199,7 @@ if((flag_drop==1) && (flag_calib==1)){
 
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
-				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+				  GNSSData.fgSpeed,temp,distance_entre_module,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 		vTaskDelay(pdMS_TO_TICKS(5));
 
@@ -194,29 +208,60 @@ if((flag_drop==1) && (flag_calib==1)){
 						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 #endif
+
+		if(flag_separation==1){
+			state++;
+		}
 		break;
 
 	case POSTSEPARATION:
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(32, 32);
+		ssd1306_WriteString("POST", Font_16x24, White);
+		ssd1306_SetCursor(32, 56);
+		snprintf((char *)screenbuffer,50,"tps=%d",cpt_tps_chute);
+		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
+
+#ifdef PARTIE_HAUT
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
 				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-#ifdef PARTIE_HAUT
+
+		vTaskDelay(pdMS_TO_TICKS(5));
+
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,
-						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+						  GNSSData.fLat,GNSSData.fLon,hauteur_servo,myDatabmp581.altitude,GNSSData.fvspeed,
 						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 #endif
 #ifdef PARTIE_BAS
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,temp,distance_entre_module,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+		vTaskDelay(pdMS_TO_TICKS(5));
+
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,0,
 						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
-						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+						  GNSSData.fgSpeed,temp,distance_entre_module,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 #endif
 
+		if(cpt_tps_chute>=600){
+			state++;
+			flag_fin=1;
 #ifdef PARTIE_HAUT
-		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+			osThreadSuspend(GNSSParseHandle);
+			osThreadSuspend(tarvosDecodeHandle);
+			osThreadSuspend(SdcardwriteHandle);
 #endif
 #ifdef PARTIE_BAS
+			osThreadSuspend(distancecalcHandle);
+			osThreadSuspend(GNSSParseHandle);
+			osThreadSuspend(tarvosDecodeHandle);
+			osThreadSuspend(SdcardwriteHandle);
 #endif
+		}
+
 
 
 		break;
@@ -225,6 +270,11 @@ if((flag_drop==1) && (flag_calib==1)){
 		ssd1306_Fill(Black);
 		ssd1306_SetCursor(32, 32);
 		ssd1306_WriteString("FIN", Font_16x24, White);
+
 		break;
+	}
+	if((state>= PRESEPARATION) && (state <= POSTSEPARATION)){
+		cpt_tps_chute++;
+
 	}
 }

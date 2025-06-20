@@ -69,7 +69,7 @@ void Error_Handler(void);
 
 
 #define PARTIE_HAUT
-#define PARTIE_BAS
+//#define PARTIE_BAS
 
 
 
