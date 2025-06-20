@@ -7,8 +7,8 @@
 ../Core/Src/GNSS.c:109:6:GNSS_GetNAVSATData	1
 ../Core/Src/GNSS.c:120:6:GNSS_ParseUniqID	2
 ../Core/Src/GNSS.c:130:6:GNSS_SetMode	11
-../Core/Src/GNSS.c:158:6:GNSS_ParsePVTData	11
-../Core/Src/GNSS.c:234:6:GNSS_ParseNAVSATData	1
-../Core/Src/GNSS.c:244:6:GNSS_LoadConfig	1
-../Core/Src/GNSS.c:260:9:GNSS_Checksum	1
-../Core/Src/GNSS.c:268:7:distancecalc	1
+../Core/Src/GNSS.c:158:6:GNSS_ParsePVTData	12
+../Core/Src/GNSS.c:241:6:GNSS_ParseNAVSATData	1
+../Core/Src/GNSS.c:251:6:GNSS_LoadConfig	1
+../Core/Src/GNSS.c:267:9:GNSS_Checksum	1
+../Core/Src/GNSS.c:275:7:distancecalc	1

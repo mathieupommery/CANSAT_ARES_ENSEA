@@ -211,6 +211,13 @@ void GNSS_ParsePVTData(GNSS_StateHandle *GNSS) {
 	GNSS->fvACC=(float)GNSS->vAcc/1000.0;
 
 	for (int var = 0; var < 4; ++var) {
+			iLong.bytes[var] = GNSS->uartWorkingBuffer[var + 62];
+			GNSS->vspeedBytes[var] = GNSS->uartWorkingBuffer[var + 62];
+		}
+	GNSS->vspeed = iLong.iLong;
+	GNSS->fvspeed=(float)GNSS->vspeed/1000.0;
+
+	for (int var = 0; var < 4; ++var) {
 		iLong.bytes[var] = GNSS->uartWorkingBuffer[var + 66];
 		GNSS->gSpeedBytes[var] = GNSS->uartWorkingBuffer[var + 66];
 	}

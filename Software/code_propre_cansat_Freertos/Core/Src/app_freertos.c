@@ -36,6 +36,7 @@
 #include "usart.h"
 #include "GNSS.h"
 #include "app_fatfs.h"
+#include "sd_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,6 +106,7 @@ extern int received_flag;
 
 
 int counterrecalib=0;
+int sd_counter=0;
 
 #ifdef PARTIE_BAS
 extern DecodedPayload TOPData;
@@ -115,20 +117,8 @@ float distance_entre_module=0.0;
 extern DecodedPayload OTHERData;
 
 
-extern FATFS FatFs;   // FATFS handle
-extern FRESULT fres;  // Common result code
-extern FILINFO fno;	  // Structure holds information
-extern FATFS *getFreeFs; 	  // Read information
-extern FIL fil;
-extern DIR dir;			  // Directory object structure
-extern DWORD free_clusters;  // Free Clusters
-extern DWORD free_sectors;	  // Free Sectors
-extern DWORD total_sectors;
-
 
 int pbmseeker_flag=0;
-
-int sd_counter=0;
 extern uint32_t timeindex;
 
 
@@ -264,10 +254,6 @@ void Startstatemachine(void const * argument)
 	  statemachine();
 	  }
 	  timeindex++;
-
-
-#ifdef PARTIE_HAUT
-#endif
 	  ssd1306_UpdateScreen();
     osDelay(100);
   }
@@ -298,13 +284,15 @@ void StartGNSSParse(void const * argument)
 		  counterrecalib=0;
 	  }
 
-	  if(flag_calib){
+	  if(flag_calib && (GNSSData.fixType>=3)){
 
-		  hauteur_servo=(float)(myDatabmp581.altitude-hauteur_Initiale);
+		  hauteur_servo=(float)(GNSSData.fhMSL-hauteur_Initiale);
 
 	  }
 //#ifdef PARTIE_HAUT
-	  create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+//	  create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,
+//			  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+//			  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 //#endif
 	  counterrecalib++;
 
@@ -328,61 +316,44 @@ void StartSdcard(void const * argument)
   for(;;)
   {
 
-	  //if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_2)==GPIO_PIN_RESET){
-		  //sd_detect_flag=1;
+	  if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_2)==GPIO_PIN_RESET){
+		  sd_detect_flag=1;
 		  osMutexWait(SDCard_mutexeHandle, portMAX_DELAY);
-		  fres = f_mount(&FatFs, "", 1);
-		  if (fres == FR_OK) {
-			  fres = f_open(&fil, "write2.txt",FA_WRITE | FA_OPEN_ALWAYS);
-			  if (fres == FR_OK) {
-				  fres=f_lseek(&fil, f_size(&fil));
-				  int sizecpy=0;
-				  sizecpy=snprintf((char*)sdcardbuffer,50, "nous en somme a: %d\n\r", sd_counter);
-				  UINT bytesWrote;
-				  fres = f_write(&fil,(char*)sdcardbuffer, sizecpy, &bytesWrote);
-				  f_close(&fil);
-				  sd_counter++;
+		  if(flag_drop==0){
 
+			  if(sd_counter==10){
+#ifdef PARTIE_HAUT
+			  store_in_sd("[TOP]montee.csv");
+#endif
+#ifdef PARTIE_BAS
+			  store_in_sd("[BOTTOM]montee.csv");
+#endif
+			  sd_counter=0;
 			  }
-			  f_mount(NULL, "", 0);
+			  sd_counter++;
+
 		  }
+		  else{
+#ifdef PARTIE_HAUT
+			  store_in_sd("[TOP]descente.csv");
+#endif
+#ifdef PARTIE_BAS
+			  store_in_sd("[BOTTOM]descente.csv");
+#endif
+
+		  }
+
 		  osMutexRelease(SDCard_mutexeHandle);
 
-	  //}
-	  //else{sd_detect_flag=0;}
-
-
+	  }
+	  else{
+		  sd_detect_flag=0;
+	  }
 
 
 
 
     osDelay(100);
-    //code after just for example
-//	printk("\nStartSDinfoTask!\n");
-//	osMutexWait(SDCardMutexHandle, portMAX_DELAY);
-//	printk("\n[SDinfo]: Mount SDCard");
-//	fres = f_mount(&FatFs, "", 1); // 1 -> Mount now
-//	if (fres == FR_OK) {
-//		// Get some statistics from the SD card
-//		fres = f_getfree("", &free_clusters, &getFreeFs);
-//		// Formula comes from ChaN's documentation
-//		total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
-//		free_sectors = free_clusters * getFreeFs->csize;
-//		printk(
-//				"\n[SDinfo]: SD Card Status:\r\n\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n",
-//				total_sectors / 2, free_sectors / 2);
-//		osDelay(100);
-//		// List files and folder in root
-//		printk("\n[SDinfo]: ");
-//		ls("");
-//	} else {
-//		printk("\n[SDinfo]: ");
-//		dmesg(fres);
-//	}
-//	f_mount(NULL, "", 0);
-//	printk("\n[SDinfo]: Unmount SDCard");
-//	osMutexRelease(SDCardMutexHandle);
-//	osDelay(1200);
   }
   /* USER CODE END StartSdcard */
 }
@@ -450,19 +421,10 @@ void Startdistancecalc(void const * argument)
 		  if(GNSSData.fixType>=3){
 #ifdef PARTIE_BAS
 			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,GNSSData.fhMSL,TOPData.hMSL);
-			  //create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,0,0.0,0.0,0.0,0.0,0.0,distance_entre_module,0);
 
 #endif
 	  }
 }
-
-
-
-
-
-
-
-
     osDelay(100);
   }
   /* USER CODE END Startdistancecalc */

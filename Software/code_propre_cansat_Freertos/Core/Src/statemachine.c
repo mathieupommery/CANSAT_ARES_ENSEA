@@ -176,21 +176,41 @@ if((flag_drop==1) && (flag_calib==1)){
 		break;
 
 	case PRESEPARATION:
-
-		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
-
 #ifdef PARTIE_HAUT
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 #endif
 #ifdef PARTIE_BAS
+
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+		vTaskDelay(pdMS_TO_TICKS(5));
+
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,0,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
 #endif
 		break;
 
 	case POSTSEPARATION:
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+#ifdef PARTIE_HAUT
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+#endif
+#ifdef PARTIE_BAS
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,0,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
-		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
+#endif
 
 #ifdef PARTIE_HAUT
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0,GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,0.0,0.0,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
