@@ -313,9 +313,6 @@ void StartSdcard(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-
-//	  if((HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_2)==GPIO_PIN_RESET) && (flag_fin==0)){
-//		  sd_detect_flag=1;
 		  osMutexWait(SDCard_mutexeHandle, portMAX_DELAY);
 
 		  blinker_sd_flag=1-blinker_sd_flag;
@@ -344,14 +341,6 @@ void StartSdcard(void const * argument)
 		  }
 
 		  osMutexRelease(SDCard_mutexeHandle);
-
-//	  }
-//	  else{
-//		  sd_detect_flag=0;
-//	  }
-
-
-
 
     osDelay(100);
   }

@@ -13,6 +13,7 @@ extern UART_HandleTypeDef hlpuart1;
 extern int flag_drop;
 extern int flag_separation;
 extern int flag_calib;
+extern int flag_fin;
 extern float hauteur_Initiale;
 #ifdef PARTIE_BAS
 int noreturn_flag1=0;
@@ -240,14 +241,14 @@ HAL_StatusTypeDef REQ_RSSI(){
 }
 
 //payload size==54
-void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag_sup,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex){
+void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex){
     uint8_t buffdonnee[54];
     buffdonnee[0] = (header_code >> 8) & 0xFF;
     buffdonnee[1] = header_code & 0xFF;
     buffdonnee[2] = flag_calib;
     buffdonnee[3] = flag_drop;
     buffdonnee[4] = flag_separation;
-    buffdonnee[5] = flag_sup;
+    buffdonnee[5] = flag_fin;
 
     memcpy(&buffdonnee[6],  &latitude,      sizeof(float));
     memcpy(&buffdonnee[10],  &longitude,     sizeof(float));
@@ -279,7 +280,7 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
     out->flag_calib = receivingbuffer[6];
     out->flag_drop = receivingbuffer[7];
     out->flag_separation = receivingbuffer[8];
-    out->flag_sup = receivingbuffer[9];
+    out->flag_fin = receivingbuffer[9];
 #ifdef PARTIE_BAS
     if((out->header_code)==0x20){
     	hauteur_Initiale=GNSSData.fhMSL;

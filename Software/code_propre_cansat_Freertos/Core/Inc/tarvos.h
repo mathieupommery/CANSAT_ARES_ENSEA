@@ -25,7 +25,7 @@ typedef struct {
     uint8_t flag_calib;
     uint8_t flag_drop;
     uint8_t flag_separation;
-    uint8_t flag_sup;
+    uint8_t flag_fin;
     float latitude;
     float longitude;
     float hMSL;
@@ -53,7 +53,7 @@ int SEND_DATA_NETW(uint8_t *data, uint8_t channel, uint8_t dest_adress, int leng
 
 void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length);
 
-void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag_sup,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex);
+void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex);
 
 void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer);
 

@@ -2,6 +2,6 @@
 ../Core/Src/app_freertos.c:231:6:Startstatemachine	16	static
 ../Core/Src/app_freertos.c:274:6:StartGNSSParse	24	static
 ../Core/Src/app_freertos.c:310:6:StartSdcard	24	static
-../Core/Src/app_freertos.c:368:6:Startservo	16	static
-../Core/Src/app_freertos.c:418:6:Startdistancecalc	16	static
-../Core/Src/app_freertos.c:446:6:startTarvosDecode	16	static
+../Core/Src/app_freertos.c:357:6:Startservo	16	static
+../Core/Src/app_freertos.c:407:6:Startdistancecalc	16	static
+../Core/Src/app_freertos.c:435:6:startTarvosDecode	16	static
