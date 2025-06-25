@@ -18,6 +18,7 @@ extern float hauteur_Initiale;
 #ifdef PARTIE_BAS
 int noreturn_flag1=0;
 int noreturn_flag2=0;
+int noreturn_flag3=0;
 #endif
 
 HAL_StatusTypeDef SET_tcMODE(char mode){
@@ -282,11 +283,8 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
     out->flag_separation = receivingbuffer[8];
     out->flag_fin = receivingbuffer[9];
 #ifdef PARTIE_BAS
-    if((out->header_code)==0x20){
-    	hauteur_Initiale=GNSSData.fhMSL;
-    	flag_calib=1;
- }
-    else{
+
+
     memcpy(&out->latitude,      &receivingbuffer[10],  sizeof(float));
     memcpy(&out->longitude,     &receivingbuffer[14],  sizeof(float));
     memcpy(&out->hMSL,      &receivingbuffer[18], sizeof(float));
@@ -300,6 +298,13 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
     memcpy(&out->Accz,     &receivingbuffer[50], sizeof(float));
     memcpy(&out->timeindex,     &receivingbuffer[54], sizeof(uint32_t));
     memcpy(&out->RSSI,     &receivingbuffer[58], sizeof(uint8_t));
+
+    if(noreturn_flag3==0){
+    if(receivingbuffer[6]==1){
+    	hauteur_Initiale=GNSSData.fhMSL;
+    	flag_calib=1;
+    	noreturn_flag3=1;
+    }
     }
 
     if(noreturn_flag1==0){

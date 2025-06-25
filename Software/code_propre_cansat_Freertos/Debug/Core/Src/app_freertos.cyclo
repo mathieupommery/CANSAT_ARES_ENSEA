@@ -1,7 +1,7 @@
-../Core/Src/app_freertos.c:157:6:MX_FREERTOS_Init	1
-../Core/Src/app_freertos.c:231:6:Startstatemachine	4
-../Core/Src/app_freertos.c:274:6:StartGNSSParse	5
-../Core/Src/app_freertos.c:310:6:StartSdcard	4
-../Core/Src/app_freertos.c:357:6:Startservo	8
-../Core/Src/app_freertos.c:407:6:Startdistancecalc	3
-../Core/Src/app_freertos.c:435:6:startTarvosDecode	3
+../Core/Src/app_freertos.c:161:6:MX_FREERTOS_Init	1
+../Core/Src/app_freertos.c:235:6:Startstatemachine	4
+../Core/Src/app_freertos.c:294:6:StartGNSSParse	7
+../Core/Src/app_freertos.c:346:6:StartSdcard	4
+../Core/Src/app_freertos.c:393:6:Startservo	8
+../Core/Src/app_freertos.c:443:6:Startdistancecalc	3
+../Core/Src/app_freertos.c:471:6:startTarvosDecode	3

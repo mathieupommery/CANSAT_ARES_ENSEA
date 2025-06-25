@@ -69,7 +69,30 @@ extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
 
-extern uint8_t timestamp;
+
+extern uint32_t timeindex;
+
+uint8_t hardfaultbuf[200];
+
+
+void hard_fault_handler_c(uint32_t *stacked_regs)
+{
+    // Récupère les registres sauvegardés par le CPU
+    uint32_t r0  = stacked_regs[0];
+    uint32_t r1  = stacked_regs[1];
+    uint32_t r2  = stacked_regs[2];
+    uint32_t r3  = stacked_regs[3];
+    uint32_t r12 = stacked_regs[4];
+    uint32_t lr  = stacked_regs[5];
+    uint32_t pc  = stacked_regs[6]; // <-- Instruction fautive !
+    uint32_t psr = stacked_regs[7];
+
+    // Mettez un breakpoint ici
+    snprintf((char *)hardfaultbuf,200,"\n[HardFault] R0=0x%08lX R1=0x%08lX R2=0x%08lX R3=0x%08lX R12=0x%08lX LR=0x%08lX PC=0x%08lX PSR=0x%08lX\n", r0, r1, r2, r3, r12, lr, pc, psr);
+    // Pause ici pour analyse
+    while(1);
+}
+
 
 
 /* USER CODE END EV */
@@ -98,6 +121,14 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+    __asm volatile
+    (
+        "TST lr, #4\n"
+        "ITE EQ\n"
+        "MRSEQ r0, MSP\n"
+        "MRSNE r0, PSP\n"
+        "B hard_fault_handler_c\n"
+    );
 	  ssd1306_SetCursor(32, 32);
 	 	  ssd1306_Fill(Black);
 	 	  ssd1306_WriteString("hardfault", Font_7x10, White);
@@ -306,6 +337,8 @@ void TIM2_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
+
+	timeindex++;
 
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);

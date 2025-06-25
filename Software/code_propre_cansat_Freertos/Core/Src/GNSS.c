@@ -7,6 +7,9 @@ union i_Short iShort;
 union u_Long uLong;
 union i_Long iLong;
 
+#define EARTH_RADIUS 6371000.0f
+#define DEG_TO_RAD (M_PI / 180.0f)
+
 /*!
  * Structure initialization.
  * @param GNSS Pointer to main GNSS structure.
@@ -273,11 +276,38 @@ uint8_t GNSS_Checksum(uint8_t class, uint8_t messageID, uint8_t dataLength,uint8
 
 
 float distancecalc(float lat1, float lat2, float long1, float long2,float alt1, float alt2){
-	float distanceplat=0.0;
-	float distance=0.0;
-	distanceplat=(float) 6371000.0*acosf(fminf(1.0,sinf(lat1*(M_PI/180.0))*sinf(lat2*(M_PI/180.0))+cosf(lat1*(M_PI/180.0))*cosf(lat2*(M_PI/180.0))*cosf((long2-long1)*(M_PI/180.0))));
 
-	distance=sqrtf(((alt2-alt1)*(alt2-alt1))+(distanceplat*distanceplat));
-	return distance;
+    // Convertir en radians
+    lat1 *= DEG_TO_RAD;
+    lat2 *= DEG_TO_RAD;
+    long1 *= DEG_TO_RAD;
+    long2 *= DEG_TO_RAD;
+
+    float dlat = lat2 - lat1;
+    float dlon = long2 - long1;
+
+    float a = sinf(dlat / 2) * sinf(dlat / 2) + cosf(lat1) * cosf(lat2) * sinf(dlon / 2) * sinf(dlon / 2);
+
+    if(a<1.0){
+
+    float c = 2.0f * atan2f(sqrtf(a), sqrtf(1.0f - a));
+
+    float distanceplat = EARTH_RADIUS * c;
+
+    float dalt = alt2 - alt1;
+    return sqrtf(distanceplat * distanceplat + dalt * dalt); // distance 3D
+    }
+    else{
+
+    	return 0.0;
+    }
 }
 
+
+
+//	float distanceplat=0.0;
+//	float distance=0.0;
+//	distanceplat=(float) 6371000.0*acosf(fminf(1.0,sinf(lat1*(M_PI/180.0))*sinf(lat2*(M_PI/180.0))+cosf(lat1*(M_PI/180.0))*cosf(lat2*(M_PI/180.0))*cosf((long2-long1)*(M_PI/180.0))));
+////distance=(double) 6371000*acosl(fmin(1,sinl(lat1*(M_PI/180))*sinl(lat2*(M_PI/180))+cosl(lat1*(M_PI/180))*cosl(lat2*(M_PI/180))*cosl((long2-long1)*(M_PI/180))));
+//	distance=sqrtf(((alt2-alt1)*(alt2-alt1))+(distanceplat*distanceplat));
+//	return distance;

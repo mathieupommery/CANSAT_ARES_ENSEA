@@ -50,7 +50,7 @@ extern int flag_bouton_servo;
 extern int flag_separation;
 extern float hauteur_servo;
 
-extern uint16_t cpt_tps_chute;
+extern uint32_t cpt_tps_chute;
 extern int flag_fin;
 int send_data_len=0;
 
@@ -134,7 +134,7 @@ else if (datascreenindex>30 && datascreenindex<=40){
 #ifdef PARTIE_BAS
 	ssd1306_WriteString("dist:", Font_7x10, White);
 	ssd1306_SetCursor(32, 52);
-	snprintf((char *)screenbuffer,50,"%f",distance_entre_module);
+	snprintf((char *)screenbuffer,50,"%0.3f",distance_entre_module);
 	ssd1306_WriteString((char *) screenbuffer, Font_7x10, White);
 
 #endif
@@ -163,6 +163,16 @@ datascreenindex++;
 if(datascreenindex>=30){
 	datascreenindex=0;
 }
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+vTaskDelay(pdMS_TO_TICKS(5));
+
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+		  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+		  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
 #endif
 #ifdef PARTIE_BAS
 if(datascreenindex>=40){
@@ -172,12 +182,18 @@ if(datascreenindex>=40){
 create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
 						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
 						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+vTaskDelay(pdMS_TO_TICKS(5));
+
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+		  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
+		  GNSSData.fgSpeed,distance_entre_module,temp,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 #endif
 
 
 if((flag_drop==1) && (flag_calib==1)){
 
 				state++;
+				cpt_tps_chute=timeindex;
 #ifdef PARTIE_HAUT
 				create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
 #endif
@@ -201,7 +217,7 @@ if((flag_drop==1) && (flag_calib==1)){
 
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
-				  GNSSData.fgSpeed,temp,distance_entre_module,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+				  GNSSData.fgSpeed,distance_entre_module,temp,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 		vTaskDelay(pdMS_TO_TICKS(5));
 
@@ -221,7 +237,7 @@ if((flag_drop==1) && (flag_calib==1)){
 		ssd1306_SetCursor(32, 32);
 		ssd1306_WriteString("POST", Font_16x24, White);
 		ssd1306_SetCursor(32, 56);
-		snprintf((char *)screenbuffer,50,"tps=%d",cpt_tps_chute);
+		snprintf((char *)screenbuffer,50,"tps=%d",(timeindex-cpt_tps_chute));
 		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 
 #ifdef PARTIE_HAUT
@@ -238,7 +254,7 @@ if((flag_drop==1) && (flag_calib==1)){
 #ifdef PARTIE_BAS
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,myDatabmp581.altitude,GNSSData.fvspeed,
-				  GNSSData.fgSpeed,temp,distance_entre_module,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+				  GNSSData.fgSpeed,distance_entre_module,temp,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 		vTaskDelay(pdMS_TO_TICKS(5));
 
@@ -248,7 +264,7 @@ if((flag_drop==1) && (flag_calib==1)){
 
 #endif
 
-		if(cpt_tps_chute>=600){
+		if((timeindex-cpt_tps_chute)>=120){
 			state++;
 			flag_fin=1;
 #ifdef PARTIE_HAUT
@@ -277,8 +293,5 @@ if((flag_drop==1) && (flag_calib==1)){
 
 		break;
 	}
-	if((state>= PRESEPARATION) && (state <= POSTSEPARATION)){
-		cpt_tps_chute++;
 
-	}
 }

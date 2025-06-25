@@ -112,7 +112,7 @@ int flag_calib=0;
 int flag_bouton_servo=0;
 int flag_servo_started=0;
 
-uint16_t cpt_tps_chute=0;
+uint32_t cpt_tps_chute=0;
 
 int flag_fin=0;
 
@@ -168,14 +168,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 #endif
 					}
 					if(gros_btn_time>=1500 && gros_btn_time<=3500){
-#ifdef PARTIE_HAUT
+
 						//hauteur_Initiale=myDatabmp581.altitude;
 						if(GNSSData.fixType>=3){
 							hauteur_Initiale=GNSSData.fhMSL;
 						}
 						flag_calib=1;
+#ifdef PARTIE_HAUT
 						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x20,0.0,0.0,GNSSData.fhMSL,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-
 #endif
 
 										}
@@ -380,7 +380,7 @@ int main(void)
   		  if (fres == FR_OK) {
   			  fres = f_mkdir("DEMO");
   			  BYTE readBuf[30];
-  			  fres = f_open(&fil, "/DEMO/write.txt",FA_WRITE | FA_OPEN_ALWAYS | FA_CREATE_ALWAYS);
+  			  fres = f_open(&fil, "/DEMO/write.txt",FA_WRITE | FA_OPEN_ALWAYS);
   			  if (fres == FR_OK) {
   				  //snprintf((char*) readBuf,30, "I hate Java!");
   				  UINT bytesWrote;

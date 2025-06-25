@@ -122,9 +122,13 @@ int blinker_sd_flag=0;
 
 extern uint32_t timeindex;
 
-extern uint16_t cpt_tps_chute;
+extern uint32_t cpt_tps_chute;
 extern int flag_fin;
 
+UBaseType_t sizestatemachine;
+UBaseType_t sizeGNSS;
+UBaseType_t sizesdcard;
+UBaseType_t sizetarvos;
 
 /* USER CODE END Variables */
 osThreadId statemachineHandle;
@@ -181,7 +185,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of statemachine */
-  osThreadDef(statemachine, Startstatemachine, osPriorityNormal, 0, 256);
+  osThreadDef(statemachine, Startstatemachine, osPriorityNormal, 0, 300);
   statemachineHandle = osThreadCreate(osThread(statemachine), NULL);
 
   /* definition and creation of GNSSParse */
@@ -189,15 +193,15 @@ void MX_FREERTOS_Init(void) {
   GNSSParseHandle = osThreadCreate(osThread(GNSSParse), NULL);
 
   /* definition and creation of Sdcardwrite */
-  osThreadDef(Sdcardwrite, StartSdcard, osPriorityNormal, 0, 300);
+  osThreadDef(Sdcardwrite, StartSdcard, osPriorityNormal, 0, 512);
   SdcardwriteHandle = osThreadCreate(osThread(Sdcardwrite), NULL);
 
   /* definition and creation of servo */
-  osThreadDef(servo, Startservo, osPriorityHigh, 0, 256);
+  osThreadDef(servo, Startservo, osPriorityAboveNormal, 0, 256);
   servoHandle = osThreadCreate(osThread(servo), NULL);
 
   /* definition and creation of distancecalc */
-  osThreadDef(distancecalc, Startdistancecalc, osPriorityNormal, 0, 256);
+  osThreadDef(distancecalc, Startdistancecalc, osPriorityBelowNormal, 0, 256);
   distancecalcHandle = osThreadCreate(osThread(distancecalc), NULL);
 
   /* definition and creation of tarvosDecode */
@@ -257,8 +261,24 @@ void Startstatemachine(void const * argument)
 	  else{
 	  statemachine();
 	  }
-	  timeindex++;
 	  ssd1306_UpdateScreen();
+
+
+
+	  sizestatemachine=uxTaskGetStackHighWaterMark(statemachineHandle);
+	  sizeGNSS=uxTaskGetStackHighWaterMark(GNSSParseHandle);
+	  sizesdcard=uxTaskGetStackHighWaterMark(SdcardwriteHandle);
+	  sizetarvos=uxTaskGetStackHighWaterMark(tarvosDecodeHandle);
+
+
+
+
+
+
+
+
+
+
     osDelay(100);
   }
   /* USER CODE END Startstatemachine */
@@ -283,7 +303,22 @@ void StartGNSSParse(void const * argument)
 
 	  if(counterrecalib>=20){
 		  if(GNSSData.fixType>=3){
-			  P0 =(double) myDatabmp581.press / powf((1 - (GNSSData.fhMSL / 44330.0f)), 5.255f);
+			  float altitude = GNSSData.fhMSL;
+			  float base = 1.0f - (altitude / 44330.0f);
+
+			  if (base > 0.01f)  // Évite le 0 ou négatif
+			  {
+			      float denominator = powf(base, 5.255f);
+			      if (denominator > 0.001f)
+			          P0 = (float) myDatabmp581.press / denominator;
+			      else
+			          P0 = 101325.0;  // ou une valeur par défaut
+			  }
+			  else
+			  {
+			      P0 = 101325.0;
+			  }
+
 		  }
 		  counterrecalib=0;
 	  }
@@ -293,6 +328,7 @@ void StartGNSSParse(void const * argument)
 		  hauteur_servo=(float)(GNSSData.fhMSL-hauteur_Initiale);
 
 	  }
+	  counterrecalib++;
 
 
     osDelay(100);
@@ -415,7 +451,7 @@ void Startdistancecalc(void const * argument)
 
 		  if(GNSSData.fixType>=3){
 #ifdef PARTIE_BAS
-			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,hauteur_servo,TOPData.hMSL);
+			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,GNSSData.fhMSL,TOPData.hMSL);
 
 #endif
 	  }

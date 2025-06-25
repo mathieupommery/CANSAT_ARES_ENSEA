@@ -355,6 +355,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 
 		}
 		else{
+			if(tarvos_RX_Buffer[0]==0x02 && tarvos_RX_Buffer[1]==0x40 && tarvos_RX_Buffer[2]==0x01 ){
+				memset((uint8_t *)tarvos_RX_Buffer,0,5);
+				receivingindex=0;
+				receivingflag=0;
+				trameready=0;
+
+			}
 			if(receivingindex!=0){
 				memcpy((uint8_t *) tarvos_DATA+(5*receivingindex),(uint8_t *)tarvos_RX_Buffer,5);
 				receivingindex++;
