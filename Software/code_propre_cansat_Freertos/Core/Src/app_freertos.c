@@ -303,16 +303,17 @@ void StartGNSSParse(void const * argument)
 
 	  if(counterrecalib>=20){
 		  if(GNSSData.fixType>=3){
-			  float altitude = GNSSData.fhMSL;
-			  float base = 1.0f - (altitude / 44330.0f);
+			  float base = 1.0f - (GNSSData.fhMSL / 44330.0f);
 
 			  if (base > 0.01f)  // Évite le 0 ou négatif
 			  {
 			      float denominator = powf(base, 5.255f);
-			      if (denominator > 0.001f)
+			      if (denominator > 0.001f){
 			          P0 = (float) myDatabmp581.press / denominator;
-			      else
-			          P0 = 101325.0;  // ou une valeur par défaut
+			      }
+			      else {
+			          P0 = 101325.0;
+			      }
 			  }
 			  else
 			  {
@@ -404,7 +405,7 @@ void Startservo(void const * argument)
 
 
 	  if((flag_drop==1) && (flag_calib==1)){
-		  if((hauteur_servo<=60.0)){
+		  if((hauteur_servo<=55.0)){
 			  release_mecanism();
 			  flag_separation=1;
 			  flag_servo_started=1;
