@@ -67,7 +67,7 @@ extern float vbat;
 extern uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
 extern uint8_t tarvos_DATA[64];
 extern uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
-extern uint8_t sdcardbuffer[256];
+extern uint8_t sdcardbuffer[512];
 extern uint8_t workingbuffer[110];
 
 
@@ -92,7 +92,7 @@ extern int flag_calib;
 extern int flag_bouton_servo;
 extern float hauteur_Initiale;
 
-extern float hauteur_servo;
+extern float hauteur_relative;
 
 extern int pbmseeker;
 
@@ -265,10 +265,10 @@ void Startstatemachine(void const * argument)
 
 
 
-	  sizestatemachine=uxTaskGetStackHighWaterMark(statemachineHandle);
-	  sizeGNSS=uxTaskGetStackHighWaterMark(GNSSParseHandle);
-	  sizesdcard=uxTaskGetStackHighWaterMark(SdcardwriteHandle);
-	  sizetarvos=uxTaskGetStackHighWaterMark(tarvosDecodeHandle);
+//	  sizestatemachine=uxTaskGetStackHighWaterMark(statemachineHandle);
+//	  sizeGNSS=uxTaskGetStackHighWaterMark(GNSSParseHandle);
+//	  sizesdcard=uxTaskGetStackHighWaterMark(SdcardwriteHandle);
+//	  sizetarvos=uxTaskGetStackHighWaterMark(tarvosDecodeHandle);
 
 
 
@@ -301,35 +301,14 @@ void StartGNSSParse(void const * argument)
 	  bmp581_read_precise_normal(&myDatabmp581);
 	  Read_sensor_data(&myData6AXIS);
 
-	  if(counterrecalib>=20){
-		  if(GNSSData.fixType>=3){
-			  float base = 1.0f - (GNSSData.fhMSL / 44330.0f);
-
-			  if (base > 0.01f)  // Évite le 0 ou négatif
-			  {
-			      float denominator = powf(base, 5.255f);
-			      if (denominator > 0.001f){
-			          P0 = (float) myDatabmp581.press / denominator;
-			      }
-			      else {
-			          P0 = 101325.0;
-			      }
-			  }
-			  else
-			  {
-			      P0 = 101325.0;
-			  }
-
-		  }
-		  counterrecalib=0;
+	  if(flag_calib){
+		  hauteur_relative=(float)(myDatabmp581.altitude-hauteur_Initiale);
 	  }
 
-	  if(flag_calib && (GNSSData.fixType>=3)){
+		if(flag_fin==1){
 
-		  hauteur_servo=(float)(GNSSData.fhMSL-hauteur_Initiale);
-
-	  }
-	  counterrecalib++;
+			osThreadSuspend(NULL);
+		}
 
 
     osDelay(100);
@@ -379,6 +358,11 @@ void StartSdcard(void const * argument)
 
 		  osMutexRelease(SDCard_mutexeHandle);
 
+			if(flag_fin==1){
+
+				osThreadSuspend(NULL);
+			}
+
     osDelay(100);
   }
   /* USER CODE END StartSdcard */
@@ -405,7 +389,8 @@ void Startservo(void const * argument)
 
 
 	  if((flag_drop==1) && (flag_calib==1)){
-		  if((hauteur_servo<=55.0)){
+
+		  if((hauteur_relative<=HAUTEUR_SEPARATION)){
 			  release_mecanism();
 			  flag_separation=1;
 			  flag_servo_started=1;
@@ -428,6 +413,11 @@ void Startservo(void const * argument)
 		  }
 
 	  }
+
+		if(flag_fin==1){
+
+			osThreadSuspend(NULL);
+		}
 
     osDelay(200);
   }
@@ -452,11 +442,16 @@ void Startdistancecalc(void const * argument)
 
 		  if(GNSSData.fixType>=3){
 #ifdef PARTIE_BAS
-			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,GNSSData.fhMSL,TOPData.hMSL);
+			  distance_entre_module=distancecalc(GNSSData.fLat,TOPData.latitude, GNSSData.fLon,TOPData.longitude,hauteur_relative,TOPData.altitude_baro);
 
 #endif
 	  }
 }
+
+		if(flag_fin==1){
+
+			osThreadSuspend(NULL);
+		}
     osDelay(100);
   }
   /* USER CODE END Startdistancecalc */
@@ -492,6 +487,11 @@ void startTarvosDecode(void const * argument)
 		  }
 		  trameready=0;
 	  }
+
+		if(flag_fin==1){
+
+			osThreadSuspend(NULL);
+		}
 
     osDelay(100);
   }

@@ -11,8 +11,6 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-extern float temp;
-float P0=101325.0;
 
 //Ox18 donc 11000 pour ODR donc 5hz en mode normal avec oversampling a 128 pour la pression et 8 pour la temperature
 
@@ -68,14 +66,10 @@ uint8_t bmp581_read_precise_normal(BMP_t * bmp581){
 		intbufferpres=(recarray[5]<<16)|(recarray[4]<<8)|(recarray[3]);
 		bmp581->press=(float) intbufferpres/64.0;
 		bmp581->temps=(float) intbuffertemp/65536.0;
-		if(bmp581->press!=0.0){
-			bmp581->altitude=(float)8727.013*logf(P0/(bmp581->press));
-		}
-		else{
-			bmp581->altitude=(float)0.0;
-		}
 
+		bmp581->altitude= (1.0f - powf(bmp581->press / 101325.0f, 0.190295f)) * 44330.0f;
 		}
 
 		return check;
 }
+

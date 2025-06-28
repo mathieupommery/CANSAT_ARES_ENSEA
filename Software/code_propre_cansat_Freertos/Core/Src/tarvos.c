@@ -2,6 +2,7 @@
 #include "tarvos.h"
 #include "usart.h"
 #include "GNSS.h"
+#include "bmp581.h"
 #include <stdint.h>
 // Définition des variables
 
@@ -9,6 +10,7 @@
 
 extern uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
 extern GNSS_StateHandle GNSSData;
+extern BMP_t myDatabmp581;
 extern UART_HandleTypeDef hlpuart1;
 extern int flag_drop;
 extern int flag_separation;
@@ -242,7 +244,9 @@ HAL_StatusTypeDef REQ_RSSI(){
 }
 
 //payload size==54
-void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex){
+void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,
+		float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,
+		float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex){
     uint8_t buffdonnee[54];
     buffdonnee[0] = (header_code >> 8) & 0xFF;
     buffdonnee[1] = header_code & 0xFF;
@@ -301,7 +305,7 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
 
     if(noreturn_flag3==0){
     if(receivingbuffer[6]==1){
-    	hauteur_Initiale=GNSSData.fhMSL;
+    	hauteur_Initiale=myDatabmp581.altitude;
     	flag_calib=1;
     	noreturn_flag3=1;
     }

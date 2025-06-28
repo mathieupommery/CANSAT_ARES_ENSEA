@@ -304,10 +304,3 @@ float distancecalc(float lat1, float lat2, float long1, float long2,float alt1, 
 }
 
 
-
-//	float distanceplat=0.0;
-//	float distance=0.0;
-//	distanceplat=(float) 6371000.0*acosf(fminf(1.0,sinf(lat1*(M_PI/180.0))*sinf(lat2*(M_PI/180.0))+cosf(lat1*(M_PI/180.0))*cosf(lat2*(M_PI/180.0))*cosf((long2-long1)*(M_PI/180.0))));
-////distance=(double) 6371000*acosl(fmin(1,sinl(lat1*(M_PI/180))*sinl(lat2*(M_PI/180))+cosl(lat1*(M_PI/180))*cosl(lat2*(M_PI/180))*cosl((long2-long1)*(M_PI/180))));
-//	distance=sqrtf(((alt2-alt1)*(alt2-alt1))+(distanceplat*distanceplat));
-//	return distance;

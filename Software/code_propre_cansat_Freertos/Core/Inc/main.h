@@ -71,6 +71,9 @@ void Error_Handler(void);
 #define PARTIE_HAUT
 //#define PARTIE_BAS
 
+#define HAUTEUR_SEPARATION 20.0f
+
+//#define DEBUG1
 
 
 

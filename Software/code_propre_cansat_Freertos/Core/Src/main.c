@@ -67,7 +67,7 @@ uint8_t tarvos_DATA[64];
 uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 
 uint8_t workingbuffer[110];
-uint8_t sdcardbuffer[256];
+uint8_t sdcardbuffer[512];
 AXIS6 myData6AXIS;
 BMP_t myDatabmp581;
 
@@ -118,7 +118,7 @@ int flag_fin=0;
 
 float hauteur_Initiale=0.0;
 
-float hauteur_servo=0.0;
+float hauteur_relative=0.0;
 
 int pbmseeker=0;
 
@@ -169,13 +169,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 					}
 					if(gros_btn_time>=1500 && gros_btn_time<=3500){
 
-						//hauteur_Initiale=myDatabmp581.altitude;
-						if(GNSSData.fixType>=3){
-							hauteur_Initiale=GNSSData.fhMSL;
-						}
+						hauteur_Initiale=myDatabmp581.altitude;
 						flag_calib=1;
 #ifdef PARTIE_HAUT
-						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x20,0.0,0.0,GNSSData.fhMSL,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
 #endif
 
 										}
