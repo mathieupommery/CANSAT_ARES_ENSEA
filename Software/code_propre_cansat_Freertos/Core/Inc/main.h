@@ -68,13 +68,13 @@ void Error_Handler(void);
 #define SD_SPI_HANDLE hspi1
 
 
-#define PARTIE_HAUT
-//#define PARTIE_BAS
+//#define PARTIE_HAUT
+#define PARTIE_BAS
 
 #define HAUTEUR_SEPARATION 20.0f
 
 //#define DEBUG1
-
+//working last update only change is added dthe second sent to bottom on preseparation state
 
 
 

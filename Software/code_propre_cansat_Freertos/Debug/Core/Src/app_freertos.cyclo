@@ -3,5 +3,5 @@
 ../Core/Src/app_freertos.c:294:6:StartGNSSParse	3
 ../Core/Src/app_freertos.c:326:6:StartSdcard	5
 ../Core/Src/app_freertos.c:378:6:Startservo	9
-../Core/Src/app_freertos.c:434:6:Startdistancecalc	2
-../Core/Src/app_freertos.c:467:6:startTarvosDecode	3
+../Core/Src/app_freertos.c:434:6:Startdistancecalc	4
+../Core/Src/app_freertos.c:467:6:startTarvosDecode	4
