@@ -16,24 +16,14 @@
 #include "tim.h"
 
 
-typedef enum COLOR{
-	jaune,
-	bleu,
-	vert,
-	rouge,
-	blanc,
-	orange,
-	rose,
-	violet
-};
 
 #define LED_TIM htim2
 #define LED_TIM_CHANNEL TIM_CHANNEL_2
 
 #define LED_NUM 2
 
-#define HI_VAL 90
-#define LOW_VAL 30
+#define HI_VAL 153
+#define LOW_VAL 51
 
 #define RSTPERIOD 260
 

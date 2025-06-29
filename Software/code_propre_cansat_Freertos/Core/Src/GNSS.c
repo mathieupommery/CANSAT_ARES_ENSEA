@@ -35,16 +35,6 @@ void GNSS_Init(GNSS_StateHandle *GNSS, UART_HandleTypeDef *huart) {
 	GNSS->gSpeed = 0;
 	GNSS->headMot = 0;
 
-	HAL_UART_Transmit_DMA(&huart,uart1outprotnmeadisable,sizeof(uart1outprotnmeadisable)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,uart1outprotubxenable,sizeof(uart1outprotubxenable)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,setGPS_GAL_GLONASS,sizeof(setGPS_GAL_BEIDOU_GLONASS)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,meas_rate_5hz,sizeof(meas_rate_10hz)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,ubx_pvt_every_1meas,sizeof(ubx_pvt_every_1meas)/(sizeof(uint8_t)));
-
 	HAL_Delay(100);
 }
 

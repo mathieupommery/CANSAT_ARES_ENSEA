@@ -8,4 +8,4 @@
 ../Core/Src/tarvos.c:222:19:REQ	2
 ../Core/Src/tarvos.c:235:19:REQ_RSSI	2
 ../Core/Src/tarvos.c:247:6:create_and_send_payload	1
-../Core/Src/tarvos.c:275:6:decode_payload	4
+../Core/Src/tarvos.c:275:6:decode_payload	10

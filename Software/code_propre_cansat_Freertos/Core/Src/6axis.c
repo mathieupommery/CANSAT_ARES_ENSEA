@@ -17,9 +17,9 @@ void check_device_communication() {
     status = HAL_I2C_Mem_Read(&hi2c3, (uint8_t)(SENSOR_ADDRESS), 0x0F, I2C_MEMADD_SIZE_8BIT, &deviceID, 1, HAL_MAX_DELAY);
 
     if (status == HAL_OK) {
-        printf("Communication réussie.\r\n");
+        //printf("Communication réussie.\r\n");
     } else {
-        printf("Échec de la communication.\r\n");
+        //printf("Échec de la communication.\r\n");
     }
 }
 
@@ -57,10 +57,10 @@ void Init_HighPerf_Mode_6_axis(void)
         HAL_I2C_Mem_Read(&hi2c3, SENSOR_ADDRESS, STATUS_REG, I2C_MEMADD_SIZE_8BIT, &status, 1, HAL_MAX_DELAY);
 
         if (status & 0x01) {
-            printf("Les données de l'accéléromètre sont prêtes. q\r\n");
+            //printf("Les données de l'accéléromètre sont prêtes. q\r\n");
         }
         if (status & 0x02) {
-            printf("Les données du gyroscope sont prêtes.\r\n");
+            //printf("Les données du gyroscope sont prêtes.\r\n");
         }
 
 }
@@ -127,7 +127,6 @@ HAL_StatusTypeDef Read_sensor_data(AXIS6 *data) {
 
 double Read_temp() {
     HAL_StatusTypeDef status;
-    uint8_t status_reg;
     uint8_t low_byte, high_byte;
 
     // Lire l'octet bas

@@ -80,7 +80,7 @@ void LED_Setcolour(uint8_t r, uint8_t g, uint8_t b,uint8_t r1, uint8_t g1, uint8
 HAL_StatusTypeDef LED_Update(){
 	HAL_StatusTypeDef halStatus = HAL_TIM_PWM_Start_DMA(&LED_TIM, LED_TIM_CHANNEL, (uint32_t *)LEDDMABUF,DMABUFLEN);
 
-	if(halStatus=HAL_OK){
+	if(halStatus==HAL_OK){
 		DMA_COMPLETE_FLAG=0;
 	}
 

@@ -169,9 +169,6 @@ if((flag_drop==1) && (flag_calib==1)){
 
 				state++;
 				cpt_tps_chute=timeindex;
-#ifdef PARTIE_HAUT
-				create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-#endif
 			}
 
 		break;
@@ -187,6 +184,12 @@ if((flag_drop==1) && (flag_calib==1)){
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+		vTaskDelay(pdMS_TO_TICKS(5));
+
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 #endif
 #ifdef PARTIE_BAS
 

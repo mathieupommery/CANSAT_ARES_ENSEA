@@ -185,11 +185,11 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of statemachine */
-  osThreadDef(statemachine, Startstatemachine, osPriorityNormal, 0, 300);
+  osThreadDef(statemachine, Startstatemachine, osPriorityHigh, 0, 300);
   statemachineHandle = osThreadCreate(osThread(statemachine), NULL);
 
   /* definition and creation of GNSSParse */
-  osThreadDef(GNSSParse, StartGNSSParse, osPriorityAboveNormal, 0, 256);
+  osThreadDef(GNSSParse, StartGNSSParse, osPriorityNormal, 0, 256);
   GNSSParseHandle = osThreadCreate(osThread(GNSSParse), NULL);
 
   /* definition and creation of Sdcardwrite */
@@ -205,7 +205,7 @@ void MX_FREERTOS_Init(void) {
   distancecalcHandle = osThreadCreate(osThread(distancecalc), NULL);
 
   /* definition and creation of tarvosDecode */
-  osThreadDef(tarvosDecode, startTarvosDecode, osPriorityHigh, 0, 256);
+  osThreadDef(tarvosDecode, startTarvosDecode, osPriorityRealtime, 0, 256);
   tarvosDecodeHandle = osThreadCreate(osThread(tarvosDecode), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -265,10 +265,10 @@ void Startstatemachine(void const * argument)
 
 
 
-//	  sizestatemachine=uxTaskGetStackHighWaterMark(statemachineHandle);
-//	  sizeGNSS=uxTaskGetStackHighWaterMark(GNSSParseHandle);
-//	  sizesdcard=uxTaskGetStackHighWaterMark(SdcardwriteHandle);
-//	  sizetarvos=uxTaskGetStackHighWaterMark(tarvosDecodeHandle);
+	  sizestatemachine=uxTaskGetStackHighWaterMark(statemachineHandle);
+	  sizeGNSS=uxTaskGetStackHighWaterMark(GNSSParseHandle);
+	  sizesdcard=uxTaskGetStackHighWaterMark(SdcardwriteHandle);
+	  sizetarvos=uxTaskGetStackHighWaterMark(tarvosDecodeHandle);
 
 
 
@@ -279,7 +279,7 @@ void Startstatemachine(void const * argument)
 
 
 
-    osDelay(100);
+    osDelay(70);
   }
   /* USER CODE END Startstatemachine */
 }
@@ -493,7 +493,7 @@ void startTarvosDecode(void const * argument)
 			osThreadSuspend(NULL);
 		}
 
-    osDelay(100);
+    osDelay(70);
   }
   /* USER CODE END startTarvosDecode */
 }
