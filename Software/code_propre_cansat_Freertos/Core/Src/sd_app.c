@@ -60,10 +60,9 @@ extern DWORD total_sectors;
 
 
 
-FRESULT store_in_sd(void){
+FRESULT store_in_sd(FRESULT fres){
 
 	uint16_t sizeligne=0;
-	FRESULT fres=FR_OK;
 
 #ifdef PARTIE_HAUT
 
@@ -84,7 +83,7 @@ FRESULT store_in_sd(void){
 #endif
 
 
-	 fres = f_mount(&FatFs, "", 1);
+
 			  if (fres == FR_OK) {
 				  if(flag_drop==0){
 		#ifdef PARTIE_HAUT
@@ -109,7 +108,7 @@ FRESULT store_in_sd(void){
 					  fres = f_write(&fil,(char*)sdcardbuffer, sizeligne, &bytesWrote);
 					  f_close(&fil);
 				  }
-				  f_mount(NULL, "", 0);
+
 			  }
 
 

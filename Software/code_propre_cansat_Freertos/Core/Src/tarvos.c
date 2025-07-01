@@ -133,53 +133,6 @@ uint8_t Get_CRC8(uint8_t * bufP, uint16_t len){
 }
 
 
-
-int SEND_DATA_NETW(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length) {
-	HAL_StatusTypeDef status=HAL_OK;
-	uint8_t bufferindex=0;
-	memset((uint8_t *) tarvos_TX_Buffer,256,'\0');
-
-	if(length>=250){
-		return HAL_ERROR;
-	}
-
-    // Initialisation de l'en-tête
-
-	tarvos_TX_Buffer[bufferindex]= 0x02;
-	bufferindex++;// Start byte
-	tarvos_TX_Buffer[bufferindex]= 0x01;
-	bufferindex++;// Command identifier
-	tarvos_TX_Buffer[bufferindex]= length + 2;
-	bufferindex++;// Longueur totale (length + channel + dest_adress)
-	tarvos_TX_Buffer[bufferindex]= channel;
-	bufferindex++;// Canal
-	tarvos_TX_Buffer[bufferindex]= dest_adress; // Adresse de destination
-
-	bufferindex++;
-
-    // Copie des données dans la trame
-    for (int i = 0; i < length; i++) {
-    	tarvos_TX_Buffer[bufferindex]=data[i];
-    	bufferindex++;
-
-    }
-
-
-
-
-
-    // Calcul du CRC (sur tout sauf le CRC lui-même)
-    tarvos_TX_Buffer[bufferindex]= Get_CRC8((uint8_t *)(tarvos_TX_Buffer), bufferindex);///////pas surrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr///
-
-
-    if( HAL_UART_Transmit(&hlpuart1,(uint8_t *) tarvos_TX_Buffer, bufferindex,1000)!=HAL_OK){
-    	status=HAL_ERROR;
-    }
-
-    return status;
-
-}
-
 void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length) {
     // Longueur totale de la trame : en-tête (5 octets) + données + CRC
     uint8_t trame[5 + length + 1]; // +1 pour le CRC
@@ -199,10 +152,15 @@ void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int le
     // Calcul du CRC (sur tout sauf le CRC lui-même)
     trame[5 + length] = Get_CRC8(trame, 5 + length);
 
+
     // Transmission de la trame
     HAL_UART_Transmit(&hlpuart1, trame, sizeof(trame), 500);
-    uint8_t bufferreceivetest[10];
-    HAL_UART_Receive_IT(&hlpuart1,(uint8_t *)bufferreceivetest,5);
+
+    //HAL_UART_Transmit_DMA(&hlpuart1, trame, sizeof(trame));
+
+
+    //uint8_t bufferreceivetest[10];
+    //HAL_UART_Receive_IT(&hlpuart1,(uint8_t *)bufferreceivetest,5);
 
 }
 
@@ -219,29 +177,6 @@ HAL_StatusTypeDef SET_Destadr(uint8_t Destadrr){
 
 }
 
-HAL_StatusTypeDef REQ(uint8_t index){
-	HAL_StatusTypeDef status=HAL_OK;
-	uint8_t cmdsize=5;
-	uint8_t buffer[]={0x02,0x0A,0x01,index,0x00};
-	buffer[4]=Get_CRC8(buffer,4);
-	if(HAL_UART_Transmit(&hlpuart1,(uint8_t *) buffer, cmdsize, 500)!=HAL_OK){
-		status=HAL_ERROR;
-	}
-	return status;
-
-
-}
-
-HAL_StatusTypeDef REQ_RSSI(){
-	HAL_StatusTypeDef status=HAL_OK;
-	uint8_t cmdsize=4;
-	uint8_t buffer_RSSI[]={0x02,0x0D,0x00,0x0F};
-	if(HAL_UART_Transmit(&hlpuart1,(uint8_t *) buffer_RSSI, cmdsize, 500)!=HAL_OK){
-			status=HAL_ERROR;
-		}
-	return status;
-
-}
 
 //payload size==54
 void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,

@@ -65,6 +65,7 @@ extern float distance_entre_module;
 #endif
 
 extern uint32_t timeindex;
+extern osMutexId uartmutexHandle;
 
 
 
@@ -141,27 +142,41 @@ if(screenindex>3){
 }
 
 #ifdef PARTIE_HAUT
+
+if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+{
 create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
 						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+}
+vTaskDelay(pdMS_TO_TICKS(25));
 
-vTaskDelay(pdMS_TO_TICKS(5));
-
+if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+{
 create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 		  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 		  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
+osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+}
 #endif
 #ifdef PARTIE_BAS
+if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+{
 create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
 						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 						  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+}
+vTaskDelay(pdMS_TO_TICKS(25));
 
-vTaskDelay(pdMS_TO_TICKS(5));
-
+if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+{
 create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 		  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 		  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+}
 #endif
 
 
@@ -181,28 +196,38 @@ if((flag_drop==1) && (flag_calib==1)){
 		snprintf((char *)screenbuffer,50,"h=%f",hauteur_relative);
 		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 #ifdef PARTIE_HAUT
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
-		vTaskDelay(pdMS_TO_TICKS(5));
-
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
+		vTaskDelay(pdMS_TO_TICKS(25));
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
 						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
 #endif
 #ifdef PARTIE_BAS
-
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
 								  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 								  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
-		vTaskDelay(pdMS_TO_TICKS(5));
-
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
+		vTaskDelay(pdMS_TO_TICKS(25));
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 				  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
 #endif
 
 		if(flag_separation==1){
@@ -219,36 +244,52 @@ if((flag_drop==1) && (flag_calib==1)){
 		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 
 #ifdef PARTIE_HAUT
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
 								  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 								  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
+		vTaskDelay(pdMS_TO_TICKS(25));
 
-		vTaskDelay(pdMS_TO_TICKS(5));
-
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-#endif
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
+		#endif
 #ifdef PARTIE_BAS
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
 								  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 								  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
+		vTaskDelay(pdMS_TO_TICKS(25));
 
-		vTaskDelay(pdMS_TO_TICKS(5));
-
+		if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+		{
 		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
 				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
 				  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
-
+		osMutexRelease(uartmutexHandle);  // Relâche immédiatement après envoi
+		}
 #endif
 
 		if((timeindex-cpt_tps_chute)>=120){
 			state++;
 			flag_fin=1;
 #ifdef PARTIE_BAS
-
+for(int i=0;i<4;i++){
 			create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+			vTaskDelay(pdMS_TO_TICKS(5));
 			create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+			vTaskDelay(pdMS_TO_TICKS(5));
+}
 #endif
 		}
 

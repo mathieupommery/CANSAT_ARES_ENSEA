@@ -2,10 +2,7 @@
 ../Core/Src/tarvos.c:47:19:INIT_TARVOS	1
 ../Core/Src/tarvos.c:53:19:INIT_PERM_TARVOS	7
 ../Core/Src/tarvos.c:126:9:Get_CRC8	2
-../Core/Src/tarvos.c:137:5:SEND_DATA_NETW	4
-../Core/Src/tarvos.c:183:6:SEND_DATA_NETW1	2
-../Core/Src/tarvos.c:209:19:SET_Destadr	2
-../Core/Src/tarvos.c:222:19:REQ	2
-../Core/Src/tarvos.c:235:19:REQ_RSSI	2
-../Core/Src/tarvos.c:247:6:create_and_send_payload	1
-../Core/Src/tarvos.c:275:6:decode_payload	10
+../Core/Src/tarvos.c:136:6:SEND_DATA_NETW1	2
+../Core/Src/tarvos.c:167:19:SET_Destadr	2
+../Core/Src/tarvos.c:182:6:create_and_send_payload	1
+../Core/Src/tarvos.c:210:6:decode_payload	10

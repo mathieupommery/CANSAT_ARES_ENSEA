@@ -11,7 +11,7 @@
 #include "main.h"
 #include "app_fatfs.h"
 
-FRESULT store_in_sd(void);
+FRESULT store_in_sd(FRESULT fres);
 
 
 

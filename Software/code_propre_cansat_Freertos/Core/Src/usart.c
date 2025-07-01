@@ -23,8 +23,8 @@
 /* USER CODE BEGIN 0 */
 #include "tarvos.h"
 #include "FreeRTOS.h"
-#include "queue.h"
 #include "GNSS.h"
+#include "cmsis_os.h"
 
 extern uint8_t workingbuffer[110];
 extern GNSS_StateHandle GNSSData;
@@ -47,7 +47,7 @@ extern int trameready;
 int receivingflag=0;
 int receivingindex=0;
 
-
+extern osMutexId uartmutexHandle;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef hlpuart1;
@@ -338,13 +338,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 		if(receivingflag==0){
 		if(tarvos_RX_Buffer[1]==0x81 && tarvos_RX_Buffer[0]==0x02){
 
-			memcpy((uint8_t *) tarvos_DATA,(uint8_t *)tarvos_RX_Buffer,5);
 
 
+			if (osMutexWait(uartmutexHandle, 0) == osOK)  // Prend le mutex immédiatement
+			            {
 
-
+				memcpy((uint8_t *) tarvos_DATA,(uint8_t *)tarvos_RX_Buffer,5);
 			receivingflag=1;
 			receivingindex++;
+			            }
 		}
 
 		if(tarvos_RX_Buffer[1]==0x40 && tarvos_RX_Buffer[0]==0x02){
@@ -360,6 +362,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 				receivingindex=0;
 				receivingflag=0;
 				trameready=0;
+				osMutexRelease(uartmutexHandle);
+
 
 			}
 			if(receivingindex!=0){
@@ -372,6 +376,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 			receivingindex=0;
 			receivingflag=0;
 			trameready=1;
+			osMutexRelease(uartmutexHandle);
 		}
 						HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Buffer,5);//on recoit par dma à nouveau 64 caractères
 						__HAL_DMA_DISABLE_IT(&hdma_lpuart1_rx, DMA_IT_HT);

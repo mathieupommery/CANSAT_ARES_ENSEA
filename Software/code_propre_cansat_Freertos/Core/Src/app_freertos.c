@@ -130,6 +130,23 @@ UBaseType_t sizeGNSS;
 UBaseType_t sizesdcard;
 UBaseType_t sizetarvos;
 
+
+float timestatemachine=0.0;
+float timesdcard=0.0;
+float timedecode=0.0;
+float timeservo=0.0;
+float timedist=0.0;
+float timeGNSS=0.0;
+
+extern FATFS FatFs;   // FATFS handle
+extern FILINFO fno;	  // Structure holds information
+extern FATFS *getFreeFs; 	  // Read information
+extern FIL fil;
+extern DIR dir;			  // Directory object structure
+extern DWORD free_clusters;  // Free Clusters
+extern DWORD free_sectors;	  // Free Sectors
+extern DWORD total_sectors;
+
 /* USER CODE END Variables */
 osThreadId statemachineHandle;
 osThreadId GNSSParseHandle;
@@ -138,6 +155,8 @@ osThreadId servoHandle;
 osThreadId distancecalcHandle;
 osThreadId tarvosDecodeHandle;
 osMutexId SDCard_mutexeHandle;
+osMutexId I2CmutexHandle;
+osMutexId uartmutexHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -167,6 +186,14 @@ void MX_FREERTOS_Init(void) {
   osMutexDef(SDCard_mutexe);
   SDCard_mutexeHandle = osMutexCreate(osMutex(SDCard_mutexe));
 
+  /* definition and creation of I2Cmutex */
+  osMutexDef(I2Cmutex);
+  I2CmutexHandle = osMutexCreate(osMutex(I2Cmutex));
+
+  /* definition and creation of uartmutex */
+  osMutexDef(uartmutex);
+  uartmutexHandle = osMutexCreate(osMutex(uartmutex));
+
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
@@ -185,7 +212,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of statemachine */
-  osThreadDef(statemachine, Startstatemachine, osPriorityHigh, 0, 300);
+  osThreadDef(statemachine, Startstatemachine, osPriorityAboveNormal, 0, 300);
   statemachineHandle = osThreadCreate(osThread(statemachine), NULL);
 
   /* definition and creation of GNSSParse */
@@ -220,6 +247,12 @@ void MX_FREERTOS_Init(void) {
   osThreadSuspend(servoHandle);
 
 #endif
+
+
+  CoreDebug->DEMCR |=CoreDebug_DEMCR_TRCENA_Msk;
+  DWT->CYCCNT =0;
+  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
@@ -235,9 +268,16 @@ void MX_FREERTOS_Init(void) {
 void Startstatemachine(void const * argument)
 {
   /* USER CODE BEGIN Startstatemachine */
+	TickType_t xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+
+	  uint32_t start1= DWT->CYCCNT;
+      if (osMutexWait(I2CmutexHandle, 20) == osOK)
+      {
+
+
 	  if(pbmseeker_flag==0){
 		  if(pbmseeker==0){
 			  ssd1306_SetCursor(32, 40);
@@ -260,8 +300,12 @@ void Startstatemachine(void const * argument)
 	  }
 	  else{
 	  statemachine();
-	  }
 	  ssd1306_UpdateScreen();
+	  }
+
+      osMutexRelease(I2CmutexHandle);
+  }
+
 
 
 
@@ -271,6 +315,10 @@ void Startstatemachine(void const * argument)
 	  sizetarvos=uxTaskGetStackHighWaterMark(tarvosDecodeHandle);
 
 
+	  uint32_t end1= DWT->CYCCNT;
+	  uint32_t cycles= end1-start1;
+
+	  timestatemachine=(float) cycles/(SystemCoreClock/1000000.0f);
 
 
 
@@ -279,7 +327,10 @@ void Startstatemachine(void const * argument)
 
 
 
-    osDelay(70);
+
+
+
+	  vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
   }
   /* USER CODE END Startstatemachine */
 }
@@ -294,12 +345,19 @@ void Startstatemachine(void const * argument)
 void StartGNSSParse(void const * argument)
 {
   /* USER CODE BEGIN StartGNSSParse */
+	TickType_t xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+	  uint32_t start1= DWT->CYCCNT;
 	  GNSS_ParsePVTData(&GNSSData);
 	  bmp581_read_precise_normal(&myDatabmp581);
-	  Read_sensor_data(&myData6AXIS);
+      if (osMutexWait(I2CmutexHandle, 20) == osOK)
+      {
+    	  Read_sensor_data(&myData6AXIS);
+          osMutexRelease(I2CmutexHandle);
+      }
+
 
 	  if(flag_calib){
 		  hauteur_relative=(float)(myDatabmp581.altitude-hauteur_Initiale);
@@ -310,8 +368,15 @@ void StartGNSSParse(void const * argument)
 			osThreadSuspend(NULL);
 		}
 
+		  uint32_t end1= DWT->CYCCNT;
+		  uint32_t cycles= end1-start1;
 
-    osDelay(100);
+		  float times=(float) cycles/(SystemCoreClock/1000000.0f);
+if(times>timeGNSS){
+	timeGNSS=times;
+}
+
+vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
   }
   /* USER CODE END StartGNSSParse */
 }
@@ -326,9 +391,14 @@ void StartGNSSParse(void const * argument)
 void StartSdcard(void const * argument)
 {
   /* USER CODE BEGIN StartSdcard */
+
+	FRESULT fres=FR_OK;
+	fres = f_mount(&FatFs, "", 1);
+	TickType_t xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+	  uint32_t start1= DWT->CYCCNT;
 		  osMutexWait(SDCard_mutexeHandle, portMAX_DELAY);
 
 		  blinker_sd_flag=1-blinker_sd_flag;
@@ -339,12 +409,10 @@ void StartSdcard(void const * argument)
 			  LED_Setcolour(0,0,0,0,0,0);
 		  }
 
-
-
 		  if(flag_drop==0){
 
-			  if(sd_counter==10){
-				  store_in_sd();
+			  if(sd_counter==5){
+				  fres=store_in_sd(fres);
 
 			  sd_counter=0;
 			  }
@@ -352,18 +420,26 @@ void StartSdcard(void const * argument)
 
 		  }
 		  else{
-			  store_in_sd();
+			  fres=store_in_sd(fres);
 
 		  }
+
+
 
 		  osMutexRelease(SDCard_mutexeHandle);
 
 			if(flag_fin==1){
 
+				f_mount(NULL, "", 0);
 				osThreadSuspend(NULL);
 			}
 
-    osDelay(100);
+			  uint32_t end1= DWT->CYCCNT;
+			  uint32_t cycles= end1-start1;
+			  timesdcard=(float) cycles/(SystemCoreClock/1000000.0f);
+
+
+			  vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
   }
   /* USER CODE END StartSdcard */
 }
@@ -378,15 +454,11 @@ void StartSdcard(void const * argument)
 void Startservo(void const * argument)
 {
   /* USER CODE BEGIN Startservo */
+	TickType_t xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
-
-	  if(flag_servo_started==1){
-		  stop_servo();
-		  flag_servo_started=0;
-	  }
-
+	  uint32_t start1= DWT->CYCCNT;
 
 	  if((flag_drop==1) && (flag_calib==1)){
 
@@ -394,6 +466,7 @@ void Startservo(void const * argument)
 			  release_mecanism();
 			  flag_separation=1;
 			  flag_servo_started=1;
+			  vTaskDelay(pdMS_TO_TICKS(500));
 			  osThreadSuspend(NULL);
 
 
@@ -414,12 +487,27 @@ void Startservo(void const * argument)
 
 	  }
 
+	  	  if(flag_servo_started==1){
+	  		 vTaskDelay(pdMS_TO_TICKS(500));
+
+	  		  stop_servo();
+	  		  flag_servo_started=0;
+	  	  }
+
+
+
 		if(flag_fin==1){
 
 			osThreadSuspend(NULL);
 		}
 
-    osDelay(200);
+		  uint32_t end1= DWT->CYCCNT;
+		  uint32_t cycles= end1-start1;
+		  float times=(float) cycles/(SystemCoreClock/1000000.0f);
+if(times>timeservo){
+	timeservo=times;
+}
+vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
   }
   /* USER CODE END Startservo */
 }
@@ -434,9 +522,11 @@ void Startservo(void const * argument)
 void Startdistancecalc(void const * argument)
 {
   /* USER CODE BEGIN Startdistancecalc */
+	TickType_t xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+	  uint32_t start1= DWT->CYCCNT;
 
 	  if(flag_calib==1){
 
@@ -452,7 +542,17 @@ void Startdistancecalc(void const * argument)
 
 			osThreadSuspend(NULL);
 		}
-    osDelay(100);
+
+
+
+	  uint32_t end1= DWT->CYCCNT;
+	  uint32_t cycles= end1-start1;
+
+	  float times=(float) cycles/(SystemCoreClock/1000000.0f);
+if(times>timedist){
+timedist=times;
+}
+vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
   }
   /* USER CODE END Startdistancecalc */
 }
@@ -467,9 +567,11 @@ void Startdistancecalc(void const * argument)
 void startTarvosDecode(void const * argument)
 {
   /* USER CODE BEGIN startTarvosDecode */
+	TickType_t xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+	  uint32_t start1= DWT->CYCCNT;
 
 
 	  if(trameready==1){
@@ -493,7 +595,15 @@ void startTarvosDecode(void const * argument)
 			osThreadSuspend(NULL);
 		}
 
-    osDelay(70);
+		  uint32_t end1= DWT->CYCCNT;
+		  uint32_t cycles= end1-start1;
+
+		  float times=(float) cycles/(SystemCoreClock/1000000.0f);
+if(times>timedecode){
+	timedecode=times;
+}
+
+vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
   }
   /* USER CODE END startTarvosDecode */
 }
