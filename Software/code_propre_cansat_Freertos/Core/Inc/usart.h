@@ -41,6 +41,7 @@ extern UART_HandleTypeDef huart1;
 #define GPSRxTamponSize 64
 #define TarvosRxBufferSize 64
 #define TarvosTxBufferSize 128
+
 /* USER CODE END Private defines */
 
 void MX_LPUART1_UART_Init(void);
