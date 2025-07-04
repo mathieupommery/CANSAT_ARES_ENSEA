@@ -1,8 +1,9 @@
-../Core/Src/tarvos.c:26:19:SET_tcMODE	32	static
-../Core/Src/tarvos.c:47:19:INIT_TARVOS	16	static
-../Core/Src/tarvos.c:53:19:INIT_PERM_TARVOS	64	static
-../Core/Src/tarvos.c:126:9:Get_CRC8	24	static
-../Core/Src/tarvos.c:136:6:SEND_DATA_NETW1	64	dynamic
-../Core/Src/tarvos.c:167:19:SET_Destadr	24	static
-../Core/Src/tarvos.c:182:6:create_and_send_payload	120	static
-../Core/Src/tarvos.c:210:6:decode_payload	16	static
+../Core/Src/tarvos.c:31:19:SET_tcMODE	32	static
+../Core/Src/tarvos.c:52:19:INIT_TARVOS	16	static
+../Core/Src/tarvos.c:58:19:INIT_PERM_TARVOS	64	static
+../Core/Src/tarvos.c:131:9:Get_CRC8	24	static
+../Core/Src/tarvos.c:141:6:SEND_DATA_NETW1	64	dynamic
+../Core/Src/tarvos.c:175:19:SET_Destadr	24	static
+../Core/Src/tarvos.c:190:6:create_and_send_payload	120	static
+../Core/Src/tarvos.c:218:6:decode_payload	16	static
+../Core/Src/tarvos.c:296:9:tarvos_checksum	24	static

@@ -42,6 +42,10 @@ extern UART_HandleTypeDef huart1;
 #define TarvosRxBufferSize 64
 #define TarvosTxBufferSize 128
 
+
+#define DMA_CHUNK_SIZE 128
+#define CIRC_BUF_SIZE 256
+#define TRAME_SIZE 60
 /* USER CODE END Private defines */
 
 void MX_LPUART1_UART_Init(void);

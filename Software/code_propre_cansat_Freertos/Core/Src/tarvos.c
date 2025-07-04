@@ -4,6 +4,8 @@
 #include "GNSS.h"
 #include "bmp581.h"
 #include <stdint.h>
+#include "cmsis_os.h"
+
 // Définition des variables
 
 
@@ -22,6 +24,9 @@ int noreturn_flag1=0;
 int noreturn_flag2=0;
 int noreturn_flag3=0;
 #endif
+
+extern osMutexId uartmutexHandle;
+extern osSemaphoreId uartTxDoneHandle;
 
 HAL_StatusTypeDef SET_tcMODE(char mode){
 	uint8_t transparent[] = {0x02, 0x04, 0x01, 0x00, 0x07};
@@ -154,10 +159,13 @@ void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int le
 
 
     // Transmission de la trame
-    HAL_UART_Transmit(&hlpuart1, trame, sizeof(trame), 500);
-
-    //HAL_UART_Transmit_DMA(&hlpuart1, trame, sizeof(trame));
-
+    //HAL_UART_Transmit(&hlpuart1, trame, sizeof(trame), 500);
+    if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+    {
+    HAL_UART_Transmit_DMA(&hlpuart1, trame, sizeof(trame));
+    osSemaphoreWait(uartTxDoneHandle, osWaitForever);
+    osMutexRelease(uartmutexHandle);
+}
 
     //uint8_t bufferreceivetest[10];
     //HAL_UART_Receive_IT(&hlpuart1,(uint8_t *)bufferreceivetest,5);
@@ -283,5 +291,14 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
 
 
     memset((uint8_t *)receivingbuffer,0,64);
+}
+
+uint8_t tarvos_checksum(uint8_t *data, uint16_t len)
+{
+    uint8_t checksum = 0x00;
+    for (uint16_t i = 0; i < len - 1; i++) {
+        checksum ^= data[i];
+    }
+    return checksum;
 }
 

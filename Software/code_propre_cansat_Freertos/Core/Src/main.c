@@ -93,6 +93,10 @@ float vbat=0;
 DecodedPayload TOPData;
 #endif
 
+extern uint8_t dma_rx_buffer[DMA_CHUNK_SIZE];               // Réception DMA par bloc de 5
+extern uint8_t circular_buffer[CIRC_BUF_SIZE];              // Buffer circulaire
+extern volatile uint16_t write_index;
+extern volatile uint16_t read_index;
 
 DecodedPayload OTHERData;
 
@@ -360,7 +364,7 @@ int main(void)
 
   HAL_Delay(100);
   HAL_UART_Abort(&hlpuart1);
-  if(HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Buffer,5)!=HAL_OK){
+  if(HAL_UART_Receive_DMA(&hlpuart1, dma_rx_buffer, DMA_CHUNK_SIZE)!=HAL_OK){
 	   ssd1306_SetCursor(32, 40);
  	  ssd1306_Fill(Black);
  	  ssd1306_WriteString("tvsrxpbm", Font_7x10, White);

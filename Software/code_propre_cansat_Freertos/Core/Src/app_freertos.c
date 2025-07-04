@@ -70,6 +70,11 @@ extern uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 extern uint8_t sdcardbuffer[512];
 extern uint8_t workingbuffer[110];
 
+extern uint8_t dma_rx_buffer[DMA_CHUNK_SIZE];               // Réception DMA par bloc de 5
+extern uint8_t circular_buffer[CIRC_BUF_SIZE];              // Buffer circulaire
+extern volatile uint16_t write_index;
+extern volatile uint16_t read_index;
+
 
 extern AXIS6 myData6AXIS;
 extern BMP_t myDatabmp581;
@@ -157,6 +162,7 @@ osThreadId tarvosDecodeHandle;
 osMutexId SDCard_mutexeHandle;
 osMutexId I2CmutexHandle;
 osMutexId uartmutexHandle;
+osSemaphoreId uartTxDoneHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -198,7 +204,13 @@ void MX_FREERTOS_Init(void) {
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
+  /* Create the semaphores(s) */
+  /* definition and creation of uartTxDone */
+  osSemaphoreDef(uartTxDone);
+  uartTxDoneHandle = osSemaphoreCreate(osSemaphore(uartTxDone), 1);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
+  osSemaphoreWait(uartTxDoneHandle, 0);
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
@@ -568,27 +580,82 @@ void startTarvosDecode(void const * argument)
 {
   /* USER CODE BEGIN startTarvosDecode */
 	TickType_t xLastWakeTime = xTaskGetTickCount();
+	 uint8_t temp_trame[TRAME_SIZE];
+		      uint8_t temp5[5];
+		      uint8_t data_index = 0;
   /* Infinite loop */
   for(;;)
   {
 	  uint32_t start1= DWT->CYCCNT;
 
 
-	  if(trameready==1){
 
-		  switch(tarvos_DATA[3]){
-#ifdef PARTIE_BAS
-		  case TOP_ADDR:
-			  decode_payload(&TOPData,(uint8_t *) tarvos_DATA);
-			  break;
+	          while (read_index != write_index) {
+	              // Recherche de l'entête principale
+	              if (circular_buffer[read_index] == 0x02 &&
+	                  circular_buffer[(read_index + 1) % CIRC_BUF_SIZE] == 0x81)
+	              {
+	                  data_index = 0;
+
+	                  while (data_index < TRAME_SIZE) {
+	                      // Vérifie s’il reste au moins 5 octets
+	                      uint16_t available = (write_index >= read_index)
+	                          ? (write_index - read_index)
+	                          : (CIRC_BUF_SIZE - read_index + write_index);
+
+	                      if (available < 5) {
+	                          break; // attendre plus de données
+	                      }
+
+	                      // Copie 5 octets
+	                      for (int i = 0; i < 5; i++) {
+	                          temp5[i] = circular_buffer[(read_index + i) % CIRC_BUF_SIZE];
+	                      }
+
+	                      // Confirmation TX ? (trame parasite)
+	                      if (temp5[0] == 0x02 && temp5[1] == 0x40 && temp5[2] == 0x01) {
+	                          // Skip trame de confirmation
+	                          read_index = (read_index + 5) % CIRC_BUF_SIZE;
+	                          continue;
+	                      }
+
+	                      // Sinon : partie utile, on ajoute à la trame
+	                      for (int i = 0; i < 5 && data_index < TRAME_SIZE; i++) {
+	                          temp_trame[data_index++] = temp5[i];
+	                      }
+
+	                      read_index = (read_index + 5) % CIRC_BUF_SIZE;
+	                  }
+
+	                  if (data_index == TRAME_SIZE) {
+
+	                	  if (tarvos_checksum(temp_trame, TRAME_SIZE) == temp_trame[TRAME_SIZE - 1]) {
+
+#ifdef PARTIE_HAUT
+	                      memcpy(tarvos_DATA, temp_trame, TRAME_SIZE);
+	                      decode_payload(&OTHERData, tarvos_DATA);  // ou un seul struct global
+
+
 #endif
-		  default:
-			  decode_payload(&OTHERData,(uint8_t *) tarvos_DATA);
 
-			  break;
-		  }
-		  trameready=0;
-	  }
+#ifdef PARTIE_BAS
+	                      memcpy(tarvos_DATA, temp_trame, TRAME_SIZE);
+	                      decode_payload(&TOPData, tarvos_DATA);  // ou un seul struct global
+
+
+#endif
+
+	                	  }
+
+	                  }
+	              } else {
+	                  // Entête invalide : skip 1 octet
+	                  read_index = (read_index + 1) % CIRC_BUF_SIZE;
+	              }
+	          }
+
+
+
 
 		if(flag_fin==1){
 
@@ -598,18 +665,30 @@ void startTarvosDecode(void const * argument)
 		  uint32_t end1= DWT->CYCCNT;
 		  uint32_t cycles= end1-start1;
 
-		  float times=(float) cycles/(SystemCoreClock/1000000.0f);
-if(times>timedecode){
-	timedecode=times;
-}
+		  timedecode=(float) cycles/(SystemCoreClock/1000000.0f);
 
-vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
+vTaskDelay(pdMS_TO_TICKS(50));
   }
   /* USER CODE END startTarvosDecode */
 }
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-
+//
+//	  if(trameready==1){
+//
+//		  switch(tarvos_DATA[3]){
+//#ifdef PARTIE_BAS
+//		  case TOP_ADDR:
+//			  decode_payload(&TOPData,(uint8_t *) tarvos_DATA);
+//			  break;
+//#endif
+//		  default:
+//			  decode_payload(&OTHERData,(uint8_t *) tarvos_DATA);
+//
+//			  break;
+//		  }
+//		  trameready=0;
+//	  }
 /* USER CODE END Application */
 

@@ -61,6 +61,8 @@ HAL_StatusTypeDef SET_Destadr(uint8_t Destadrr);
 HAL_StatusTypeDef REQ(uint8_t index);
 HAL_StatusTypeDef REQ_RSSI();
 
+uint8_t tarvos_checksum(uint8_t *data, uint16_t len);
+
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>

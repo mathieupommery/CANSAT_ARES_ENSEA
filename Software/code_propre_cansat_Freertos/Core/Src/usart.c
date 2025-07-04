@@ -48,11 +48,19 @@ int receivingflag=0;
 int receivingindex=0;
 
 extern osMutexId uartmutexHandle;
+
+uint8_t dma_rx_buffer[DMA_CHUNK_SIZE];               // Réception DMA par bloc de 5
+uint8_t circular_buffer[CIRC_BUF_SIZE];              // Buffer circulaire
+volatile uint16_t write_index = 0;
+volatile uint16_t read_index = 0;
+
+extern osSemaphoreId uartTxDoneHandle;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef hlpuart1;
 UART_HandleTypeDef huart1;
 DMA_HandleTypeDef hdma_lpuart1_rx;
+DMA_HandleTypeDef hdma_lpuart1_tx;
 DMA_HandleTypeDef hdma_usart1_rx;
 
 /* LPUART1 init function */
@@ -204,6 +212,23 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 
     __HAL_LINKDMA(uartHandle,hdmarx,hdma_lpuart1_rx);
 
+    /* LPUART1_TX Init */
+    hdma_lpuart1_tx.Instance = DMA1_Channel4;
+    hdma_lpuart1_tx.Init.Request = DMA_REQUEST_LPUART1_TX;
+    hdma_lpuart1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_lpuart1_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_lpuart1_tx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_lpuart1_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_lpuart1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_lpuart1_tx.Init.Mode = DMA_NORMAL;
+    hdma_lpuart1_tx.Init.Priority = DMA_PRIORITY_LOW;
+    if (HAL_DMA_Init(&hdma_lpuart1_tx) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    __HAL_LINKDMA(uartHandle,hdmatx,hdma_lpuart1_tx);
+
     /* LPUART1 interrupt Init */
     HAL_NVIC_SetPriority(LPUART1_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(LPUART1_IRQn);
@@ -289,6 +314,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
     /* LPUART1 DMA DeInit */
     HAL_DMA_DeInit(uartHandle->hdmarx);
+    HAL_DMA_DeInit(uartHandle->hdmatx);
 
     /* LPUART1 interrupt Deinit */
     HAL_NVIC_DisableIRQ(LPUART1_IRQn);
@@ -332,58 +358,34 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 
 	}
 	if(huart->Instance==LPUART1){
+        for (int i = DMA_CHUNK_SIZE / 2; i < DMA_CHUNK_SIZE; i++) {
+            circular_buffer[write_index] = dma_rx_buffer[i];
+            write_index = (write_index + 1) % CIRC_BUF_SIZE;
+        }
+	}
 
 
+}
 
-		if(receivingflag==0){
-		if(tarvos_RX_Buffer[1]==0x81 && tarvos_RX_Buffer[0]==0x02){
-
-
-
-			if (osMutexWait(uartmutexHandle, 0) == osOK)  // Prend le mutex immédiatement
-			            {
-
-				memcpy((uint8_t *) tarvos_DATA,(uint8_t *)tarvos_RX_Buffer,5);
-			receivingflag=1;
-			receivingindex++;
-			            }
-		}
-
-		if(tarvos_RX_Buffer[1]==0x40 && tarvos_RX_Buffer[0]==0x02){
-					memset((uint8_t *)tarvos_RX_Buffer,0,5);
-
-				}
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart->Instance == LPUART1)
+    {
+        // Copier les 1ers 64 octets
+        for (int i = 0; i < DMA_CHUNK_SIZE / 2; i++) {
+            circular_buffer[write_index] = dma_rx_buffer[i];
+            write_index = (write_index + 1) % CIRC_BUF_SIZE;
+        }
+    }
+}
 
 
-		}
-		else{
-			if(tarvos_RX_Buffer[0]==0x02 && tarvos_RX_Buffer[1]==0x40 && tarvos_RX_Buffer[2]==0x01 ){
-				memset((uint8_t *)tarvos_RX_Buffer,0,5);
-				receivingindex=0;
-				receivingflag=0;
-				trameready=0;
-				osMutexRelease(uartmutexHandle);
-
-
-			}
-			if(receivingindex!=0){
-				memcpy((uint8_t *) tarvos_DATA+(5*receivingindex),(uint8_t *)tarvos_RX_Buffer,5);
-				receivingindex++;
-			}
-		}
-
-		if(receivingindex==12){
-			receivingindex=0;
-			receivingflag=0;
-			trameready=1;
-			osMutexRelease(uartmutexHandle);
-		}
-						HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Buffer,5);//on recoit par dma à nouveau 64 caractères
-						__HAL_DMA_DISABLE_IT(&hdma_lpuart1_rx, DMA_IT_HT);
-
-		}
-
-
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart->Instance == LPUART1)
+    {
+        osSemaphoreRelease(uartTxDoneHandle);
+    }
 }
 
 
