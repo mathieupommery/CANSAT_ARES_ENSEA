@@ -34,9 +34,9 @@
 
 
 typedef struct AXIS6_DATA {
-    int AccelX;
-    int AccelY;
-    int AccelZ;
+    float AccelX;
+    float AccelY;
+    float AccelZ;
     int GyroX;
     int GyroY;
     int GyroZ;

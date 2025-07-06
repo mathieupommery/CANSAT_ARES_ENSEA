@@ -59,13 +59,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int tbtn1=0;
 
-
-uint16_t rawADCdata[3];
-float temp=0;
-float vrefint=0;
-float vbat=0;
 
 
 uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
@@ -73,30 +67,36 @@ uint8_t tarvos_DATA[64];
 uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 
 uint8_t workingbuffer[110];
-uint8_t sdcardbuffer[256];
+uint8_t sdcardbuffer[512];
 AXIS6 myData6AXIS;
 BMP_t myDatabmp581;
 
 
-
-FATFS fs;
-FATFS *pfs;
+FATFS FatFs;   // FATFS handle
+FRESULT fres;  // Common result code
+FILINFO fno;	  // Structure holds information
+FATFS *getFreeFs; 	  // Read information
 FIL fil;
-FRESULT fres;
-DWORD fre_clust;
-uint32_t total, free1;
+DIR dir;			  // Directory object structure
+DWORD free_clusters;  // Free Clusters
+DWORD free_sectors;	  // Free Sectors
+DWORD total_sectors;
 
 
-
-
-
-
-
+int tbtn1=0;
+uint16_t rawADCdata[3];
+float temp=0;
+float vrefint=0;
+float vbat=0;
 
 #ifdef PARTIE_BAS
 DecodedPayload TOPData;
 #endif
 
+extern uint8_t dma_rx_buffer[DMA_CHUNK_SIZE];               // Réception DMA par bloc de 5
+extern uint8_t circular_buffer[CIRC_BUF_SIZE];              // Buffer circulaire
+extern volatile uint16_t write_index;
+extern volatile uint16_t read_index;
 
 DecodedPayload OTHERData;
 
@@ -115,11 +115,14 @@ int flag_separation = 0;
 int flag_calib=0;
 int flag_bouton_servo=0;
 int flag_servo_started=0;
-int sd_detect_flag=0;
+
+uint32_t cpt_tps_chute=0;
+
+int flag_fin=0;
 
 float hauteur_Initiale=0.0;
 
-float hauteur_servo=0.0;
+float hauteur_relative=0.0;
 
 int pbmseeker=0;
 
@@ -128,6 +131,8 @@ int pbmseeker=0;
 int received_flag=0;
 
 int trameready=0;
+
+uint32_t timeindex=0;
 
 /* USER CODE END PV */
 
@@ -161,16 +166,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 #endif
 
 							}
-					if(gros_btn_time>=400 && gros_btn_time<=2000){
+					if(gros_btn_time>=400 && gros_btn_time<=1500){
 #ifdef PARTIE_HAUT
 						flag_bouton_servo=1;
 #endif
 					}
-					if(gros_btn_time>=2500 && gros_btn_time<=3500){
-#ifdef PARTIE_HAUT
+					if(gros_btn_time>=1500 && gros_btn_time<=3500){
+
 						hauteur_Initiale=myDatabmp581.altitude;
-						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,CHANNEL,BOTTOM_ADDR,0x20,0,0,0.0,0.0,0.0,hauteur_Initiale,0.0,0.0,0);
 						flag_calib=1;
+#ifdef PARTIE_HAUT
+						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
 #endif
 
 										}
@@ -186,11 +192,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 
 	}
 
+#ifdef PARTIE_HAUT
+	if(GPIO_Pin==GPIO_PIN_1){
 
-//	if(GPIO_Pin==GPIO_PIN_0){
-//		flag_drop=1;
-//
-//		}
+		if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_1)== GPIO_PIN_SET){
+			flag_drop=0;
+		}
+		else{
+			flag_drop=1;
+		}
+
+
+		}
+#endif
 
 	}
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
@@ -350,7 +364,7 @@ int main(void)
 
   HAL_Delay(100);
   HAL_UART_Abort(&hlpuart1);
-  if(HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Buffer,5)!=HAL_OK){
+  if(HAL_UART_Receive_DMA(&hlpuart1, dma_rx_buffer, DMA_CHUNK_SIZE)!=HAL_OK){
 	   ssd1306_SetCursor(32, 40);
  	  ssd1306_Fill(Black);
  	  ssd1306_WriteString("tvsrxpbm", Font_7x10, White);
@@ -360,53 +374,22 @@ int main(void)
 
 
    }
+  HAL_TIM_Base_Start_IT(&htim4);
+  HAL_Delay(10);
 
-//
-//  f_mount(&fs, "", 0);
-//
-//     /* Open file to write */
-//  f_open(&fil, "cansat.txt", FA_CREATE_ALWAYS | FA_READ | FA_WRITE);
-//
-//     /* Check free space */
-//  f_getfree("", &fre_clust, &pfs);
-//
-//  total = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
-//  free1 = (uint32_t)(fre_clust * pfs->csize * 0.5);
-//
-//
-//     /* Writing text */
-//     f_puts("startofcansat\n", &fil);
-//     HAL_Delay(100);
-//
-//     f_close(&fil);
-//     f_mount(NULL, "", 1);
-//
+  fres = f_mount(&FatFs, "", 1);
+  		  if (fres == FR_OK) {
+  			  fres = f_mkdir("DEMO");
+  			  fres = f_open(&fil, "/DEMO/write.txt",FA_WRITE | FA_OPEN_ALWAYS);
+  			  if (fres == FR_OK) {
+  				  //snprintf((char*) readBuf,30, "I hate Java!");
+  				  UINT bytesWrote;
+  				  fres = f_write(&fil,(uint8_t *)"test123test", 11, &bytesWrote);
+  				  f_close(&fil);
 
-  if(pbmseeker==0){
-	  ssd1306_SetCursor(32, 40);
-
-	  ssd1306_Fill(Black);
-	  ssd1306_WriteString("done!", Font_7x10, White);
-	  ssd1306_UpdateScreen();
-	  HAL_Delay(500);
-
-
-  }
-  if(pbmseeker==1){
-
-	  ssd1306_SetCursor(32, 40);
-
-	  ssd1306_Fill(Black);
-	  ssd1306_WriteString("PROBLEM", Font_7x10, White);
-	  ssd1306_UpdateScreen();
-	  HAL_Delay(2000);
-
-
-  }
-  int r=0;
-  int g=0;
-  int b=0;
-  int t=0;
+  			  }
+  			  f_mount(NULL, "", 0);
+  		  }
 
 
 
@@ -424,23 +407,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-	  LED_Setcolour(r, g, b,r, g, b);
-	  r=floor(abs(255*cosf((2*M_PI/255)*t)));
-	  g=floor(abs(255*cosf((2*M_PI/255)*t+(180/M_PI))));
-	  b=floor(abs(255*cosf((2*M_PI/255)*t+(270/M_PI))));
-
-	  if(t>=255){
-		  t=0;
-	  }
-	  t++;
-
-	  LED_Update();
-
-
-
-
-
 
 
     /* USER CODE END WHILE */
@@ -461,7 +427,7 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
-  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
+  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST);
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -470,8 +436,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV2;
-  RCC_OscInitStruct.PLL.PLLN = 25;
+  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV4;
+  RCC_OscInitStruct.PLL.PLLN = 85;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
@@ -489,7 +455,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
   {
     Error_Handler();
   }

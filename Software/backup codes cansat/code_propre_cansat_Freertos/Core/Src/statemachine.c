@@ -14,10 +14,17 @@
 #include "usart.h"
 #include "ssd1306.h"
 #include "GNSS.h"
+#include "cmsis_os.h"
 
 extern AXIS6 myData6AXIS;
 extern BMP_t myDatabmp581;
 extern GNSS_StateHandle GNSSData;
+
+extern osThreadId GNSSParseHandle;
+extern osThreadId servoHandle;
+extern osThreadId distancecalcHandle;
+extern osThreadId tarvosDecodeHandle;
+extern osThreadId SdcardwriteHandle;
 
 extern uint8_t LEDDMABUF[DMABUFLEN];
 extern uint8_t DMA_COMPLETE_FLAG;
@@ -39,7 +46,12 @@ extern uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
 
 extern int flag_calib;
 extern int flag_drop;
+extern int flag_bouton_servo;
+extern int flag_separation;
+extern float hauteur_relative;
 
+extern uint32_t cpt_tps_chute;
+extern int flag_fin;
 int send_data_len=0;
 
 uint8_t screenbuffer[50];
@@ -47,6 +59,13 @@ uint8_t screenbuffer[50];
 extern GNSS_StateHandle GNSSData;
 int screenindex=0;
 int datascreenindex=0;
+int delaycounterforscreenindex=0;
+#ifdef PARTIE_BAS
+extern float distance_entre_module;
+#endif
+
+extern uint32_t timeindex;
+extern osMutexId uartmutexHandle;
 
 
 
@@ -61,165 +80,205 @@ void statemachine(void){
 switch(screenindex){
 case 0:
 	if (vbat <= 7){
-
-#ifdef PARTIE_BAS
-//void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag1,uint8_t flag2,float latitude,float longitude,float altitude,float altitude_baro,float extra1,float extra2,int32_t extra_int)
-					ssd1306_WriteString("bat_low", Font_7x10, White);
-					create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x30,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-#endif
-#ifdef PARTIE_HAUT
-					ssd1306_WriteString("bat_low", Font_7x10, White);
-					create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x30,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-#endif
-
+					ssd1306_WriteString("bat_low", Font_6x8, White);
+					LED_Setcolour(255,0,0,0,0,0);
 				}
 	break;
 case 1:
 	if(flag_calib==0){
-#ifdef PARTIE_BAS
-					ssd1306_WriteString("alt_calib", Font_7x10, White);
-					create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x30,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-#endif
-#ifdef PARTIE_HAUT
-					ssd1306_WriteString("alt_calib", Font_7x10, White);
-					create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x30,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-
-#endif
+		ssd1306_WriteString("alt_cal", Font_6x8, White);
+		LED_Setcolour(0,255,0,0,0,0);
 				}
 	break;
 case 2:
 	if (GNSSData.fixType <= 2){
-#ifdef PARTIE_BAS
-		ssd1306_WriteString("gps_fix", Font_7x10, White);
-		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x30,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-#endif
-#ifdef PARTIE_HAUT
-		ssd1306_WriteString("gps_fix", Font_7x10, White);
-		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x30,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
-
-#endif
-
+		ssd1306_WriteString("gps_fix", Font_6x8, White);
+		LED_Setcolour(255,255,0,0,0,0);
 				}
 
 	break;
 case 3:
-	if(HAL_GPIO_ReadPin(PWEN_GPIO_Port,PWEN_Pin)==0){//marche pas encore
-		ssd1306_WriteString("TELEPWR", Font_7x10, White);
-
+	if(HAL_GPIO_ReadPin(PWEN_GPIO_Port,PWEN_Pin)==0){
+		ssd1306_WriteString("TELEPWR", Font_6x8, White);
+		LED_Setcolour(0,255,255,0,0,0);
 	}
+	break;
 }
 
-ssd1306_SetCursor(32, 42);
-if(datascreenindex<=10){
-	ssd1306_WriteString("bmpalt:", Font_7x10, White);
-	ssd1306_SetCursor(32, 52);
-    	snprintf((char *)screenbuffer,50,"%0.3f",myDatabmp581.altitude);
-    	ssd1306_WriteString((char *) screenbuffer, Font_7x10, White);
-}
-else if(datascreenindex>10 && datascreenindex<=20){
-		if(flag_calib){
-			ssd1306_WriteString("h_init:", Font_7x10, White);
-				ssd1306_SetCursor(32, 52);
-			snprintf((char *)screenbuffer,50,"%0.1f",hauteur_Initiale);
-			ssd1306_WriteString((char *) screenbuffer, Font_7x10, White);
+
+			ssd1306_SetCursor(32, 40);
+			snprintf((char *)screenbuffer,50,"sat:%d",GNSSData.numSV);
+			ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
+			ssd1306_SetCursor(32, 48);
+		if(flag_calib==0){
+			snprintf((char *)screenbuffer,50,"Hba:%0.2f",myDatabmp581.altitude);
+			ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
+			}
+		else{
+			snprintf((char *)screenbuffer,50,"Hre:%0.2f",hauteur_relative);
+			ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 		}
-}
-else{
-    	if(GNSSData.fixType>=3){
-    		ssd1306_WriteString("sat:", Font_7x10, White);
-    			ssd1306_SetCursor(32, 52);
-    		snprintf((char *)screenbuffer,50,"%d",GNSSData.numSV);
-    		ssd1306_WriteString((char *) screenbuffer, Font_7x10, White);
 
-
-    	}
-}
-
-			if((flag_drop==1) && (flag_calib==1)){
-
-				state++;
-
-
-
-#ifdef PARTIE_HAUT
-				create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,1,0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+#ifdef PARTIE_BAS
+			ssd1306_SetCursor(32, 56);
+			if(GNSSData.fixType>=3){
+			snprintf((char *)screenbuffer,50,"d:%0.2f",distance_entre_module);
+			ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
+			}
 
 #endif
 
+
+
+
+delaycounterforscreenindex++;
+if(delaycounterforscreenindex>=5){
+	delaycounterforscreenindex=0;
+	screenindex++;
+}
+
+if(screenindex>3){
+	screenindex=0;
+}
+
+#ifdef PARTIE_HAUT
+
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+vTaskDelay(pdMS_TO_TICKS(5));
+
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+		  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+		  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+#endif
+#ifdef PARTIE_BAS
+
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+vTaskDelay(pdMS_TO_TICKS(5));
+
+
+create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+		  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+		  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+#endif
+
+
+if((flag_drop==1) && (flag_calib==1)){
+
+				state++;
+				cpt_tps_chute=timeindex;
 			}
-
-
-			screenindex++;
-			if(screenindex>3){
-
-				screenindex=0;
-			}
-			datascreenindex++;
-			if(datascreenindex>=30){
-				datascreenindex=0;
-			}
-
-
-
 
 		break;
 
 	case PRESEPARATION:
-
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(32, 32);
+		ssd1306_WriteString("PRE", Font_16x24, White);
+		ssd1306_SetCursor(32, 56);
+		snprintf((char *)screenbuffer,50,"h=%f",hauteur_relative);
+		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 #ifdef PARTIE_HAUT
 
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
+
+		vTaskDelay(pdMS_TO_TICKS(5));
+
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
+						  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+						  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 #endif
-
 #ifdef PARTIE_BAS
 
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
+								  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+								  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
+		vTaskDelay(pdMS_TO_TICKS(5));
 
-
-
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 #endif
 
-
-
+		if(flag_separation==1){
+			state++;
+		}
 		break;
-
-
-
-
 
 	case POSTSEPARATION:
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(32, 32);
+		ssd1306_WriteString("POST", Font_16x24, White);
+		ssd1306_SetCursor(32, 56);
+		snprintf((char *)screenbuffer,50,"tps=%lu",(timeindex-cpt_tps_chute));
+		ssd1306_WriteString((char *) screenbuffer, Font_6x8, White);
 
 #ifdef PARTIE_HAUT
 
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x10,
+								  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+								  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
-#endif
+		vTaskDelay(pdMS_TO_TICKS(5));
 
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,temp,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
-
-
-
+		#endif
 #ifdef PARTIE_BAS
 
-		//calculer la distance en recevant les donnee du haut
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x10,
+								  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+								  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
+		vTaskDelay(pdMS_TO_TICKS(5));
 
-
-
-
+		create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x10,
+				  GNSSData.fLat,GNSSData.fLon,GNSSData.fhMSL,hauteur_relative,GNSSData.fvspeed,
+				  GNSSData.fgSpeed,distance_entre_module,myDatabmp581.press,myData6AXIS.AccelX,myData6AXIS.AccelY,myData6AXIS.AccelZ,timeindex);
 
 #endif
+
+		if((timeindex-cpt_tps_chute)>=120){
+			state++;
+			flag_fin=1;
+#ifdef PARTIE_BAS
+for(int i=0;i<4;i++){
+			create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,SAT_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+			vTaskDelay(pdMS_TO_TICKS(5));
+			create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,GROUND_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+			vTaskDelay(pdMS_TO_TICKS(5));
+}
+#endif
+		}
+
+
+
 
 
 		break;
+	case FIN:
 
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(32, 32);
+		ssd1306_WriteString("FIN", Font_16x24, White);
 
+		LED_Setcolour(0,255,0,0,255,0);
 
-
-
-
-
+		break;
 	}
-
 
 }

@@ -63,11 +63,17 @@ void Error_Handler(void);
 #define PWEN_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+#define SPI1_CS_Pin GPIO_PIN_4
+#define SPI1_CS_GPIO_Port GPIOC
+#define SD_SPI_HANDLE hspi1
+
 
 //#define PARTIE_HAUT
 #define PARTIE_BAS
-//#define PARTIE_SOL
 
+#define HAUTEUR_SEPARATION 20.0f
+
+//#define DEBUG1
 
 
 

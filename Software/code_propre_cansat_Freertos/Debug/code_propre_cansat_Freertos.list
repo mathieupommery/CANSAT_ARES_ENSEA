@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0003910a  00000000  00000000  0008bd83  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000ef80d  00000000  00000000  000c4e8d  2**0
+ 18 .debug_str    000ef80c  00000000  00000000  000c4e8d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  001b469a  2**0
+ 19 .comment      00000043  00000000  00000000  001b4699  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000c1c0  00000000  00000000  001b46e0  2**2
+ 20 .debug_frame  0000c1c0  00000000  00000000  001b46dc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000088  00000000  00000000  001c08a0  2**0
+ 21 .debug_line_str 00000088  00000000  00000000  001c089c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -3879,7 +3879,7 @@ void Startservo(void const * argument)
 		  if((hauteur_relative<=HAUTEUR_SEPARATION)){
  800231a:	4b3e      	ldr	r3, [pc, #248]	@ (8002414 <Startservo+0x120>)
  800231c:	edd3 7a00 	vldr	s15, [r3]
- 8002320:	eeb3 7a04 	vmov.f32	s14, #52	@ 0x41a00000  20.0
+ 8002320:	eeb0 7a00 	vmov.f32	s14, #0	@ 0x40000000  2.0
  8002324:	eef4 7ac7 	vcmpe.f32	s15, s14
  8002328:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
  800232c:	d80e      	bhi.n	800234c <Startservo+0x58>

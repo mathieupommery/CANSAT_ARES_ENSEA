@@ -1,0 +1,4 @@
+../Core/Src/app_freertos.c:166:6:MX_FREERTOS_Init	1
+../Core/Src/app_freertos.c:237:6:Startstatemachine	3
+../Core/Src/app_freertos.c:287:6:StartSdcard	5
+../Core/Src/app_freertos.c:350:6:startTarvosDecode	19

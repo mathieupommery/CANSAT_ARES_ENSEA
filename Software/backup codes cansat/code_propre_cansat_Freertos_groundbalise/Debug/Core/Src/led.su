@@ -1,4 +1,0 @@
-../Core/Src/led.c:14:19:LED_Init	16	static
-../Core/Src/led.c:33:6:LED_Setcolour	48	static
-../Core/Src/led.c:78:19:LED_Update	16	static
-../Core/Src/led.c:92:6:LED_Callback	8	static

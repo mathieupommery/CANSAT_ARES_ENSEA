@@ -7,6 +7,9 @@ union i_Short iShort;
 union u_Long uLong;
 union i_Long iLong;
 
+#define EARTH_RADIUS 6371000.0f
+#define DEG_TO_RAD (M_PI / 180.0f)
+
 /*!
  * Structure initialization.
  * @param GNSS Pointer to main GNSS structure.
@@ -31,16 +34,6 @@ void GNSS_Init(GNSS_StateHandle *GNSS, UART_HandleTypeDef *huart) {
 	GNSS->vAcc = 0;
 	GNSS->gSpeed = 0;
 	GNSS->headMot = 0;
-
-	HAL_UART_Transmit_DMA(&huart,uart1outprotnmeadisable,sizeof(uart1outprotnmeadisable)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,uart1outprotubxenable,sizeof(uart1outprotubxenable)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,setGPS_GAL_GLONASS,sizeof(setGPS_GAL_BEIDOU_GLONASS)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,meas_rate_5hz,sizeof(meas_rate_10hz)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,ubx_pvt_every_1meas,sizeof(ubx_pvt_every_1meas)/(sizeof(uint8_t)));
 
 	HAL_Delay(100);
 }
@@ -211,6 +204,13 @@ void GNSS_ParsePVTData(GNSS_StateHandle *GNSS) {
 	GNSS->fvACC=(float)GNSS->vAcc/1000.0;
 
 	for (int var = 0; var < 4; ++var) {
+			iLong.bytes[var] = GNSS->uartWorkingBuffer[var + 62];
+			GNSS->vspeedBytes[var] = GNSS->uartWorkingBuffer[var + 62];
+		}
+	GNSS->vspeed = iLong.iLong;
+	GNSS->fvspeed=(float)GNSS->vspeed/1000.0;
+
+	for (int var = 0; var < 4; ++var) {
 		iLong.bytes[var] = GNSS->uartWorkingBuffer[var + 66];
 		GNSS->gSpeedBytes[var] = GNSS->uartWorkingBuffer[var + 66];
 	}
@@ -266,11 +266,31 @@ uint8_t GNSS_Checksum(uint8_t class, uint8_t messageID, uint8_t dataLength,uint8
 
 
 float distancecalc(float lat1, float lat2, float long1, float long2,float alt1, float alt2){
-	float distanceplat=0.0;
-	float distance=0.0;
-	distanceplat=(float) 6371000.0*acosf(fminf(1.0,sinf(lat1*(M_PI/180.0))*sinf(lat2*(M_PI/180.0))+cosf(lat1*(M_PI/180.0))*cosf(lat2*(M_PI/180.0))*cosf((long2-long1)*(M_PI/180.0))));
 
-	distance=sqrtf(((alt2-alt1)*(alt2-alt1))+(distanceplat*distanceplat));
-	return distance;
+    // Convertir en radians
+    lat1 *= DEG_TO_RAD;
+    lat2 *= DEG_TO_RAD;
+    long1 *= DEG_TO_RAD;
+    long2 *= DEG_TO_RAD;
+
+    float dlat = lat2 - lat1;
+    float dlon = long2 - long1;
+
+    float a = sinf(dlat / 2) * sinf(dlat / 2) + cosf(lat1) * cosf(lat2) * sinf(dlon / 2) * sinf(dlon / 2);
+
+    if(a<1.0){
+
+    float c = 2.0f * atan2f(sqrtf(a), sqrtf(1.0f - a));
+
+    float distanceplat = EARTH_RADIUS * c;
+
+    float dalt = alt2 - alt1;
+    return sqrtf(distanceplat * distanceplat + dalt * dalt); // distance 3D
+    }
+    else{
+
+    	return 0.0;
+    }
 }
+
 

@@ -52,18 +52,6 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-volatile uint8_t FatFsCnt = 0;
-extern 	volatile uint8_t Timer1, Timer2;
-
-void SDTimer_Handler(void)
-{
-  if(Timer1 > 0)
-    Timer1--;
-
-  if(Timer2 > 0)
-    Timer2--;
-}
-
 
 /* USER CODE END 0 */
 
@@ -71,17 +59,41 @@ void SDTimer_Handler(void)
 extern DMA_HandleTypeDef hdma_adc1;
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_lpuart1_rx;
+extern DMA_HandleTypeDef hdma_lpuart1_tx;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern UART_HandleTypeDef hlpuart1;
 extern UART_HandleTypeDef huart1;
 extern DMA_HandleTypeDef hdma_tim2_ch2;
-extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim4;
 extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
 
-extern uint8_t timestamp;
+
+extern uint32_t timeindex;
+
+uint8_t hardfaultbuf[200];
+
+
+void hard_fault_handler_c(uint32_t *stacked_regs)
+{
+    // Récupère les registres sauvegardés par le CPU
+    uint32_t r0  = stacked_regs[0];
+    uint32_t r1  = stacked_regs[1];
+    uint32_t r2  = stacked_regs[2];
+    uint32_t r3  = stacked_regs[3];
+    uint32_t r12 = stacked_regs[4];
+    uint32_t lr  = stacked_regs[5];
+    uint32_t pc  = stacked_regs[6]; // <-- Instruction fautive !
+    uint32_t psr = stacked_regs[7];
+
+    // Mettez un breakpoint ici
+    snprintf((char *)hardfaultbuf,200,"\n[HardFault] R0=0x%08lX R1=0x%08lX R2=0x%08lX R3=0x%08lX R12=0x%08lX LR=0x%08lX PC=0x%08lX PSR=0x%08lX\n", r0, r1, r2, r3, r12, lr, pc, psr);
+    // Pause ici pour analyse
+    while(1);
+}
+
 
 
 /* USER CODE END EV */
@@ -110,6 +122,14 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+    __asm volatile
+    (
+        "TST lr, #4\n"
+        "ITE EQ\n"
+        "MRSEQ r0, MSP\n"
+        "MRSNE r0, PSP\n"
+        "B hard_fault_handler_c\n"
+    );
 	  ssd1306_SetCursor(32, 32);
 	 	  ssd1306_Fill(Black);
 	 	  ssd1306_WriteString("hardfault", Font_7x10, White);
@@ -258,6 +278,20 @@ void DMA1_Channel3_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 channel4 global interrupt.
+  */
+void DMA1_Channel4_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel4_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel4_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_lpuart1_tx);
+  /* USER CODE BEGIN DMA1_Channel4_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel4_IRQn 1 */
+}
+
+/**
   * @brief This function handles DMA1 channel5 global interrupt.
   */
 void DMA1_Channel5_IRQHandler(void)
@@ -291,7 +325,6 @@ void ADC1_2_IRQHandler(void)
 void TIM1_UP_TIM16_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 0 */
-
   /* USER CODE END TIM1_UP_TIM16_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 1 */
@@ -300,18 +333,17 @@ void TIM1_UP_TIM16_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles TIM3 global interrupt.
+  * @brief This function handles TIM2 global interrupt.
   */
-void TIM3_IRQHandler(void)
+void TIM2_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM3_IRQn 0 */
+  /* USER CODE BEGIN TIM2_IRQn 0 */
 
+  /* USER CODE END TIM2_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim2);
+  /* USER CODE BEGIN TIM2_IRQn 1 */
 
-  /* USER CODE END TIM3_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim3);
-  /* USER CODE BEGIN TIM3_IRQn 1 */
-
-  /* USER CODE END TIM3_IRQn 1 */
+  /* USER CODE END TIM2_IRQn 1 */
 }
 
 /**
@@ -320,12 +352,9 @@ void TIM3_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
-	FatFsCnt++;
-	if(FatFsCnt >= 10)
-	{
-	  FatFsCnt = 0;
-	  SDTimer_Handler();
-	}
+
+	timeindex++;
+
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */

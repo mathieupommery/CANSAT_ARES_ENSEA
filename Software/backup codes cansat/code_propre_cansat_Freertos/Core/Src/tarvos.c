@@ -1,22 +1,32 @@
 
 #include "tarvos.h"
 #include "usart.h"
+#include "GNSS.h"
+#include "bmp581.h"
 #include <stdint.h>
+#include "cmsis_os.h"
+
 // Définition des variables
 
 
 
 extern uint8_t tarvos_TX_Buffer[TarvosTxBufferSize];
-
+extern GNSS_StateHandle GNSSData;
+extern BMP_t myDatabmp581;
 extern UART_HandleTypeDef hlpuart1;
 extern int flag_drop;
 extern int flag_separation;
 extern int flag_calib;
+extern int flag_fin;
 extern float hauteur_Initiale;
 #ifdef PARTIE_BAS
 int noreturn_flag1=0;
 int noreturn_flag2=0;
+int noreturn_flag3=0;
 #endif
+
+extern osMutexId uartmutexHandle;
+extern osSemaphoreId uartTxDoneHandle;
 
 HAL_StatusTypeDef SET_tcMODE(char mode){
 	uint8_t transparent[] = {0x02, 0x04, 0x01, 0x00, 0x07};
@@ -128,53 +138,6 @@ uint8_t Get_CRC8(uint8_t * bufP, uint16_t len){
 }
 
 
-
-int SEND_DATA_NETW(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length) {
-	HAL_StatusTypeDef status=HAL_OK;
-	uint8_t bufferindex=0;
-	memset((uint8_t *) tarvos_TX_Buffer,256,'\0');
-
-	if(length>=250){
-		return HAL_ERROR;
-	}
-
-    // Initialisation de l'en-tête
-
-	tarvos_TX_Buffer[bufferindex]= 0x02;
-	bufferindex++;// Start byte
-	tarvos_TX_Buffer[bufferindex]= 0x01;
-	bufferindex++;// Command identifier
-	tarvos_TX_Buffer[bufferindex]= length + 2;
-	bufferindex++;// Longueur totale (length + channel + dest_adress)
-	tarvos_TX_Buffer[bufferindex]= channel;
-	bufferindex++;// Canal
-	tarvos_TX_Buffer[bufferindex]= dest_adress; // Adresse de destination
-
-	bufferindex++;
-
-    // Copie des données dans la trame
-    for (int i = 0; i < length; i++) {
-    	tarvos_TX_Buffer[bufferindex]=data[i];
-    	bufferindex++;
-
-    }
-
-
-
-
-
-    // Calcul du CRC (sur tout sauf le CRC lui-même)
-    tarvos_TX_Buffer[bufferindex]= Get_CRC8((uint8_t *)(tarvos_TX_Buffer), bufferindex);///////pas surrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr///
-
-
-    if( HAL_UART_Transmit(&hlpuart1,(uint8_t *) tarvos_TX_Buffer, bufferindex,1000)!=HAL_OK){
-    	status=HAL_ERROR;
-    }
-
-    return status;
-
-}
-
 void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int length) {
     // Longueur totale de la trame : en-tête (5 octets) + données + CRC
     uint8_t trame[5 + length + 1]; // +1 pour le CRC
@@ -194,10 +157,18 @@ void SEND_DATA_NETW1(uint8_t *data, uint8_t channel, uint8_t dest_adress, int le
     // Calcul du CRC (sur tout sauf le CRC lui-même)
     trame[5 + length] = Get_CRC8(trame, 5 + length);
 
+
     // Transmission de la trame
-    HAL_UART_Transmit(&hlpuart1, trame, sizeof(trame), 500);
-    uint8_t bufferreceivetest[10];
-    HAL_UART_Receive_IT(&hlpuart1,(uint8_t *)bufferreceivetest,5);
+    //HAL_UART_Transmit(&hlpuart1, trame, sizeof(trame), 500);
+    if (osMutexWait(uartmutexHandle, osWaitForever) == osOK)
+    {
+    HAL_UART_Transmit_DMA(&hlpuart1, trame, sizeof(trame));
+    osSemaphoreWait(uartTxDoneHandle, osWaitForever);
+    osMutexRelease(uartmutexHandle);
+}
+
+    //uint8_t bufferreceivetest[10];
+    //HAL_UART_Receive_IT(&hlpuart1,(uint8_t *)bufferreceivetest,5);
 
 }
 
@@ -214,49 +185,33 @@ HAL_StatusTypeDef SET_Destadr(uint8_t Destadrr){
 
 }
 
-HAL_StatusTypeDef REQ(uint8_t index){
-	HAL_StatusTypeDef status=HAL_OK;
-	uint8_t cmdsize=5;
-	uint8_t buffer[]={0x02,0x0A,0x01,index,0x00};
-	buffer[4]=Get_CRC8(buffer,4);
-	if(HAL_UART_Transmit(&hlpuart1,(uint8_t *) buffer, cmdsize, 500)!=HAL_OK){
-		status=HAL_ERROR;
-	}
-	return status;
 
-
-}
-
-HAL_StatusTypeDef REQ_RSSI(){
-	HAL_StatusTypeDef status=HAL_OK;
-	uint8_t cmdsize=4;
-	uint8_t buffer_RSSI[]={0x02,0x0D,0x00,0x0F};
-	if(HAL_UART_Transmit(&hlpuart1,(uint8_t *) buffer_RSSI, cmdsize, 500)!=HAL_OK){
-			status=HAL_ERROR;
-		}
-	return status;
-
-}
-
-//payload size==32
-void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,uint8_t flag1,uint8_t flag2,float latitude,float longitude,float altitude,float altitude_baro,float extra1,float extra2,int32_t extra_int){
-    uint8_t buffdonnee[34];
+//payload size==54
+void create_and_send_payload(uint8_t* buffer,uint8_t channel,uint8_t dest_adress,uint16_t header_code,
+		float latitude,float longitude,float hMSL,float altitude_baro,float vspeed,float hspeed,
+		float temperature,float pression, float Accx, float Accy, float Accz, uint32_t timeindex){
+    uint8_t buffdonnee[54];
     buffdonnee[0] = (header_code >> 8) & 0xFF;
     buffdonnee[1] = header_code & 0xFF;
-    buffdonnee[2] = flag1;
-    buffdonnee[3] = flag2;
+    buffdonnee[2] = flag_calib;
+    buffdonnee[3] = flag_drop;
+    buffdonnee[4] = flag_separation;
+    buffdonnee[5] = flag_fin;
 
-    memcpy(&buffdonnee[4],  &latitude,      sizeof(float));
-    memcpy(&buffdonnee[8],  &longitude,     sizeof(float));
-    memcpy(&buffdonnee[12], &altitude,      sizeof(float));
-    memcpy(&buffdonnee[16], &altitude_baro, sizeof(float));
-    memcpy(&buffdonnee[20], &extra1,        sizeof(float));
-    memcpy(&buffdonnee[24], &extra2,        sizeof(float));
-    memcpy(&buffdonnee[28], &extra_int,     sizeof(int32_t));
-    buffdonnee[33]=0x00;
-    buffdonnee[34]=0x00;
+    memcpy(&buffdonnee[6],  &latitude,      sizeof(float));
+    memcpy(&buffdonnee[10],  &longitude,     sizeof(float));
+    memcpy(&buffdonnee[14], &hMSL,      sizeof(float));
+    memcpy(&buffdonnee[18], &altitude_baro, sizeof(float));
+    memcpy(&buffdonnee[22], &vspeed,        sizeof(float));
+    memcpy(&buffdonnee[26], &hspeed,        sizeof(float));
+    memcpy(&buffdonnee[30], &temperature,    sizeof(float));
+    memcpy(&buffdonnee[34], &pression,    sizeof(float));
+    memcpy(&buffdonnee[38], &Accx,    sizeof(float));
+    memcpy(&buffdonnee[42], &Accy,    sizeof(float));
+    memcpy(&buffdonnee[46], &Accz,    sizeof(float));
+    memcpy(&buffdonnee[50], &timeindex,    sizeof(uint32_t));
 
-    SEND_DATA_NETW1((uint8_t *)buffdonnee, channel,dest_adress, 32);
+    SEND_DATA_NETW1((uint8_t *)buffdonnee, channel,dest_adress, 54);
 
 }
 
@@ -264,61 +219,86 @@ void decode_payload(DecodedPayload* out,uint8_t * receivingbuffer) {
 	if(receivingbuffer[0]!=0x02 || receivingbuffer[1]!=0x81){
 		return;
 	}
-	if(receivingbuffer[2]!=34){
+	if(receivingbuffer[2]!=56){
 		return;
 	}
 
 	out->senderadress=receivingbuffer[3];
 	out->header_code = (receivingbuffer[4] << 8) | receivingbuffer[5];
-    out->flag1 = receivingbuffer[6];
-    out->flag2 = receivingbuffer[7];
+    out->flag_calib = receivingbuffer[6];
+    out->flag_drop = receivingbuffer[7];
+    out->flag_separation = receivingbuffer[8];
+    out->flag_fin = receivingbuffer[9];
 #ifdef PARTIE_BAS
-    if((out->header_code)==0x20){
 
-    	memcpy(&out->altitude_baro, &receivingbuffer[20], sizeof(float));
 
-    	hauteur_Initiale=out->altitude_baro;
+    memcpy(&out->latitude,      &receivingbuffer[10],  sizeof(float));
+    memcpy(&out->longitude,     &receivingbuffer[14],  sizeof(float));
+    memcpy(&out->hMSL,      &receivingbuffer[18], sizeof(float));
+    memcpy(&out->altitude_baro, &receivingbuffer[22], sizeof(float));
+    memcpy(&out->vspeed,        &receivingbuffer[26], sizeof(float));
+    memcpy(&out->hspeed,        &receivingbuffer[30], sizeof(float));
+    memcpy(&out->temperature,     &receivingbuffer[34], sizeof(float));
+    memcpy(&out->pression,     &receivingbuffer[38], sizeof(float));
+    memcpy(&out->Accx,     &receivingbuffer[42], sizeof(float));
+    memcpy(&out->Accy,     &receivingbuffer[46], sizeof(float));
+    memcpy(&out->Accz,     &receivingbuffer[50], sizeof(float));
+    memcpy(&out->timeindex,     &receivingbuffer[54], sizeof(uint32_t));
+    memcpy(&out->RSSI,     &receivingbuffer[58], sizeof(uint8_t));
+
+    if(noreturn_flag3==0){
+    if(receivingbuffer[6]==1){
+    	hauteur_Initiale=myDatabmp581.altitude;
     	flag_calib=1;
- }
-    else{
-    memcpy(&out->latitude,      &receivingbuffer[8],  sizeof(float));
-    memcpy(&out->longitude,     &receivingbuffer[12],  sizeof(float));
-    memcpy(&out->altitude,      &receivingbuffer[16], sizeof(float));
-    memcpy(&out->altitude_baro, &receivingbuffer[20], sizeof(float));
-    memcpy(&out->extra1,        &receivingbuffer[24], sizeof(float));
-    memcpy(&out->extra2,        &receivingbuffer[28], sizeof(float));
-    memcpy(&out->extra_int,     &receivingbuffer[32], sizeof(int32_t));
+    	noreturn_flag3=1;
     }
+    }
+
+    if(noreturn_flag1==0){
+    if(receivingbuffer[7]==1){
+    	flag_drop=1;
+    	noreturn_flag1=1;
+    }
+
+    }
+    if(noreturn_flag2==0){
+    if(receivingbuffer[8]==1){
+    	flag_separation=1;
+    	noreturn_flag2=1;
+    }
+
+    }
+
 #endif
 
 #ifdef PARTIE_HAUT
-    memcpy(&out->latitude,      &receivingbuffer[8],  sizeof(float));
-    memcpy(&out->longitude,     &receivingbuffer[12],  sizeof(float));
-    memcpy(&out->altitude,      &receivingbuffer[16], sizeof(float));
-    memcpy(&out->altitude_baro, &receivingbuffer[20], sizeof(float));
-    memcpy(&out->extra1,        &receivingbuffer[24], sizeof(float));
-    memcpy(&out->extra2,        &receivingbuffer[28], sizeof(float));
-    memcpy(&out->extra_int,     &receivingbuffer[32], sizeof(int32_t));
-
+    memcpy(&out->latitude,      &receivingbuffer[10],  sizeof(float));
+    memcpy(&out->longitude,     &receivingbuffer[14],  sizeof(float));
+    memcpy(&out->hMSL,      &receivingbuffer[18], sizeof(float));
+    memcpy(&out->altitude_baro, &receivingbuffer[22], sizeof(float));
+    memcpy(&out->vspeed,        &receivingbuffer[26], sizeof(float));
+    memcpy(&out->hspeed,        &receivingbuffer[30], sizeof(float));
+    memcpy(&out->temperature,     &receivingbuffer[34], sizeof(float));
+    memcpy(&out->pression,     &receivingbuffer[38], sizeof(float));
+    memcpy(&out->Accx,     &receivingbuffer[42], sizeof(float));
+    memcpy(&out->Accy,     &receivingbuffer[46], sizeof(float));
+    memcpy(&out->Accz,     &receivingbuffer[50], sizeof(float));
+    memcpy(&out->timeindex,     &receivingbuffer[54], sizeof(uint32_t));
+    memcpy(&out->RSSI,     &receivingbuffer[58], sizeof(uint8_t));
 #endif
 
 
-#ifdef PARTIE_BAS
-    if(noreturn_flag1==0){
-    if(receivingbuffer[6]==1){
-    	flag_drop=1;
-    }
-    noreturn_flag1=1;
-    }
-    if(noreturn_flag2==0){
-    if(receivingbuffer[7]==1){
-    	flag_separation=1;
-    }
-    noreturn_flag2=1;
-    }
 
-#endif
 
     memset((uint8_t *)receivingbuffer,0,64);
+}
+
+uint8_t tarvos_checksum(uint8_t *data, uint16_t len)
+{
+    uint8_t checksum = 0x00;
+    for (uint16_t i = 0; i < len - 1; i++) {
+        checksum ^= data[i];
+    }
+    return checksum;
 }
 

@@ -1,0 +1,4 @@
+pyqt5
+pyserial
+pyqtgraph
+folium

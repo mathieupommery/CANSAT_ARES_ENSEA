@@ -69,6 +69,10 @@ typedef struct
 	uint8_t gSpeedBytes[4];
 	float fgSpeed;
 
+	signed long vspeed;
+	uint8_t vspeedBytes[4];
+	float fvspeed;
+
 	signed long headMot;
 
 }GNSS_StateHandle;
