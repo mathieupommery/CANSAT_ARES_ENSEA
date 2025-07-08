@@ -5,5 +5,5 @@
 ../Core/Src/tarvos.c:141:6:SEND_DATA_NETW1	3
 ../Core/Src/tarvos.c:175:19:SET_Destadr	2
 ../Core/Src/tarvos.c:190:6:create_and_send_payload	1
-../Core/Src/tarvos.c:218:6:decode_payload	10
+../Core/Src/tarvos.c:218:6:decode_payload	4
 ../Core/Src/tarvos.c:296:9:tarvos_checksum	2

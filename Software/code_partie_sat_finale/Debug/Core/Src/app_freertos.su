@@ -1,4 +1,4 @@
-../Core/Src/app_freertos.c:166:6:MX_FREERTOS_Init	96	static
-../Core/Src/app_freertos.c:237:6:Startstatemachine	32	static
-../Core/Src/app_freertos.c:287:6:StartSdcard	48	static
-../Core/Src/app_freertos.c:350:6:startTarvosDecode	136	static
+../Core/Src/app_freertos.c:167:6:MX_FREERTOS_Init	96	static
+../Core/Src/app_freertos.c:238:6:Startstatemachine	32	static
+../Core/Src/app_freertos.c:306:6:StartSdcard	48	static
+../Core/Src/app_freertos.c:369:6:startTarvosDecode	136	static

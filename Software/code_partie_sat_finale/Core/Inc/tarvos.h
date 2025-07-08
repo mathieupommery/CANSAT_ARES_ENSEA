@@ -17,7 +17,7 @@
 #define BOTTOM_ADDR 0x16
 #define GROUND_ADDR 0x01
 #define SAT_ADDR 0x10
-#define CHANNEL 0x82
+#define CHANNEL 0x5A
 
 #define RSSI0 -56
 #define NVALUE 2

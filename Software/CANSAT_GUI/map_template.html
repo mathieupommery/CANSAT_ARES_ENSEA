@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Live GPS Map</title>
+    <style>
+        html, body, #map { height: 100%; margin: 0; padding: 0; }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([44.8416106,-0.5810938], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18
+        }).addTo(map);
+
+        var path = [];
+        var polyline = L.polyline(path, { color: 'blue' }).addTo(map);
+
+        function addPoint(lat, lon) {
+            var point = [lat, lon];
+            path.push(point);
+            L.circleMarker(point, { radius: 3, color: 'red', fillOpacity: 0.7 }).addTo(map);
+            polyline.setLatLngs(path);
+            map.panTo(point);
+        }
+    </script>
+</body>
+</html>

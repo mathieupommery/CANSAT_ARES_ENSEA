@@ -41,8 +41,8 @@ extern UART_HandleTypeDef hlpuart1;
 #define TarvosTxBufferSize 128
 
 
-#define DMA_CHUNK_SIZE 128
-#define CIRC_BUF_SIZE 256
+#define DMA_CHUNK_SIZE 256
+#define CIRC_BUF_SIZE 512
 #define TRAME_SIZE 60
 /* USER CODE END Private defines */
 

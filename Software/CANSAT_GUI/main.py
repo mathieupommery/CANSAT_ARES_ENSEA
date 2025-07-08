@@ -1,7 +1,7 @@
 import sys
 import math, time
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QLabel, QFrame, QDialog
-
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QLabel, QFrame,QFormLayout, QLineEdit, QDialog
+from PyQt5.QtGui import QColor, QPalette
 from PyQt5.QtCore import Qt, QTimer
 from orientation_3d import Orientation3DWidget
 from plotter import RealTimePlotWidget  # Doit contenir une méthode .add_data(x, y1, y2, y3)
@@ -23,7 +23,7 @@ def parse_trame(line):
     """
     try:
         parts = line.strip().split(',')
-        if len(parts) != 24:
+        if len(parts) != 26:
             print(f"Warning: trame invalide (nb champs {len(parts)}): {line}")
             return None
 
@@ -38,18 +38,22 @@ def parse_trame(line):
             "bottom_lon": float(parts[7]),
             "top_hMSL": float(parts[8]),
             "bottom_hMSL": float(parts[9]),
-            "top_accx": float(parts[10]),
-            "bottom_accx": float(parts[11]),
-            "top_accy": float(parts[12]),
-            "bottom_accy": float(parts[13]),
-            "top_accz": float(parts[14]),
-            "bottom_accz": float(parts[15]),
-            "sat_hMSL": float(parts[16]),
-            "top_pression": float(parts[17]),
-            "top_temperature": float(parts[18]),
-            "bottom_temperature": float(parts[19]),  # ⚠️ Distance dans cette version
-            "bottom_pression": float(parts[20]),
-            "timeindex": int(parts[23])  # parts[21] = unused?, parts[22] = maybe autre pression?
+            "top_altbaro": float(parts[10]),
+            "bottom_altbaro": float(parts[11]),
+            "top_gyrx": float(parts[12]),
+            "bottom_gyrx": float(parts[13]),
+            "top_gyry": float(parts[14]),
+            "bottom_gyry": float(parts[15]),
+            "top_gyrz": float(parts[16]),
+            "bottom_gyrz": float(parts[17]),
+            "sat_hRSSI": float(parts[18]),
+            "top_pression": float(parts[19]),
+            "top_temperature": float(parts[20]),
+            "distance_modules": float(parts[21]),  # ⚠️ Distance dans cette version
+            "bottom_pression": float(parts[22]),
+            "top_vspeed": float(parts[23]),
+            "bottom_vspeed": float(parts[24]),
+            "timeindex": int(parts[25])
         }
 
         return data
@@ -71,6 +75,7 @@ class MainWindow(QMainWindow):
         self.setGeometry(100, 100, 1400, 900)
         self.port = port
         self.baudrate = baudrate
+        self.showMaximized()
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -86,11 +91,13 @@ class MainWindow(QMainWindow):
         self.csv_fields = [
             "flag_calib", "flag_drop", "flag_separation", "flag_fin",
             "top_lat", "bottom_lat", "top_lon", "bottom_lon",
-            "top_hMSL", "bottom_hMSL", "top_accx", "bottom_accx",
-            "top_accy", "bottom_accy", "top_accz", "bottom_accz",
-            "sat_hMSL", "top_pression", "top_temperature",
-            "bottom_temperature",  # ⚠️ correspond maintenant à la distance
-            "bottom_pression",     # 🔹 ajouté dans la nouvelle trame
+            "top_hMSL", "bottom_hMSL","top_altbaro","bottom_altbaro", "top_gyrx", "bottom_gyrx",
+            "top_gyry", "bottom_gyry", "top_gyrz", "bottom_gyrz",
+            "sat_hRSSI", "top_pression", "top_temperature",
+            "distance_modules",
+            "bottom_pression",
+            "top_vspeed",
+            "bottom_vspeed",
             "timeindex"
         ]
         self.csv_writer.writerow(self.csv_fields)
@@ -113,8 +120,39 @@ class MainWindow(QMainWindow):
         self.map_frame.layout().addWidget(self.map_widget)
         grid_layout.addWidget(self.map_frame, 1, 0)
 
+        self.extra_layout = QVBoxLayout()
+
+        # Champs pour valeurs
+        self.value_fields = {
+            "altitude_top": QLineEdit(),
+            "Température": QLineEdit(),
+            "hauteur_RSSI": QLineEdit(),
+            "Distance": QLineEdit()
+        }
+        form = QFormLayout()
+        for name, field in self.value_fields.items():
+            field.setReadOnly(True)
+            form.addRow(name, field)
+
+        # Indicateurs de flag
+        self.flag_boxes = {}
+        flag_names = ["Calib", "Drop", "Séparation", "Fin"]
+        flag_layout = QHBoxLayout()
+        for name in flag_names:
+            box = QFrame()
+            box.setFixedSize(25, 25)
+            box.setFrameShape(QFrame.Box)
+            box.setStyleSheet("background-color: red;")
+            self.flag_boxes[name] = box
+            flag_layout.addWidget(QLabel(name))
+            flag_layout.addWidget(box)
+
+        self.extra_layout.addLayout(form)
+        self.extra_layout.addLayout(flag_layout)
+        
         self.extra_frame = self._build_frame("Zone complémentaire")
-        self.extra_frame.layout().addWidget(QLabel("À compléter plus tard..."))
+        self.extra_frame.layout().addLayout(self.extra_layout)
+        
         grid_layout.addWidget(self.extra_frame, 1, 1)
 
         grid_layout.setRowStretch(0, 1)
@@ -156,47 +194,77 @@ class MainWindow(QMainWindow):
 
         while '\n' in self.serial_buffer:
             line, self.serial_buffer = self.serial_buffer.split('\n', 1)
+            if line.strip().lower() == "fin":
+                self.capture_and_quit()
+                return
             line = line.strip()
             if not line:
                 continue
             data_dict = parse_trame(line)
+            print(data_dict)
             if data_dict is None:
                 continue
             self.csv_writer.writerow([data_dict[h] for h in self.csv_fields])
             self.update_all(data_dict)
-
+    def capture_and_quit(self):
+        screen = QApplication.primaryScreen()
+        screenshot = screen.grabWindow(self.winId())
+        screenshot.save("dashboard_final.png", "PNG")
+        self.csv_file.close()
+        self.serial.close()
+        QApplication.quit()
     def update_all(self, data):
         self.graph_widget.update_data(
             data['timeindex'],
-            data['top_pression'] / 10000,
+            data['top_altbaro'],
             data['top_temperature'],
-            data['top_hMSL']
+            data['top_vspeed'],
+            data['bottom_altbaro'],
+            data['sat_hRSSI'],
+            None,  
+            data['bottom_vspeed']
         )
-        self.orientation_widget.set_orientation(
+
+        self.orientation_widget.update_orientation(
             1,
-            compute_roll(data['top_accx'], data['top_accy'], data['top_accz']),
-            compute_pitch(data['top_accx'], data['top_accy'], data['top_accz']) + math.radians(90),
-            0
+            data['top_gyrx'], data['top_gyry'], data['top_gyrz'],
+            0.02
         )
-        self.orientation_widget.set_orientation(
+        self.orientation_widget.update_orientation(
             2,
-            compute_roll(data['bottom_accx'], data['bottom_accy'], data['bottom_accz']) + math.radians(80),
-            compute_pitch(data['bottom_accx'], data['bottom_accy'], data['bottom_accz']),
-            0
+            data['bottom_gyrx'], data['bottom_gyry'], data['bottom_gyrz'],
+            0.02
         )
+        
+        
+        
          #Optionnel : mise à jour carte GPS
-#         self.map_widget.add_point(data['top_lat'], data['top_lon'])
-#         self.map_widget.add_point(data['bottom_lat'], data['bottom_lon'])
-#         self.map_widget._update_map()
+        
+        if(data['timeindex']%10==0):
+            if(data['top_lat']!=0.0 and data['top_lon']!=0.0):
+                self.map_widget.add_point(data['top_lat'], data['top_lon'])              
+            if(data['bottom_lat']!=0.0 and data['bottom_lon']!=0.0):
+                self.map_widget.add_point(data['bottom_lat'], data['bottom_lon'])
+        self.value_fields["altitude_top"].setText(f"{data['top_altbaro']} m")
+        self.value_fields["Température"].setText(f"{data['top_temperature']} °C")
+        self.value_fields["hauteur_RSSI"].setText(f"{data['sat_hRSSI']} dBm")
+        self.value_fields["Distance"].setText(f"{data['distance_modules']} m")
+
+        self.flag_boxes["Calib"].setStyleSheet("background-color: green;" if data["flag_calib"] else "background-color: red;")
+        self.flag_boxes["Drop"].setStyleSheet("background-color: green;" if data["flag_drop"] else "background-color: red;")
+        self.flag_boxes["Séparation"].setStyleSheet("background-color: green;" if data["flag_separation"] else "background-color: red;")
+        self.flag_boxes["Fin"].setStyleSheet("background-color: green;" if data["flag_fin"] else "background-color: red;")
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     config_dialog = SerialConfigDialog()
+    config_dialog.showMaximized()
     if config_dialog.exec_() == QDialog.Accepted:
         port, baud = config_dialog.get_config()
+        
         window = MainWindow(port=port, baudrate=baud)
-        window.show()
+        window.showMaximized() 
         sys.exit(app.exec_())
 
 

@@ -59,7 +59,8 @@ Core/Src/app_freertos.o: ../Core/Src/app_freertos.c \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/sd_app.h
+ ../Core/Inc/sd_app.h ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
+ ../Core/Inc/ssd1306_fonts.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -129,3 +130,6 @@ Core/Src/app_freertos.o: ../Core/Src/app_freertos.c \
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/user_diskio.h:
 ../Core/Inc/sd_app.h:
+../Core/Inc/ssd1306.h:
+../Core/Inc/ssd1306_conf.h:
+../Core/Inc/ssd1306_fonts.h:

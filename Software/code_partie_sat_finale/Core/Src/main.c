@@ -34,6 +34,7 @@
 #include "led.h"
 #include "servo.h"
 #include "math.h"
+#include "ssd1306.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -166,7 +167,6 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC1_Init();
-  MX_I2C1_Init();
   MX_LPUART1_UART_Init();
   MX_TIM3_Init();
   MX_TIM2_Init();
@@ -175,14 +175,21 @@ int main(void)
     Error_Handler();
   }
   MX_TIM4_Init();
+  MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
+
+  ssd1306_Init();
+    ssd1306_Fill(Black);
+    ssd1306_SetCursor(32, 40);
+    ssd1306_WriteString("Init...", Font_7x10, White);
+    ssd1306_UpdateScreen();
+
 
 
   HAL_GPIO_WritePin(PWEN_GPIO_Port,PWEN_Pin,GPIO_PIN_SET);
   HAL_GPIO_WritePin(LED_ROUGE_GPIO_Port,LED_ROUGE_Pin,GPIO_PIN_SET);
 
-
-
+  HAL_Delay(10);
 
   if(HAL_ADC_Start_DMA(&hadc1,(uint16_t*)rawADCdata, 3)!=HAL_OK){
  	 pbmseeker=1;

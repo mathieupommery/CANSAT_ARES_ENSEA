@@ -32,6 +32,7 @@
 #include "usart.h"
 #include "app_fatfs.h"
 #include "sd_app.h"
+#include "ssd1306.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -241,35 +242,53 @@ void Startstatemachine(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  lcd_clear();
-	  if(led_flag==0){
-		  LED_Setcolour(255, 0, 0,0, 0, 255);
-		  LED_Update();
+	  //lcd_clear();
 
-	  }
-	  else{
-		  LED_Setcolour(0, 0, 255,255, 0, 0);
-		  LED_Update();
-	  }
-	  led_flag=1-led_flag;
 	  if(flag_fin==0){
-	  setCursor(0,0);
-	  snprintf((char *)lcdbuffer,30,"hauteur=%0.2f",OTHERData.altitude_baro);
-	  lcd_send_string((char *)lcdbuffer);
-	  osDelay(2);
-	  setCursor(1,0);
-	  snprintf((char *)lcdbuffer,30,"dist=%0.1fm",distance_RSSI);
-	  lcd_send_string((char *)lcdbuffer);
+
+		  if(led_flag==0){
+			  LED_Setcolour(255, 0, 0,0, 0, 255);
+			  LED_Update();
+
+		  }
+		  else{
+			  LED_Setcolour(0, 0, 255,255, 0, 0);
+			  LED_Update();
+		  }
+		  led_flag=1-led_flag;
+
+		  if ((vraiRSSI >= 0) || (vraiRSSI < -120) || (NVALUE <= 0.0f)) {
+		 	        distance_RSSI= -1.0f; // Valeur invalide
+		 	    }
+		 	    else{
+		 	    	float exponent= 0.0f;
+		 		    exponent = ((float)RSSI0 - (float)vraiRSSI) / (10.0f * NVALUE);
+		 		    distance_RSSI= powf(10.0f, exponent);
+		 	    }
+
+
+
+	ssd1306_Fill(Black);
+	ssd1306_SetCursor(32, 32);
+	ssd1306_WriteString("H_baro", Font_6x8, White);
+	ssd1306_SetCursor(32, 40);
+	snprintf((char *)lcdbuffer,30,"%0.2f  ",OTHERData.altitude_baro);
+	ssd1306_WriteString((char *)lcdbuffer, Font_6x8, White);
+	ssd1306_SetCursor(32, 48);
+	ssd1306_WriteString("H_RSSI", Font_6x8, White);
+	ssd1306_SetCursor(32, 56);
+	snprintf((char *)lcdbuffer,30,"%0.1fm   ",distance_RSSI);
+	ssd1306_WriteString((char *)lcdbuffer, Font_6x8, White);
+	create_and_send_payload((uint8_t *) tarvos_TX_Buffer,CHANNEL,GROUND_ADDR,0x10,0.0,0.0,distance_RSSI,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,timeindex);
 	  }
 	  else{
-		  setCursor(0,0);
-		  	  snprintf((char *)lcdbuffer,30,"FIN");
-		  	  lcd_send_string((char *)lcdbuffer);
-		  	  setCursor(1,0);
-		  	  snprintf((char *)lcdbuffer,30,"FIN");
-		  	  lcd_send_string((char *)lcdbuffer);
+		  ssd1306_Fill(Black);
+		  ssd1306_SetCursor(32, 32);
+		  ssd1306_WriteString("FIN", Font_16x24, White);
 
 	  }
+
+	  ssd1306_UpdateScreen();
 
 
 	  vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
@@ -295,7 +314,7 @@ void StartSdcard(void const * argument)
   for(;;)
   {
 	  uint32_t start1= DWT->CYCCNT;
-		  osMutexWait(SDCard_mutexeHandle, portMAX_DELAY);
+		  //osMutexWait(SDCard_mutexeHandle, portMAX_DELAY);
 
 		  blinker_sd_flag=1-blinker_sd_flag;
 		  if(blinker_sd_flag==1){
@@ -322,7 +341,7 @@ void StartSdcard(void const * argument)
 
 
 
-		  osMutexRelease(SDCard_mutexeHandle);
+		  //osMutexRelease(SDCard_mutexeHandle);
 
 			if(flag_fin==1){
 
@@ -405,15 +424,6 @@ void startTarvosDecode(void const * argument)
 	                      memcpy(tarvos_DATA, temp_trame, TRAME_SIZE);
 	                      decode_payload(&OTHERData,(uint8_t *) tarvos_DATA);
 
-	    if ((vraiRSSI >= 0) || (vraiRSSI < -120) || (NVALUE <= 0.0f)) {
-	        distance_RSSI= -1.0f; // Valeur invalide
-	    }
-	    else{
-	    	float exponent= 0.0f;
-		    exponent = ((float)RSSI0 - (float)vraiRSSI) / (10.0f * NVALUE);
-		    distance_RSSI= powf(10.0f, exponent);
-	    }
-
 	                	  }
 
 	                  }
@@ -436,7 +446,7 @@ void startTarvosDecode(void const * argument)
 
 		  timedecode=(float) cycles/(SystemCoreClock/1000000.0f);
 
-vTaskDelay(pdMS_TO_TICKS(50));
+vTaskDelay(pdMS_TO_TICKS(30));
   }
   /* USER CODE END startTarvosDecode */
 }

@@ -319,8 +319,6 @@ void Startstatemachine(void const * argument)
   }
 
 
-
-
 	  sizestatemachine=uxTaskGetStackHighWaterMark(statemachineHandle);
 	  sizeGNSS=uxTaskGetStackHighWaterMark(GNSSParseHandle);
 	  sizesdcard=uxTaskGetStackHighWaterMark(SdcardwriteHandle);

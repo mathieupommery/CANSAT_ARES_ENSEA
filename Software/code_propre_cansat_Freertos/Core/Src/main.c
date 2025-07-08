@@ -176,7 +176,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 						hauteur_Initiale=myDatabmp581.altitude;
 						flag_calib=1;
 #ifdef PARTIE_HAUT
-						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,0x82,BOTTOM_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
+						create_and_send_payload((uint8_t *) tarvos_TX_Buffer,CHANNEL,BOTTOM_ADDR,0x20,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0);
 #endif
 
 										}

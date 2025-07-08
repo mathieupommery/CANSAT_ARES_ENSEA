@@ -55,7 +55,10 @@ FATFS/Target/user_diskio.o: ../FATFS/Target/user_diskio.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Core/Inc/user_diskio_spi.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h
 ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
 ../Middlewares/Third_Party/FatFs/src/diskio.h:
 ../Middlewares/Third_Party/FatFs/src/integer.h:
@@ -115,3 +118,6 @@ FATFS/Target/user_diskio.o: ../FATFS/Target/user_diskio.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+../Core/Inc/user_diskio_spi.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:

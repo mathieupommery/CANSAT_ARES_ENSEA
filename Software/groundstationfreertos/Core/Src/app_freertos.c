@@ -209,11 +209,11 @@ void Startstatemachine(void const * argument)
 		  }
 		  led_flag=1-led_flag;
 
-		 sendsize=snprintf((char *)uartsendbuffer,256,"%d,%d,%d,%d,%0.7f,%0.7f,%0.7f,%0.7f,%0.1f,%0.1f,%0.2f,%0.2f,%0.0f,%0.0f,%0.0f,%0.0f,%0.0f,%0.0f,%0.1f,%0.1f,%0.1f,%0.1f,%0.1f,%lu\n\r",
+		 sendsize=snprintf((char *)uartsendbuffer,256,"%d,%d,%d,%d,%0.7f,%0.7f,%0.7f,%0.7f,%0.1f,%0.1f,%0.2f,%0.2f,%0.0f,%0.0f,%0.0f,%0.0f,%0.0f,%0.0f,%0.1f,%0.1f,%0.1f,%0.1f,%0.1f,%0.1f,%0.1f,%lu\n\r",
 			  TOPData.flag_calib,TOPData.flag_drop,TOPData.flag_separation,TOPData.flag_fin,
 			  TOPData.latitude,BOTTOMData.latitude,TOPData.longitude,BOTTOMData.longitude,TOPData.hMSL,
 			  BOTTOMData.hMSL,TOPData.altitude_baro,BOTTOMData.altitude_baro,TOPData.Accx,BOTTOMData.Accx,TOPData.Accy,BOTTOMData.Accy,TOPData.Accz,BOTTOMData.Accz,SATData.hMSL,
-			  TOPData.pression,TOPData.temperature,BOTTOMData.temperature,BOTTOMData.pression,timeindex);
+			  TOPData.pression,TOPData.temperature,BOTTOMData.temperature,BOTTOMData.pression,TOPData.vspeed,BOTTOMData.vspeed,timeindex);
 
 
 		HAL_UART_Transmit(&huart1, (uint8_t *)uartsendbuffer, sendsize, 100);
@@ -278,7 +278,11 @@ void StartSdcard(void const * argument)
 	  			osThreadSuspend(NULL);
 	  		  }
 
+
+
 	  		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
+
+
   }
   /* USER CODE END StartSdcard */
 }
