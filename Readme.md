@@ -377,6 +377,7 @@ Carte auxiliaire flexible + mainboard flexible installée dans la partie haute d
    - Le reste, caches et contours sont pour la finition
 ## Mécanique
 Voici la version finale de la mécanique présente sur notre CANSAT.
+
 ![Demo](Docs/IMG/FINAL_MECA.gif)
    
 ### Software
