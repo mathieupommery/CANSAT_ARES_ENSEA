@@ -375,5 +375,8 @@ Carte auxiliaire flexible + mainboard flexible installée dans la partie haute d
    - Pour impression, découpage en 3 prints pour le châssis : `Case G.stl`,`Case D.stl`, `Range cable.stl`
    - Pour la découpe laser de la planche en bois : `Plaque bois Cansat_laser.dxf`
    - Le reste, caches et contours sont pour la finition
+## Mécanique
+Voici la version finale de la mécanique présente sur notre CANSAT.
+![Demo](Docs/IMG/CANSAT2 v45.gif)
    
 ### Software
